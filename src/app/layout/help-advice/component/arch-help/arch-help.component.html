@@ -1,0 +1,31 @@
+<!-- 메뉴바 -->
+<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+
+<div class="ui-g">
+  <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-family: 'RSMBold';">
+      <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.archHelp.folderTitle' | translate }}
+    </h3>
+  </div>
+</div>
+
+<p-treeTable [value]="folders">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width:20em">Name</th>
+      <th>Description</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+    <tr>
+      <td>
+        <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+        {{rowData.name}}
+      </td>
+      <td>{{rowData.description}}</td>
+    </tr>
+  </ng-template>
+
+  <!-- <p-column field="name" header="Name" [style]="{'width':'20em'}"></p-column>
+  <p-column field="description" header="Description"></p-column> -->
+</p-treeTable>

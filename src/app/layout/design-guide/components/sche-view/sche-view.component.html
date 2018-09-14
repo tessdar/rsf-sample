@@ -1,0 +1,19 @@
+<!-- 메뉴바 -->
+<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+
+<!-- Tabs -->
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-family: 'RSMBold';">
+      <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; {{ 'designGuide.scheView.scheTitle' | translate }}
+    </h3>
+  </div>
+</div>
+
+<p-schedule [events]="events" [locale]="mainMenu.getLanguage()" [header]="headerConfig"></p-schedule>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <br>
+  </div>
+</div>

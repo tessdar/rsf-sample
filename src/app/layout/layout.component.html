@@ -1,0 +1,77 @@
+<!-- 로그아웃 다이얼로그 -->
+<p-dialog header="{{ 'main.logout' | translate }}" [(visible)]="logoutDisplay" modal="modal" [responsive]="true" [width]="350"
+    [minWidth]="200" [baseZIndex]="9999" [closeOnEscape]="false" [closable]="false">
+    <span>{{ 'main.autoLogout' | translate }}</span>
+    <p-footer>
+        <button type="button" pButton icon="fa fa-check" (click)="logout()" label="OK"></button>
+    </p-footer>
+</p-dialog>
+
+<!-- 상단 헤더 -->
+<div id="layout-topbar">
+    <a href="#" class="menu-button" (click)="onMenuButtonClick($event)">
+        <i class="fa fa-bars"></i>
+    </a>
+    <div class="logo">
+        <span class="logobox"></span>
+        <span class="first">GROUP&nbsp;</span>
+        <span class="second">RENAULT</span>
+        <span class="actbtn" [ngClass]="{'inactive': mainMenu.getMenuInactive()}">
+            <button pButton type="button" icon="fa fa-2x fa-angle-right" class="ui-button-act ui-button-act-small" (click)="onMenuInactive($event)"></button>
+        </span>
+        <a href="#" class="sitename" [routerLink]="['/layout']">
+            <br>
+            <span>{{ 'main.siteName' | translate }}</span>
+        </a>
+    </div>
+
+    <ul class="topbar-menu">
+        <li class="topbar-subnav">
+            <a>{{mainMenu.getLanguage()}}</a>
+            <ul>
+                <li>
+                    <a (click)="useLanguage('ko')">ko</a>
+                </li>
+                <li>
+                    <a (click)="useLanguage('en')">en</a>
+                </li>
+            </ul>
+        </li>
+        <li class="topbar-submenu">
+            <a><i class="icon-user"></i>&nbsp; ISTO</a>
+            <ul>
+                <li class="topbar-submenu-header">ISTO</li>
+                <li>
+                    <a (click)="userInfo()">{{ 'main.userInfo' | translate }}</a>
+                </li>
+                <li>
+                    <a (click)="logout()">{{ 'main.logout' | translate }}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- 좌측 사이드바 메뉴 -->
+<div id="layout-sidebar" [ngClass]="{'active': mainMenu.getMenuActive(), 'inactive': mainMenu.getMenuInactive()}">
+    <div class="layout-menu">
+        <p-panelMenu [model]="mainMenu.getMenuItems()" [style]="{'width':'300px'}"></p-panelMenu>
+    </div>
+</div>
+
+<!-- 메뉴 블럭 -->
+<div class="layout-mask" *ngIf="mainMenu.getMenuActive()" (click)="onMenuButtonClick($event)">
+</div>
+
+<!-- 우측 사이드 바 -->
+<p-sidebar [(visible)]="userInfoBar" position="right" [baseZIndex]="9999">
+    <h1 style="font-family:'RSMBold'">{{ 'main.userInfo' | translate }}</h1>
+    <button pButton type="button" (click)="userInfoBar = false" label="{{ 'shared.message.close' | translate }}" class="ui-button-secondary"></button>
+</p-sidebar>
+
+<!-- 본문 -->
+<div id="layout-content" [ngClass]="{'inactive': mainMenu.getMenuInactive()}">
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

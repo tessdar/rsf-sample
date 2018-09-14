@@ -1,0 +1,111 @@
+.login-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    border: none;
+    background: #000;
+    opacity: 0.8;
+    -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);    
+}
+
+.login-background {
+    width: 100%; 
+    height: 100vh; 
+    background-image: url('/../../assets/images/back_01.jpg');
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: auto 100%;
+}
+
+input[pInputText] {
+    background: transparent;
+    color: #fff !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #bbbcbc;
+    border-radius: 0px;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    transition: .2s;
+    width: 200px;
+}
+
+input[type='password'] {
+    background: transparent;
+    color: #fff !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #bbbcbc;
+    border-radius: 0px;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    transition: .2s;
+    width: 205px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.ui-inputgroup {
+    padding-left: 30px;
+}
+
+.ui-inputgroup .ui-inputgroup-login {
+    border-radius: 0px !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #bbbcbc;
+    width: auto;
+    color: #bbbcbc;
+}
+
+button[pButton] {
+    padding: 8px 0px 8px 0px;
+    margin-left: 30px;
+    width: 220px;
+    font-size: 1.2rem;
+}
+
+h2 {
+    color: #fff; 
+    text-align: center; 
+    font-family: 'RSMBold';
+}
+
+.a-language {
+    color: #bbbcbc; 
+    text-decoration: none;
+}
+
+.a-language:hover {
+    border-bottom: 2px solid #ffcc33;
+    cursor: pointer;
+}
+
+.forgot-pass {
+    color: #bbbcbc; 
+    text-align: center; 
+    width:100%; 
+    text-decoration: none;
+}
+
+.copy-right {
+    position: absolute;
+    top: 450px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    height: 20px;
+    margin: auto;
+    border: none;  
+    text-align: center;
+}

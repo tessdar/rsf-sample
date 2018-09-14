@@ -1,0 +1,82 @@
+<!-- 메시지 -->
+<p-growl [value]="msgs" [baseZIndex]="9999"></p-growl>
+
+<!-- 메뉴바 -->
+<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+
+<!-- 폼 -->
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  <p-panel header="{{ 'samplePage.basicForm.condition' | translate }}" [styleClass]="'ui-panel-search'">
+    <div class="ui-g ui-fluid">
+      <div class="ui-sm-12 ui-md-6 ui-lg-8 ui-g-nopad">
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon required">{{ 'samplePage.basicForm.employeeId' | translate }}</span>
+          <input pInputText type="number" formControlName="employeeId" placeholder="Required">
+        </div>
+      </div>
+      <p-message severity="error" [text]="'samplePage.basicForm.RequiredField' | translate" *ngIf="!userform.controls['employeeId'].valid&&userform.controls['employeeId'].dirty"></p-message>
+    </div>
+    <div class="ui-g ui-fluid">
+      <div class="ui-sm-12 ui-md-6 ui-lg-8 ui-g-nopad">
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon required">{{ 'samplePage.basicForm.firstName' | translate }}</span>
+          <input pInputText type="text" formControlName="firstName" placeholder="Required">
+        </div>
+      </div>
+      <p-message severity="error" [text]="'samplePage.basicForm.RequiredField' | translate" *ngIf="!userform.controls['firstName'].valid&&userform.controls['firstName'].dirty"></p-message>
+    </div>
+    <div class="ui-g ui-fluid">
+      <div class="ui-sm-12 ui-md-6 ui-lg-8 ui-g-nopad">
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon required">{{ 'samplePage.basicForm.lastName' | translate }}</span>
+          <input pInputText type="text" formControlName="lastName" placeholder="Required">
+        </div>
+      </div>
+      <p-message severity="error" [text]="'samplePage.basicForm.RequiredField' | translate" *ngIf="!userform.controls['lastName'].valid&&userform.controls['lastName'].dirty"></p-message>
+    </div>
+    <div class="ui-g ui-fluid">
+      <div class="ui-sm-12 ui-md-6 ui-lg-8 ui-g-nopad">
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon">{{ 'samplePage.basicForm.phoneNumber' | translate }}</span>
+          <input pInputText type="text" formControlName="phoneNumber">
+        </div>
+      </div>
+    </div>
+    <div class="ui-g ui-fluid">
+      <div class="ui-sm-12 ui-md-6 ui-lg-8 ui-g-nopad">
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon required">{{ 'samplePage.basicForm.jobId' | translate }}</span>
+          <p-dropdown [options]="jobItems" formControlName="jobId" [ngClass]="'ui-dropdown-cust'" [autoWidth]="false" [autoDisplayFirst]="true"></p-dropdown>
+        </div>
+      </div>
+      <p-message severity="error" [text]="'samplePage.basicForm.RequiredField' | translate" *ngIf="!userform.controls['jobId'].valid&&userform.controls['jobId'].dirty"></p-message>
+    </div>
+    <div class="ui-g ui-fluid">
+      <div class="ui-sm-12 ui-md-6 ui-lg-8 ui-g-nopad">
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon required">{{ 'samplePage.basicForm.departmentId' | translate }}</span>
+          <p-dropdown [options]="deptItems" formControlName="departmentId" [ngClass]="'ui-dropdown-cust'" [autoWidth]="false" [autoDisplayFirst]="true"></p-dropdown>
+        </div>
+      </div>
+      <p-message severity="error" [text]="'samplePage.basicForm.RequiredField' | translate" *ngIf="!userform.controls['departmentId'].valid&&userform.controls['departmentId'].dirty"></p-message>
+    </div>
+    <div class="ui-g ui-fluid">
+      <div class="ui-sm-offset-8 ui-sm-4 ui-md-offset-8 ui-md-2 ui-lg-offset-6 ui-lg-2 ui-g-lrpad">
+        <button pButton type="submit" [disabled]="!userform.valid" icon="fa fa-floppy-o" label="{{ 'samplePage.basicForm.save' | translate }}"></button>
+      </div>
+    </div>
+  </p-panel>
+</form>
+
+<p-fileUpload customUpload="true" (uploadHandler)="onUpload($event)" multiple="multiple">
+  <ng-template pTemplate="content">
+    <ul *ngIf="uploadedFiles.length" style="padding: none; margin: none;">
+      <li *ngFor="let file of uploadedFiles" style="padding-bottom: 5px;">{{file.name}} - {{file.size}} bytes
+      </li>
+    </ul>
+  </ng-template>
+</p-fileUpload>
+
+<p-overlayPanel #op1>
+  <img [src]="imageData" style="height: 300px; width: 300px;" *ngIf="showImg" />
+</p-overlayPanel>

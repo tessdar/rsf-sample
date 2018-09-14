@@ -1,0 +1,37 @@
+<!-- 메뉴바 -->
+<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-family: 'RSMBold';">
+      <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; {{ 'designGuide.iconLib.iconTitle' | translate }}
+    </h3>
+  </div>
+</div>
+
+<div class="ui-g ui-fluid">
+  <div class="ui-sm-12 ui-md-6 ui-lg-6 ui-g-nopad">
+    <div class="ui-inputgroup">
+      <span class="ui-inputgroup-addon">{{ 'designGuide.iconLib.iconSearch' | translate }}</span>
+      <input pInputText type="text" [(ngModel)]="iconName">
+    </div>
+  </div>
+  <div class="ui-sm-12 ui-md-6 ui-lg-6 ui-g-nopad">
+    <p-selectButton [options]="iconSizes" [(ngModel)]="selectedSize"></p-selectButton>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <br>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div *ngFor="let icon of icons | searchFilter : 'name' : iconName" class="ui-sm-6 ui-md-3 ui-lg-3 ui-g-nolr-pad">
+    <p-panel [header]="icon.name" class="ui-panel-center">
+      <span [ngClass]="[selectedSize, icon.code]"></span>
+      <p style="margin: 5px;">{{icon.code}}</p>
+    </p-panel>
+  </div>
+</div>

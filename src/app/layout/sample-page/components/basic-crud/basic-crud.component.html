@@ -1,0 +1,169 @@
+<!-- 메시지 -->
+<p-growl [(value)]="msgs" [baseZIndex]="9999"></p-growl>
+
+<!-- 컨펌 다이얼로그 -->
+<p-confirmDialog></p-confirmDialog>
+
+<!-- 메뉴바 -->
+<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+
+<!-- 조회조건 -->
+<p-panel header="{{ 'samplePage.basicCrud.condition' | translate }}" [toggleable]="true" [styleClass]="'ui-panel-search'">
+  <div class="ui-g ui-fluid">
+    <div class="ui-sm-8 ui-md-6 ui-lg-6 ui-g-nopad">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon required">{{ 'samplePage.basicCrud.departmentId' | translate }}</span>
+        <input pInputText type="text" [(ngModel)]="departmentId">
+      </div>
+    </div>
+    <div class="ui-sm-4 ui-md-offset-4 ui-md-2 ui-lg-offset-4 ui-lg-2 ui-g-nopad">
+      <button pButton type="button" icon="fa fa-search" label="{{ 'samplePage.basicCrud.search' | translate }}" (click)="retrieve(departmentId)"></button>
+    </div>
+  </div>
+</p-panel>
+
+<!-- 툴바 -->
+<p-toolbar>
+  <div class="ui-toolbar-group-left">
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.add' | translate }}" icon="fa fa-plus" class="ui-button-secondary"
+      (click)="add()"></button>
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.edit' | translate }}" icon="fa fa-edit" class="ui-button-secondary"
+      (click)="edit()"></button>
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.delete' | translate }}" icon="fa fa-trash" class="ui-button-secondary"
+      (click)="delete()"></button>
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.save' | translate }}" icon="fa fa-floppy-o" class="ui-button-secondary"
+      (click)="save()"></button>
+  </div>
+
+  <div class="ui-toolbar-group-right">
+    <button pButton type="button" icon="fa fa-filter" class="ui-button-ternary" (click)="filter()"></button>
+    <button pButton type="button" icon="fa fa-backward" class="ui-button-ternary" (click)="dt.reset()"></button>
+    <button pButton type="button" icon="fa fa-download" class="ui-button-ternary" (click)="dt.exportCSV()"></button>
+  </div>
+</p-toolbar>
+
+<!-- 테이블 -->
+<p-table #dt [columns]="cols" [value]="dataList" [responsive]="true" [resizableColumns]="true" [reorderableColumns]="true"
+  [(selection)]="selectedRows" [scrollable]="true" scrollHeight="476px" [loading]="loading">
+  <ng-template pTemplate="colgroup" let-columns>
+    <colgroup>
+      <col style="width: 2.25em">
+      <col *ngFor="let col of columns" class="ui-table-response-col" [ngStyle]="{'width': col.width}">
+    </colgroup>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th style="width: 2.25em">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th *ngFor="let col of columns" pResizableColumn pReorderableColumn [pSortableColumn]="col.field">
+        {{col.header | translate}}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+    </tr>
+    <tr [ngClass]="onFilter">
+      <th style="width: 2.25em">
+        &nbsp;
+      </th>
+      <th *ngFor="let col of columns">
+        <input pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+      </th>
+    </tr>
+
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+    <tr [pSelectableRow]="rowData">
+      <td style="width: 2.25em">
+        <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+      </td>
+      <td *ngFor="let col of columns" class="ui-resizable-column" pEditableColumn [ngClass]="col.editable && editable ? 'edit-row' : null">
+        <span class="ui-column-title">{{col.header| translate}}</span>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="rowData[col.field]" [disabled]="!col.editable || !editable" (ngModelChange)="onChangeCell(rowIndex, col.field, rowData[col.field])">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData[col.field]}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <p style="text-align: left; margin-top: 5px; margin-bottom: 5px;">{{ 'samplePage.basicCrud.count' | translate }} : &nbsp; {{ totalRecords }}</p>
+  </ng-template>
+  <ng-template pTemplate="emptymessage" let-columns>
+    <tr>
+      <td [attr.colspan]="columns.length">
+        {{ 'samplePage.basicCrud.noRecord' | translate }}
+      </td>
+    </tr>
+  </ng-template>
+
+</p-table>
+
+<!-- Dialog -->
+<p-dialog header="{{ 'samplePage.basicCrud.dialHeader' | translate }}" [(visible)]="displayDialog" [responsive]="true" showEffect="fade"
+  [modal]="true" [styleClass]="'ui-dialog-custom'" [baseZIndex]="9999">
+  <div class="ui-g ui-fluid" *ngIf="dataRow">
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.employeeId' | translate }}</span>
+        <input pInputText type="number" [(ngModel)]="dataRow.employeeId">
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.firstName' | translate }}</span>
+        <input pInputText type="text" [(ngModel)]="dataRow.firstName">
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.lastName' | translate }}</span>
+        <input pInputText type="text" [(ngModel)]="dataRow.lastName">
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.phoneNumber' | translate }}</span>
+        <input pInputText type="text" [(ngModel)]="dataRow.phoneNumber">
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.jobId' | translate }}</span>
+        <input pInputText type="text" [(ngModel)]="dataRow.jobId">
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.departmentId' | translate }}</span>
+        <input pInputText type="number" [(ngModel)]="dataRow.departmentId">
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.managerId' | translate }}</span>
+        <input pInputText type="number" [(ngModel)]="dataRow.managerId">
+      </div>
+    </div>
+    <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.email' | translate }}</span>
+        <input pInputText type="text" [(ngModel)]="dataRow.email">
+      </div>
+    </div>
+    <!-- <div class="ui-g-12 ui-g-nopad">
+      <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.hireDate' | translate }}</span>
+        <input pInputText type="text" [(ngModel)]="dataRow.hireDate">
+      </div>
+    </div> -->
+  </div>
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+      <button type="button" pButton icon="fa fa-check" (click)="dialogOk()" label="OK"></button>
+    </div>
+  </p-footer>
+</p-dialog>

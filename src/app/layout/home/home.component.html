@@ -1,0 +1,75 @@
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-family: 'RSMBold';">
+      <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; {{ 'home.requireTitle' | translate }}
+    </h3>
+  </div>
+</div>
+
+<p-dataView [value]="programs">
+  <p-header>
+    Runtimes
+  </p-header>
+  <ng-template let-pgm pTemplate="listItem">
+    <div class="ui-g" style="border-bottom: 1px solid #bbbcbc">
+      <div class="ui-g-4 ui-sm-12">
+        <div class="ui-g-2 ui-sm-6">Name: </div>
+        <div class="ui-g-10 ui-sm-6">
+          <b>{{pgm.name}}</b>
+        </div>
+      </div>
+      <div class="ui-g-8 ui-sm-12">
+        <div class="ui-g-2 ui-sm-6">Version: </div>
+        <div class="ui-g-10 ui-sm-6">
+          <b>{{pgm.version}}</b>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <br>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-family: 'RSMBold';">
+      <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; {{ 'home.mainPackTitle' | translate }}
+    </h3>
+  </div>
+</div>
+
+<p-dataView [value]="packages">
+  <p-header>
+    Main Packages
+  </p-header>
+  <ng-template let-pack pTemplate="listItem">
+    <div class="ui-g" style="border-bottom: 1px solid #bbbcbc">
+      <div class="ui-g-4 ui-sm-12">
+        <div class="ui-g-2 ui-sm-6">Name: </div>
+        <div class="ui-g-10 ui-sm-6">
+          <b>{{pack.name}}</b>
+        </div>
+      </div>
+      <div class="ui-g-8 ui-sm-12">
+        <div class="ui-g-2 ui-sm-6">Version: </div>
+        <div class="ui-g-10 ui-sm-6">
+          <b>{{pack.version}}</b>
+        </div>
+        <div class="ui-g-2 ui-sm-6">Description: </div>
+        <div class="ui-g-10 ui-sm-6">
+          <b>{{pack.Description}}</b>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <br>
+  </div>
+</div>

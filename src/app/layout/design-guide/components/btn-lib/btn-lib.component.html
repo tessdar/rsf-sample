@@ -1,0 +1,124 @@
+<!-- 메뉴바 -->
+<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+
+<!-- Buttons -->
+<div class="ui-g">
+  <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-family: 'RSMBold';">
+      <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.buttonTitle' | translate }}
+    </h3>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+    <button pButton type="button" label="Primary"></button>
+    <button pButton type="button" [disabled]="true" label="Primary Disabled"></button>
+  </div>
+  <div class="ui-sm-12 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+    <button pButton type="button" label="Secondary" class="ui-button-secondary"></button>
+    <button pButton type="button" [disabled]="true" label="Secondary Disabled" class="ui-button-secondary"></button>
+  </div>
+  <div class="ui-sm-12 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+    <button pButton type="button" label="Ternary" class="ui-button-ternary"></button>
+    <button pButton type="button" [disabled]="true" label="Ternary Disabled" class="ui-button-ternary"></button>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <br>
+  </div>
+</div>
+
+<!-- Action Buttons -->
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-family: 'RSMBold';">
+      <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.actTitle' | translate }}
+    </h3>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+    <button pButton type="button" icon="fa fa-angle-right fa-2x" class="ui-button-act"></button>
+    <button pButton type="button" icon="fa fa-angle-right fa-2x" [disabled]="true" class="ui-button-act"></button>
+  </div>
+  <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+    <button pButton type="button" icon="fa fa-angle-right fa-2x" class="ui-button-second-act"></button>
+    <button pButton type="button" icon="fa fa-angle-right fa-2x" [disabled]="true" class="ui-button-second-act"></button>
+  </div>
+  <div class="ui-sm-12 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+    <a href="#" class="ui-links">Lorem Ipsum</a>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <br>
+  </div>
+</div>
+
+<!-- Select Button -->
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-family: 'RSMBold';">
+      <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.selBtnTitle' | translate }}
+    </h3>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-6 ui-lg-6 ui-g-nolr-pad">
+    <p-selectButton [options]="types" [(ngModel)]="selectedType"></p-selectButton>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <br>
+  </div>
+</div>
+
+<!-- Split Button -->
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-family: 'RSMBold';">
+      <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.splBtnTitle' | translate }}
+    </h3>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-6 ui-lg-6 ui-g-nolr-pad">
+    <p-splitButton label="Save" icon="fa fa-check" [model]="items"></p-splitButton>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <br>
+  </div>
+</div>
+
+<!-- File Upload -->
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-family: 'RSMBold';">
+      <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.fileUploadTitle' | translate }}
+    </h3>
+  </div>
+</div>
+
+<p-fileUpload name="demo[]" (onUpload)="onUpload($event)" multiple="multiple">
+  <ng-template pTemplate="content">
+    <ul *ngIf="uploadedFiles.length">
+      <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+    </ul>
+  </ng-template>
+</p-fileUpload>

@@ -1,0 +1,158 @@
+{
+    "login": {
+        "siteName": "시스템 명",
+        "userName": "ID",
+        "password": "비밀번호",
+        "login": "로그인",
+        "forgot": "비밀번호를 잊어버리셨습니까?"
+    },
+    "main": {
+        "siteName": "시스템명",
+        "userInfo": "사용자 정보",
+        "logout": "로그아웃",
+        "changeTheme": "테마 변경",
+        "autoLogout": "30분이상 사용하지 않아서 자동 로그아웃 됩니다.",
+        "sideMenu": {
+            "designGuide": "디자인 가이드",
+            "btnLib": "버튼 라이브러리",
+            "inputLib": "입력 라이브러리",
+            "tabView": "탭 뷰 & 판넬",
+            "scheView": "달력 뷰",
+            "iconLib": "아이콘 라이브러리",
+            "samplePage": "샘플 페이지",
+            "basicCrud": "기본 CRUD",
+            "basicForm": "기본 Form",
+            "basicTree": "기본 Tree",
+            "headDetail": "헤더 디테일",
+            "chartForm": "차트 Form",
+            "helpAdvice": "도움말",
+            "archHelp": "폴더구조",
+            "newComp": "모듈 & 컴포넌트",
+            "newServ": "서비스",
+            "designLayout": "디자인 레이아웃"
+        }
+    },
+    "shared": {
+        "message": {
+            "info": "정보",
+            "warn": "경고",
+            "success": "완료",
+            "error": "에러",
+            "confm": "확정",
+            "close": "닫기",
+            "okSave": "저장 완료하였습니다.",
+            "dataNotFound": "조건에 해당하는 데이터가 존재하지 않습니다.",
+            "noSelected": "선택된 행이 존재하지 않습니다.",
+            "onlyOneSelected": "하나의 행만 선택 가능합니다.",
+            "noSaveData": "저장하려는 데이터가 존재하지 않습니다.",
+            "confProc": "저장하시겠습니까?",
+            "noResponse": "서버로부터 응답이 없습니다.",
+            "askQuit": "저장되지 않은 수정한 내역이 존재합니다. 그래도 나가시겠습니까?",
+            "loginFail": "존재하지 않은 ID 또는 비밀번호가 잘못 입력되었습니다."
+        }
+    },
+    "home": {
+        "requireTitle": "시스템 요구사항",
+        "mainPackTitle": "주요 패키지"
+    },
+    "designGuide": {
+        "btnLib": {
+            "buttonTitle": "버튼",
+            "actTitle": "액션 버튼 & 링크",
+            "selBtnTitle": "선택 버튼",
+            "splBtnTitle": "분할 버튼",
+            "fileUploadTitle": "파일 업로드"
+        },
+        "inputLib": {
+            "inputTitle": "입력란",
+            "passLabel": "비밀번호를 입력해 주세요.",
+            "passWeak": "약함",
+            "passMedium": "중간",
+            "passStrong": "강함",
+            "calendarTitle": "날짜",
+            "checkTitle": "체크박스",
+            "radioTitle": "라디오박스",
+            "dropdownTitle": "드롭다운",
+            "textAreaTitle": "텍스트 입력",
+            "editorTitle": "에디터"
+        },
+        "tabView": {
+            "tabTitle": "탭",
+            "panelTitle": "판넬",
+            "accordTitle": "아코디언"
+        },
+        "scheView": {
+            "scheTitle": "달력"
+        },
+        "iconLib": {
+            "iconTitle": "아이콘",
+            "iconSearch": "검색"
+        }
+    },
+    "samplePage": {
+        "basicCrud": {
+            "noRecord": "조회조건에 해당하는 데이터가 존재하지 않습니다.",
+            "condition": "조회조건",
+            "search": "검색",
+            "add": "추가",
+            "edit": "수정",
+            "delete": "삭제",
+            "save": "저장",
+            "count": "조회건수",
+            "dialHeader": "사원 정보",
+            "employeeId": "사번",
+            "firstName": "이름",
+            "lastName": "성",
+            "phoneNumber": "전화번호",
+            "jobId": "업무",
+            "departmentId": "부서",
+            "managerId": "부서장사번",
+            "email": "이메일",
+            "hireDate": "입사일자",
+            "departmentName": "부서명",
+            "locationId": "위치"
+        },
+        "basicForm": {
+            "condition": "사원정보 입력",
+            "employeeId": "사번",
+            "firstName": "이름",
+            "lastName": "성",
+            "phoneNumber": "전화번호",
+            "jobId": "업무",
+            "departmentId": "부서",
+            "managerId": "부서장사번",
+            "email": "이메일",
+            "RequiredField": "필수입력 누락!",
+            "save": "저장"
+        },
+        "chartForm": {
+            "departStatus": "부서 현황",
+            "jobStatus": "업무 현황"
+        }
+    },
+    "helpAdvice": {
+        "archHelp": {
+            "folderTitle": "소스 폴더"
+        },
+        "newComp": {
+            "newModuleTitle": "모듈 생성",
+            "moduleRouteTitle": "모듈 라우트 추가",
+            "newCompTitle": "컴포넌트 생성",
+            "addRouteTitle": "컴포넌트 라우트 추가",
+            "newMenuTitle": "메뉴 추가",
+            "injectMenuTitle": "메뉴 서비스 삽입",
+            "addBreadTitle": "우측 메뉴바 추가",
+            "addLangTitle": "언어 추가",
+            "npmStartTitle": "npm start 실행"
+        },
+        "newServ": {
+            "newServTitle": "서비스 생성"
+        },        
+        "designLayout": {
+            "loginTitle": "로그인",
+            "layPcTitle": "레이아웃 PC",
+            "layMTitle": "레이아웃 모바일",
+            "img404Title": "404"
+        }
+    }
+}

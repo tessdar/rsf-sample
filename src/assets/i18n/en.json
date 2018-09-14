@@ -1,0 +1,158 @@
+{
+    "login": {
+        "siteName": "Site Name",
+        "userName": "User ID",
+        "password": "Password",
+        "login": "LOG IN",
+        "forgot": "Forgot your password?"
+    },
+    "main": {
+        "siteName": "Site Name",
+        "userInfo": "User Info",
+        "changeTheme": "Change Theme",
+        "logout": "Log out",
+        "autoLogout": "Log out automatically because there were not actions for 30 min.",
+        "sideMenu": {
+            "designGuide": "Design Guide",
+            "btnLib": "Button Library",
+            "inputLib": "Input Library",
+            "tabView": "Tab View & Panel",
+            "scheView": "Calendar View",
+            "iconLib": "Icon Library",
+            "samplePage": "Sample Page",
+            "basicCrud": "Basic CRUD",
+            "basicForm": "Basic Form",
+            "basicTree": "Basic Tree",
+            "headDetail": "Parent Child",
+            "chartForm": "Chart Form",
+            "helpAdvice": "Help",
+            "archHelp": "Folder",
+            "newComp": "Module & Component",
+            "newServ": "Service",
+            "designLayout": "Design Layout"
+        }
+    },
+    "shared": {
+        "message": {
+            "info": "Information",
+            "warn": "Warning",
+            "success": "Success",
+            "error": "Error",
+            "confm": "Confirmation",
+            "close": "Close",
+            "okSave": "The data was saved successfully.",
+            "dataNotFound": "The data was not found.",
+            "noSelected": "There are no selected rows.",
+            "onlyOneSelected": "You should select only one row.",
+            "noSaveData": "Saving data doesn't exist.",
+            "confProc": "Are you sure that you want to proceed?",
+            "noResponse": "No response from server.",
+            "askQuit": "Unsaved changes exists. Are you sure to quit?",
+            "loginFail": "ID doesn't exists or wrong password."
+        }
+    },
+    "home": {
+        "requireTitle": "System Requirements",
+        "mainPackTitle": "Main Package"
+    },
+    "designGuide": {
+        "btnLib": {
+            "buttonTitle": "Button Components",
+            "actTitle": "Action Buttons & Links",
+            "selBtnTitle": "Select Button",
+            "splBtnTitle": "Split Button",
+            "fileUploadTitle": "File Upload"
+        },
+        "inputLib": {
+            "inputTitle": "Inputs",
+            "passLabel": "Please enter a password",
+            "passWeak": "Weak",
+            "passMedium": "Medium",
+            "passStrong": "Strong",
+            "calendarTitle": "Calendar",
+            "checkTitle": "Check Box",
+            "radioTitle": "Radio Box",
+            "dropdownTitle": "Dropdown",
+            "textAreaTitle": "Text Area",
+            "editorTitle": "Editor"
+        },
+        "tabView": {
+            "tabTitle": "Tabs",
+            "panelTitle": "Panel",
+            "accordTitle": "Accordion"
+        },
+        "scheView": {
+            "scheTitle": "Calendar"
+        },
+        "iconLib": {
+            "iconTitle": "Icons",
+            "iconSearch": "Search"
+        }
+    },
+    "samplePage": {
+        "basicCrud": {
+            "noRecord": "No records found.",
+            "condition": "Search Condition",
+            "search": "Search",
+            "add": "Add",
+            "edit": "Edit",
+            "delete": "Delete",
+            "save": "Save",
+            "count": "Count",
+            "dialHeader": "Employee Info",
+            "employeeId": "Emp' ID",
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "phoneNumber": "Phone No.",
+            "jobId": "Job",
+            "departmentId": "Dep'",
+            "managerId": "Mnger' ID",
+            "email": "eMail",
+            "hireDate": "Hire Date",
+            "departmentName": "Dep' Name",
+            "locationId": "Location"
+        },
+        "basicForm": {
+            "condition": "Employee's Info",
+            "employeeId": "Emp' ID",
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "phoneNumber": "Phone No.",
+            "jobId": "Job",
+            "departmentId": "Dep'",
+            "managerId": "Mnger' ID",
+            "email": "eMail",
+            "RequiredField": "Field is required",
+            "save": "Save"
+        },
+        "chartForm": {
+            "departStatus": "Department Status",
+            "jobStatus": "Job Status"
+        }
+    },
+    "helpAdvice": {
+        "archHelp": {
+            "folderTitle": "Source Folder"
+        },
+        "newComp": {
+            "newModuleTitle": "Create Module",
+            "moduleRouteTitle": "Add Module Route",
+            "newCompTitle": "Create Component",
+            "addRouteTitle": "Add Component Route",
+            "newMenuTitle": "Add Menutree",
+            "injectMenuTitle": "Inject Menu Service",
+            "addBreadTitle": "Add Breadcrumb",
+            "addLangTitle": "Add Language",
+            "npmStartTitle": "Run npm start"
+        },
+        "newServ": {
+            "newServTitle": "Create Service"
+        },
+        "designLayout": {
+            "loginTitle": "Log in",
+            "layPcTitle": "Layout PC",
+            "layMTitle": "Layout Mobile",
+            "img404Title": "404"
+        }
+    }
+}
