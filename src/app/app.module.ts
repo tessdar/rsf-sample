@@ -29,6 +29,8 @@ import { DeactGuard } from './shared/guard/deact.guard';
 
 // Providers
 import { MainMenuService } from './shared/services/main-menu.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { MainMenuService } from './shared/services/main-menu.service';
     InputTextModule,
     PasswordModule,
     ButtonModule,
-    GrowlModule
+    GrowlModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthGuard, DeactGuard, MainMenuService],
   bootstrap: [AppComponent]

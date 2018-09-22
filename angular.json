@@ -24,16 +24,17 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ],
             "styles": [
-              "node_modules/quill/dist/quill.snow.css",       
+              "node_modules/quill/dist/quill.snow.css",
               "node_modules/fullcalendar/dist/fullcalendar.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeicons/primeicons.css",
               "src/assets/themes/rsm/theme.scss",
-              "src/assets/icons/style.css",      
+              "src/assets/icons/style.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -61,7 +62,8 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "serviceWorker": true
             }
           }
         },
@@ -95,7 +97,8 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ]
           }
         },
