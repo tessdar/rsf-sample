@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+// import { StoreModule } from '@ngrx/store';
+// import { EffectsModule } from '@ngrx/effects';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -22,8 +22,8 @@ import { ButtonModule } from 'primeng/button';
 import { GrowlModule } from 'primeng/growl';
 
 // AuthGuard
-import { reducers } from './shared/state/reducers';
-import { ApplicationEffects } from './shared/state/application/effects';
+// import { reducers } from './shared/state/reducers';
+// import { ApplicationEffects } from './shared/state/application/effects';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { DeactGuard } from './shared/guard/deact.guard';
 
@@ -52,8 +52,8 @@ import { environment } from '../environments/environment';
       }
     }),
     AppRoutingModule,
-    StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([ApplicationEffects]),
+    // StoreModule.forRoot(reducers),
+    // EffectsModule.forRoot([ApplicationEffects]),
     InputTextModule,
     PasswordModule,
     ButtonModule,

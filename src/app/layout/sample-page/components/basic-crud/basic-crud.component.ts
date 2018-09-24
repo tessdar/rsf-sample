@@ -280,7 +280,7 @@ export class BasicCrudComponent implements OnInit {
         this.confirmationService.confirm({
           message: msg.confProc,
           header: msg.confm,
-          icon: 'fa fa-question-circle',
+          icon: 'fas fa-question-circle',
           accept: () => {
             this.basicCrudService.setEmp(saveList).then((res: any) => {
               this.loading = false;
@@ -347,7 +347,7 @@ export class BasicCrudComponent implements OnInit {
         this.confirmationService.confirm({
           message: msg.askQuit,
           header: msg.confm,
-          icon: 'fa fa-question-circle',
+          icon: 'fas fa-question-circle',
           accept: () => {
             resolve(true);
           },

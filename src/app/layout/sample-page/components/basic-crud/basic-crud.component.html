@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="ui-sm-4 ui-md-offset-4 ui-md-2 ui-lg-offset-4 ui-lg-2 ui-g-nopad">
-      <button pButton type="button" icon="fa fa-search" label="{{ 'samplePage.basicCrud.search' | translate }}" (click)="retrieve(departmentId)"></button>
+      <button pButton type="button" icon="fas fa-search" label="{{ 'samplePage.basicCrud.search' | translate }}" (click)="retrieve(departmentId)"></button>
     </div>
   </div>
 </p-panel>
@@ -25,20 +25,20 @@
 <!-- 툴바 -->
 <p-toolbar>
   <div class="ui-toolbar-group-left">
-    <button pButton type="button" label="{{ 'samplePage.basicCrud.add' | translate }}" icon="fa fa-plus" class="ui-button-secondary"
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.add' | translate }}" icon="fas fa-plus" class="ui-button-secondary"
       (click)="add()"></button>
-    <button pButton type="button" label="{{ 'samplePage.basicCrud.edit' | translate }}" icon="fa fa-edit" class="ui-button-secondary"
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.edit' | translate }}" icon="fas fa-edit" class="ui-button-secondary"
       (click)="edit()"></button>
-    <button pButton type="button" label="{{ 'samplePage.basicCrud.delete' | translate }}" icon="fa fa-trash" class="ui-button-secondary"
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.delete' | translate }}" icon="fas fa-trash-alt" class="ui-button-secondary"
       (click)="delete()"></button>
-    <button pButton type="button" label="{{ 'samplePage.basicCrud.save' | translate }}" icon="fa fa-floppy-o" class="ui-button-secondary"
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.save' | translate }}" icon="far fa-save" class="ui-button-secondary"
       (click)="save()"></button>
   </div>
 
   <div class="ui-toolbar-group-right">
-    <button pButton type="button" icon="fa fa-filter" class="ui-button-ternary" (click)="filter()"></button>
-    <button pButton type="button" icon="fa fa-backward" class="ui-button-ternary" (click)="dt.reset()"></button>
-    <button pButton type="button" icon="fa fa-download" class="ui-button-ternary" (click)="dt.exportCSV()"></button>
+    <button pButton type="button" icon="fas fa-filter" class="ui-button-ternary" (click)="filter()"></button>
+    <button pButton type="button" icon="fas fa-backward" class="ui-button-ternary" (click)="dt.reset()"></button>
+    <button pButton type="button" icon="fas fa-download" class="ui-button-ternary" (click)="dt.exportCSV()"></button>
   </div>
 </p-toolbar>
 
@@ -163,7 +163,7 @@
   </div>
   <p-footer>
     <div class="ui-dialog-buttonpane ui-helper-clearfix">
-      <button type="button" pButton icon="fa fa-check" (click)="dialogOk()" label="OK"></button>
+      <button type="button" pButton icon="fas fa-check" (click)="dialogOk()" label="OK"></button>
     </div>
   </p-footer>
 </p-dialog>

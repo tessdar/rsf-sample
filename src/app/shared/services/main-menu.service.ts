@@ -30,11 +30,11 @@ export class MainMenuService {
     this.menuItems = [
       {
         label: menuLang.designGuide,
-        icon: 'fa fa-desktop',
+        icon: 'fas fa-desktop',
         items: [
           {
             label: menuLang.btnLib,
-            icon: 'fa fa-hand-o-up',
+            icon: 'far fa-hand-point-up',
             routerLink: '/layout/design-guide/btn-lib',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -47,7 +47,7 @@ export class MainMenuService {
           },
           {
             label: menuLang.inputLib,
-            icon: 'fa fa-keyboard-o',
+            icon: 'fas fa-keyboard',
             routerLink: '/layout/design-guide/input-lib',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -60,7 +60,7 @@ export class MainMenuService {
           },
           {
             label: menuLang.tabView,
-            icon: 'fa fa-file-text',
+            icon: 'far fa-file-alt',
             routerLink: '/layout/design-guide/tab-view',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -73,7 +73,7 @@ export class MainMenuService {
           },
           {
             label: menuLang.scheView,
-            icon: 'fa fa-calendar',
+            icon: 'fas fa-calendar-alt',
             routerLink: '/layout/design-guide/sche-view',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -86,7 +86,7 @@ export class MainMenuService {
           },          
           {
             label: menuLang.iconLib,
-            icon: 'fa fa-bandcamp',
+            icon: 'fab fa-bandcamp',
             routerLink: '/layout/design-guide/icon-lib',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -100,11 +100,11 @@ export class MainMenuService {
       },
       {
         label: menuLang.samplePage,
-        icon: 'fa fa-columns',
+        icon: 'fas fa-columns',
         items: [
           {
             label: menuLang.basicCrud,
-            icon: 'fa fa-edit',
+            icon: 'fas fa-edit',
             routerLink: '/layout/sample-page/basic-crud',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -117,7 +117,7 @@ export class MainMenuService {
           },
           {
             label: menuLang.basicForm,
-            icon: 'fa fa-window-maximize',
+            icon: 'fas fa-window-maximize',
             routerLink: '/layout/sample-page/basic-form',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -130,7 +130,7 @@ export class MainMenuService {
           },
           {
             label: menuLang.chartForm,
-            icon: 'fa fa-bar-chart',
+            icon: 'fas fa-chart-bar',
             routerLink: '/layout/sample-page/chart-form',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -145,11 +145,11 @@ export class MainMenuService {
       },
       {
         label: menuLang.helpAdvice,
-        icon: 'fa fa-question',
+        icon: 'fas fa-question',
         items: [
           {
             label: menuLang.archHelp,
-            icon: 'fa fa-building-o',
+            icon: 'far fa-building',
             routerLink: '/layout/help-advice/arch-help',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -162,7 +162,7 @@ export class MainMenuService {
           },
           {
             label: menuLang.newComp,
-            icon: 'fa fa-plus-square-o',
+            icon: 'far fa-plus-square',
             routerLink: '/layout/help-advice/new-comp',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -175,7 +175,7 @@ export class MainMenuService {
           },
           {
             label: menuLang.newServ,
-            icon: 'fa fa-server',
+            icon: 'fas fa-server',
             routerLink: '/layout/help-advice/new-serv',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -188,7 +188,7 @@ export class MainMenuService {
           },          
           {
             label: menuLang.designLayout,
-            icon: 'fa fa-picture-o',
+            icon: 'far fa-image',
             routerLink: '/layout/help-advice/design-layout',
             command: (event) => {
               this.menuActive = !this.menuActive;

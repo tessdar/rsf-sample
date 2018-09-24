@@ -3,21 +3,21 @@
     [minWidth]="200" [baseZIndex]="9999" [closeOnEscape]="false" [closable]="false">
     <span>{{ 'main.autoLogout' | translate }}</span>
     <p-footer>
-        <button type="button" pButton icon="fa fa-check" (click)="logout()" label="OK"></button>
+        <button type="button" pButton icon="fas fa-check" (click)="logout()" label="OK"></button>
     </p-footer>
 </p-dialog>
 
 <!-- 상단 헤더 -->
 <div id="layout-topbar">
     <a href="#" class="menu-button" (click)="onMenuButtonClick($event)">
-        <i class="fa fa-bars"></i>
+        <i class="fas fa-bars"></i>
     </a>
     <div class="logo">
         <span class="logobox"></span>
         <span class="first">GROUP&nbsp;</span>
         <span class="second">RENAULT</span>
         <span class="actbtn" [ngClass]="{'inactive': mainMenu.getMenuInactive()}">
-            <button pButton type="button" icon="fa fa-2x fa-angle-right" class="ui-button-act ui-button-act-small" (click)="onMenuInactive($event)"></button>
+            <button pButton type="button" icon="fas fa-angle-right fa-2x" class="ui-button-act ui-button-act-small" (click)="onMenuInactive($event)"></button>
         </span>
         <a href="#" class="sitename" [routerLink]="['/layout']">
             <br>

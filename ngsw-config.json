@@ -15,7 +15,8 @@
           "/*.ttf",
           "/*.woff2",
           "/*.svg",
-          "/fontawesome-*"
+          "/fa-*",
+          "/icomoon*"
         ]
       }
     }, {

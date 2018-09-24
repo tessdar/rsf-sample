@@ -23,23 +23,23 @@ export class BtnLibComponent implements OnInit {
    */
   ngOnInit() {
     this.types = [
-      { label: 'Lorem Ipsum 1', value: '1', icon: 'fa fa-fw fa-facebook-official' },
-      { label: 'Lorem Ipsum 2', value: '2', icon: 'fa fa-fw fa-google-plus' },
-      { label: 'Lorem Ipsum 3', value: '3', icon: 'fa fa-fw fa-apple' }
+      { label: 'Lorem Ipsum 1', value: '1', icon: 'fab fa-facebook' },
+      { label: 'Lorem Ipsum 2', value: '2', icon: 'fab fa-google-plus' },
+      { label: 'Lorem Ipsum 3', value: '3', icon: 'fab fa-apple' }
     ];
 
     this.items = [
       {
-        label: 'Update', icon: 'fa fa-refresh', command: () => {
+        label: 'Update', icon: 'fas fa-sync-alt', command: () => {
           // this.update();
         }
       },
       {
-        label: 'Delete', icon: 'fa fa-close', command: () => {
+        label: 'Delete', icon: 'far fa-times-circle', command: () => {
           // this.delete();
         }
       },
-      { label: 'Angular.io', icon: 'fa fa-link', url: 'http://angular.io' }
+      { label: 'Angular.io', icon: 'fas fa-link', url: 'http://angular.io' }
     ];
 
   }

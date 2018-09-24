@@ -1,13 +1,13 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { environment } from '../../environments/environment';
+// import { environment } from '../../environments/environment';
 
-import { Store } from '@ngrx/store';
+// import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 
-import * as fromRoot from '../shared/state/reducers';
-import * as ApplicationActions from '../shared/state/application/actions';
+// import * as fromRoot from '../shared/state/reducers';
+// import * as ApplicationActions from '../shared/state/application/actions';
 
 import { MainMenuService } from '../shared/services/main-menu.service';
 
@@ -26,7 +26,7 @@ export class LayoutComponent implements OnInit {
     private translate: TranslateService,
     private router: Router,
     private route: ActivatedRoute,
-    private store: Store<fromRoot.State>,
+    // private store: Store<fromRoot.State>,
     public mainMenu: MainMenuService) {
 
   }
@@ -39,13 +39,13 @@ export class LayoutComponent implements OnInit {
    */
   ngOnInit() {
     // 자동 로그아웃
-    if (environment.production) {
-      this.store.select(fromRoot.selectIsLoggedIn).subscribe(res => {
-        if (!res) {
-          this.logoutDisplay = true;
-        }
-      });
-    }
+    // if (environment.production) {
+    //   this.store.select(fromRoot.selectIsLoggedIn).subscribe(res => {
+    //     if (!res) {
+    //       this.logoutDisplay = true;
+    //     }
+    //   });
+    // }
 
     // 언어 설정
     this.route.params.pipe(map(params => params['lang'])).subscribe((lang) => {
@@ -68,9 +68,9 @@ export class LayoutComponent implements OnInit {
    * 변경 체크
    * 변경이 발생한 경우 (입력, 버튼 클릭 등) 로그아웃 시간 연장
    */
-  ngDoCheck() {
-    this.store.dispatch(new ApplicationActions.ExtendLogoutTimer());
-  }
+  // ngDoCheck() {
+  //   this.store.dispatch(new ApplicationActions.ExtendLogoutTimer());
+  // }
 
   /**
   * 모바일 메뉴 토글 버튼
@@ -127,7 +127,7 @@ export class LayoutComponent implements OnInit {
   public logout() {
     this.logoutDisplay = false;
     localStorage.removeItem('AuthToken');
-    this.store.dispatch(new ApplicationActions.LogOut());
+    // this.store.dispatch(new ApplicationActions.LogOut());
     this.router.navigate(['/login']);
   }
 

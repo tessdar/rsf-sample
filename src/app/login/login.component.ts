@@ -4,10 +4,10 @@ import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms'
 import { TranslateService } from '@ngx-translate/core';
 import { Message } from 'primeng/components/common/api';
 
-import { Store } from '@ngrx/store';
+// import { Store } from '@ngrx/store';
 
-import * as fromRoot from '../shared/state/reducers';
-import * as ApplicationActions from '../shared/state/application/actions';
+// import * as fromRoot from '../shared/state/reducers';
+// import * as ApplicationActions from '../shared/state/application/actions';
 
 import { MainMenuService } from '../shared/services/main-menu.service';
 import { LoginService } from '../shared/services/login.service';
@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
     private translate: TranslateService,
     public mainMenu: MainMenuService,
     private loginService: LoginService,
-    private fb: FormBuilder,
-    private store: Store<fromRoot.State>) {
+    // private store: Store<fromRoot.State>,
+    private fb: FormBuilder) {
 
   }
 
@@ -60,35 +60,37 @@ export class LoginComponent implements OnInit {
    * 토큰 정보가 없으면 ID, 비밀번호 확인하라는 경고 메시지 처리
    */
   public login(value: any) {
-    this.loginService.login(value.userId, value.password).then((res: any) => {
+    this.router.navigate(['layout', { "lang": this.mainMenu.getLanguage() }]);
 
-      if (!res) {
-        this.translate.get('shared.message').subscribe(msg => {
-          this.showMessage('error', msg.error, msg.noResponse);
-        });
+    // this.loginService.login(value.userId, value.password).then((res: any) => {
 
-      } else {
-        if (res.ok == false) {
-          this.translate.get('shared.message').subscribe(msg => {
-            this.showMessage('error', msg.error + ' / ' + res.status, res.error.message);
-          });
+    //   if (!res) {
+    //     this.translate.get('shared.message').subscribe(msg => {
+    //       this.showMessage('error', msg.error, msg.noResponse);
+    //     });
 
-        } else {
-          if (res.authToken) {
-            localStorage.setItem('AuthToken', res.authToken);
+    //   } else {
+    //     if (res.ok == false) {
+    //       this.translate.get('shared.message').subscribe(msg => {
+    //         this.showMessage('error', msg.error + ' / ' + res.status, res.error.message);
+    //       });
 
-            this.store.dispatch(new ApplicationActions.LogIn());
-            this.router.navigate(['layout', { "lang": this.mainMenu.getLanguage() }]);
+    //     } else {
+    //       if (res.authToken) {
+    //         localStorage.setItem('AuthToken', res.authToken);
 
-          } else {
-            this.translate.get('shared.message').subscribe(msg => {
-              this.showMessage('warn', msg.warn, msg.loginFail);
-            });
+    //         // this.store.dispatch(new ApplicationActions.LogIn());
+    //         this.router.navigate(['layout', { "lang": this.mainMenu.getLanguage() }]);
 
-          }
-        }
-      }
-    });
+    //       } else {
+    //         this.translate.get('shared.message').subscribe(msg => {
+    //           this.showMessage('warn', msg.warn, msg.loginFail);
+    //         });
+
+    //       }
+    //     }
+    //   }
+    // });
   }
 
   /**
@@ -106,9 +108,9 @@ export class LoginComponent implements OnInit {
    * @param summary: 메시지 헤더
    * @param detail: 메시지 상세내역
    */
-  private showMessage(severity: string, summary: string, detail: string) {
-    this.msgs = [];
-    this.msgs.push({ severity: severity, summary: summary, detail: detail });
-  }
+  // private showMessage(severity: string, summary: string, detail: string) {
+  //   this.msgs = [];
+  //   this.msgs.push({ severity: severity, summary: summary, detail: detail });
+  // }
 
 }
