@@ -1,15 +1,18 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
-// import { environment } from '../../environments/environment';
 
-// import { Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
+import { interval } from 'rxjs';
 
-// import * as fromRoot from '../shared/state/reducers';
-// import * as ApplicationActions from '../shared/state/application/actions';
+import * as fromRoot from '../shared/state/reducers';
+import * as ApplicationActions from '../shared/state/application/actions';
+import { ApplicationEffects } from '../shared/state/application/effects';
 
 import { MainMenuService } from '../shared/services/main-menu.service';
+
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-layout',
@@ -20,14 +23,22 @@ export class LayoutComponent implements OnInit {
 
   public logoutDisplay = false as boolean;
   public userInfoBar = false as boolean;
+  public logoutTimer: string;
 
   @HostBinding('class.application') class = 'application';
   constructor(
     private translate: TranslateService,
     private router: Router,
     private route: ActivatedRoute,
-    // private store: Store<fromRoot.State>,
+    private store: Store<fromRoot.State>,
+    private effects: ApplicationEffects,
     public mainMenu: MainMenuService) {
+
+    // Initial logoutTimer 
+    let min = Math.floor(this.effects.APPLICATION_TIMEOUT_TIME / 60).toString();
+    let sec = Math.floor(this.effects.APPLICATION_TIMEOUT_TIME % 60).toString();
+
+    this.logoutTimer = this.padLeft(min, '0', 2) + ':' + this.padLeft(sec, '0', 2);
 
   }
 
@@ -39,13 +50,13 @@ export class LayoutComponent implements OnInit {
    */
   ngOnInit() {
     // 자동 로그아웃
-    // if (environment.production) {
-    //   this.store.select(fromRoot.selectIsLoggedIn).subscribe(res => {
-    //     if (!res) {
-    //       this.logoutDisplay = true;
-    //     }
-    //   });
-    // }
+    if (environment.production) {
+      this.store.select(fromRoot.selectIsLoggedIn).subscribe(res => {
+        if (!res) {
+          this.logoutDisplay = true;
+        }
+      });
+    }
 
     // 언어 설정
     this.route.params.pipe(map(params => params['lang'])).subscribe((lang) => {
@@ -61,6 +72,14 @@ export class LayoutComponent implements OnInit {
 
     this.translate.get('main.sideMenu').subscribe(res => {
       this.mainMenu.setMenuItems(res);
+    });
+
+    // 잔여시간 출력
+    interval(1000).subscribe(() => {
+      let min = Math.floor(this.effects.counter / 60).toString();
+      let sec = Math.floor(this.effects.counter % 60).toString();
+
+      this.logoutTimer = this.padLeft(min, '0', 2) + ':' + this.padLeft(sec, '0', 2);
     });
   }
 
@@ -127,8 +146,12 @@ export class LayoutComponent implements OnInit {
   public logout() {
     this.logoutDisplay = false;
     localStorage.removeItem('AuthToken');
-    // this.store.dispatch(new ApplicationActions.LogOut());
+    this.store.dispatch(new ApplicationActions.LogOut());
     this.router.navigate(['/login']);
+  }
+
+  public padLeft(text: string, padChar: string, size: number): string {
+    return (String(padChar).repeat(size) + text).substr((size * -1), size);
   }
 
 }

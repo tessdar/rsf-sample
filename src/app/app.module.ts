@@ -3,13 +3,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
-// import { StoreModule } from '@ngrx/store';
-// import { EffectsModule } from '@ngrx/effects';
+// Ngrx
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+
+// Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+// Routing, Component
 import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -22,14 +30,14 @@ import { ButtonModule } from 'primeng/button';
 import { GrowlModule } from 'primeng/growl';
 
 // AuthGuard
-// import { reducers } from './shared/state/reducers';
-// import { ApplicationEffects } from './shared/state/application/effects';
+import { reducers } from './shared/state/reducers';
+import { ApplicationEffects } from './shared/state/application/effects';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { DeactGuard } from './shared/guard/deact.guard';
 
 // Providers
 import { MainMenuService } from './shared/services/main-menu.service';
-import { ServiceWorkerModule } from '@angular/service-worker';
+
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -51,9 +59,11 @@ import { environment } from '../environments/environment';
         deps: [HttpClient]
       }
     }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireMessagingModule,
     AppRoutingModule,
-    // StoreModule.forRoot(reducers),
-    // EffectsModule.forRoot([ApplicationEffects]),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([ApplicationEffects]),
     InputTextModule,
     PasswordModule,
     ButtonModule,

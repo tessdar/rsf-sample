@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
 import { Observable } from 'rxjs';
 
-// import { Store } from '@ngrx/store';
-// import * as fromRoot from '../state/reducers';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../state/reducers';
 
 export interface CanComponentDeactivate {
   canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
@@ -13,11 +13,10 @@ export interface CanComponentDeactivate {
 export class DeactGuard implements CanDeactivate<CanComponentDeactivate> {
 
   private login = true as boolean;
-  
+
   constructor(
-    // private store: Store<fromRoot.State>
-    ) {
-  }
+    private store: Store<fromRoot.State>
+  ) { }
 
   /**
    * 다음 페이지 이동여부를 설정하는 가드
@@ -26,9 +25,9 @@ export class DeactGuard implements CanDeactivate<CanComponentDeactivate> {
    * @param component 
    */
   canDeactivate(component: CanComponentDeactivate) {
-    // this.store.select(fromRoot.selectIsLoggedIn).subscribe(res => {
-    //   this.login = res;
-    // });
+    this.store.select(fromRoot.selectIsLoggedIn).subscribe(res => {
+      this.login = res;
+    });
 
     if (!this.login) {
       return true;

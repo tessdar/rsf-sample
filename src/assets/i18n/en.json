@@ -9,6 +9,7 @@
     "main": {
         "siteName": "Site Name",
         "userInfo": "User Info",
+        "config": "Configuration",
         "changeTheme": "Change Theme",
         "logout": "Log out",
         "autoLogout": "Log out automatically because there were not actions for 30 min.",

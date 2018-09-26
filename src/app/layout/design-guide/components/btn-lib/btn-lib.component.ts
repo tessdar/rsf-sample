@@ -35,7 +35,7 @@ export class BtnLibComponent implements OnInit {
         }
       },
       {
-        label: 'Delete', icon: 'far fa-times-circle', command: () => {
+        label: 'Delete', icon: 'fas fa-times-circle', command: () => {
           // this.delete();
         }
       },

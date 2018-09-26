@@ -34,7 +34,7 @@ export class MainMenuService {
         items: [
           {
             label: menuLang.btnLib,
-            icon: 'far fa-hand-point-up',
+            icon: 'fas fa-hand-point-up',
             routerLink: '/layout/design-guide/btn-lib',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -60,7 +60,7 @@ export class MainMenuService {
           },
           {
             label: menuLang.tabView,
-            icon: 'far fa-file-alt',
+            icon: 'fas fa-file',
             routerLink: '/layout/design-guide/tab-view',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -149,7 +149,7 @@ export class MainMenuService {
         items: [
           {
             label: menuLang.archHelp,
-            icon: 'far fa-building',
+            icon: 'fas fa-building',
             routerLink: '/layout/help-advice/arch-help',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -162,7 +162,7 @@ export class MainMenuService {
           },
           {
             label: menuLang.newComp,
-            icon: 'far fa-plus-square',
+            icon: 'fas fa-plus-square',
             routerLink: '/layout/help-advice/new-comp',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -188,7 +188,7 @@ export class MainMenuService {
           },          
           {
             label: menuLang.designLayout,
-            icon: 'far fa-image',
+            icon: 'fas fa-image',
             routerLink: '/layout/help-advice/design-layout',
             command: (event) => {
               this.menuActive = !this.menuActive;

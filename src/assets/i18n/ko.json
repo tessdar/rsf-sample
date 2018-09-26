@@ -9,6 +9,7 @@
     "main": {
         "siteName": "시스템명",
         "userInfo": "사용자 정보",
+        "config": "환경설정",
         "logout": "로그아웃",
         "changeTheme": "테마 변경",
         "autoLogout": "30분이상 사용하지 않아서 자동 로그아웃 됩니다.",

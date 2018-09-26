@@ -4,10 +4,9 @@ import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms'
 import { TranslateService } from '@ngx-translate/core';
 import { Message } from 'primeng/components/common/api';
 
-// import { Store } from '@ngrx/store';
-
-// import * as fromRoot from '../shared/state/reducers';
-// import * as ApplicationActions from '../shared/state/application/actions';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../shared/state/reducers';
+import * as ApplicationActions from '../shared/state/application/actions';
 
 import { MainMenuService } from '../shared/services/main-menu.service';
 import { LoginService } from '../shared/services/login.service';
@@ -28,7 +27,7 @@ export class LoginComponent implements OnInit {
     private translate: TranslateService,
     public mainMenu: MainMenuService,
     private loginService: LoginService,
-    // private store: Store<fromRoot.State>,
+    private store: Store<fromRoot.State>,
     private fb: FormBuilder) {
 
   }
@@ -60,6 +59,7 @@ export class LoginComponent implements OnInit {
    * 토큰 정보가 없으면 ID, 비밀번호 확인하라는 경고 메시지 처리
    */
   public login(value: any) {
+    this.store.dispatch(new ApplicationActions.LogIn());
     this.router.navigate(['layout', { "lang": this.mainMenu.getLanguage() }]);
 
     // this.loginService.login(value.userId, value.password).then((res: any) => {
