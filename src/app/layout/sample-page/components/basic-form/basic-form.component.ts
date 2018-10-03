@@ -69,7 +69,7 @@ export class BasicFormComponent implements OnInit {
   onSubmit(value: any) {
     this.submitted = true;
     this.translate.get('shared.message').subscribe(msg => {
-      this.showMessage('success', msg.success, msg.okSave);
+      this.msgs = this.mainMenu.showMessage('success', msg.success, msg.okSave);
     });
   }
 
@@ -119,7 +119,7 @@ export class BasicFormComponent implements OnInit {
     }
 
     this.translate.get('shared.message').subscribe(msg => {
-      this.showMessage('success', msg.success, msg.okSave);
+      this.msgs = this.mainMenu.showMessage('success', msg.success, msg.okSave);
     });
   }
 
@@ -146,16 +146,5 @@ export class BasicFormComponent implements OnInit {
   //     console.log(res);
   //   });
   // }
-
-  /**
- * 메시지 출력하는 메서드 
- * @param severity: 메시지 종류 
- * @param summary: 메시지 헤더
- * @param detail: 메시지 상세내역
- */
-  public showMessage(severity: string, summary: string, detail: string) {
-    this.msgs = [];
-    this.msgs.push({ severity: severity, summary: summary, detail: detail });
-  }
 
 }

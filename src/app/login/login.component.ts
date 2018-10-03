@@ -66,13 +66,13 @@ export class LoginComponent implements OnInit {
 
     //   if (!res) {
     //     this.translate.get('shared.message').subscribe(msg => {
-    //       this.showMessage('error', msg.error, msg.noResponse);
+    //       this.msgs = this.mainMenu.showMessage('error', msg.error, msg.noResponse);
     //     });
 
     //   } else {
     //     if (res.ok == false) {
     //       this.translate.get('shared.message').subscribe(msg => {
-    //         this.showMessage('error', msg.error + ' / ' + res.status, res.error.message);
+    //         this.msgs = this.mainMenu.showMessage('error', msg.error + ' / ' + res.status, res.error.message);
     //       });
 
     //     } else {
@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
 
     //       } else {
     //         this.translate.get('shared.message').subscribe(msg => {
-    //           this.showMessage('warn', msg.warn, msg.loginFail);
+    //           this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.loginFail);
     //         });
 
     //       }
@@ -101,16 +101,5 @@ export class LoginComponent implements OnInit {
     this.mainMenu.setLanguage(language);
     this.translate.use(language);
   }
-
-  /**
-   * 메시지 출력하는 메서드 
-   * @param severity: 메시지 종류 
-   * @param summary: 메시지 헤더
-   * @param detail: 메시지 상세내역
-   */
-  // private showMessage(severity: string, summary: string, detail: string) {
-  //   this.msgs = [];
-  //   this.msgs.push({ severity: severity, summary: summary, detail: detail });
-  // }
 
 }

@@ -1,0 +1,55 @@
+<!-- 메뉴바 -->
+<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-family: 'RSMBold';">
+      <i class="far fa-square" aria-hidden="true"></i>&nbsp; {{ 'samplePage.barcodeScan.barcode' | translate }}
+    </h3>
+  </div>
+</div>
+
+<div class="ui-g">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12" [hidden]="!hasDevices">
+    <p-dropdown [options]="deviceLists" [(ngModel)]="currentDevice" [autoDisplayFirst]="true" (onChange)="onDeviceSelectChange($event)">
+    </p-dropdown>
+  </div>
+</div>
+
+<div class="ui-g ui-fluid">
+  <zxing-scanner #scanner start="true" [device]="currentDevice" (scanSuccess)="handleQrCodeResult($event)" [formats]="['QR_CODE', 'EAN_13', 'CODE_128']">
+  </zxing-scanner>
+
+  <section class="results" *ngIf="qrResultString">
+    <small>Result</small>
+    <strong>{{ qrResultString }}</strong>
+  </section>
+</div>
+
+<div class="ui-g">
+  <ng-container *ngIf="hasPermission === undefined">
+    <h2>Waiting for permissions.</h2>
+    <blockquote>
+      If your device does not has cameras, no permissions will be asked.
+    </blockquote>
+  </ng-container>
+
+  <ng-container *ngIf="hasPermission === false">
+    <h2>You denied the camera permission, we can't scan anything without it. 😪</h2>
+  </ng-container>
+
+  <ng-container *ngIf="hasDevices === undefined">
+    <h2>Couldn't check for devices.</h2>
+    <blockquote>
+      This may be caused by some security error.
+    </blockquote>
+  </ng-container>
+
+  <ng-container *ngIf="hasDevices === false">
+    <h2>No devices were found.</h2>
+    <blockquote>
+      I believe your device has no media devices attached to.
+    </blockquote>
+  </ng-container>
+
+</div>

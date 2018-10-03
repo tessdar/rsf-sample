@@ -15,6 +15,7 @@ import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
+import { CheckboxModule } from 'primeng/checkbox';
 import { GrowlModule } from 'primeng/growl';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -25,10 +26,21 @@ import { ChartModule } from 'primeng/chart';
 import { FileUploadModule } from 'primeng/fileupload';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 
+// Cam/barcode/signpad Module
+import { WebcamModule } from 'ngx-webcam';
+import { NgxBarcodeModule } from 'ngx-barcode';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { SignaturePadModule } from 'angular2-signaturepad';
+import { AgmCoreModule } from '@agm/core';
+
 // Components
 import { BasicCrudComponent } from './components/basic-crud/basic-crud.component';
 import { BasicFormComponent } from './components/basic-form/basic-form.component';
 import { ChartFormComponent } from './components/chart-form/chart-form.component';
+import { BasicWebcamComponent } from './components/basic-webcam/basic-webcam.component';
+import { BarcodeScanComponent } from './components/barcode-scan/barcode-scan.component';
+import { SignPadComponent } from './components/sign-pad/sign-pad.component';
+import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
 
 @NgModule({
   imports: [
@@ -43,6 +55,7 @@ import { ChartFormComponent } from './components/chart-form/chart-form.component
     TableModule,
     DialogModule,
     InputTextModule,
+    CheckboxModule,
     GrowlModule,
     ConfirmDialogModule,
     BreadcrumbModule,
@@ -51,12 +64,25 @@ import { ChartFormComponent } from './components/chart-form/chart-form.component
     MessageModule,
     ChartModule,
     FileUploadModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    WebcamModule,
+    NgxBarcodeModule,
+    ZXingScannerModule,
+    SignaturePadModule,
+    AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+      apiKey: 'AIzaSyCMWpGdAGHDpo-H03AI4tIQ-mPV38ZPJn8'
+    })
   ],
   declarations: [
     BasicCrudComponent,
     BasicFormComponent,
-    ChartFormComponent
+    ChartFormComponent,
+    BasicWebcamComponent,
+    BarcodeScanComponent,
+    SignPadComponent,
+    GoogleMapsComponent
   ],
   exports: [TranslatePipe],
   providers: [TranslateModule]

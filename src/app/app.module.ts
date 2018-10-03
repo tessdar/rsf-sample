@@ -37,6 +37,7 @@ import { DeactGuard } from './shared/guard/deact.guard';
 
 // Providers
 import { MainMenuService } from './shared/services/main-menu.service';
+import { ConnectionService } from 'ng-connection-service';
 
 import { environment } from '../environments/environment';
 
@@ -70,7 +71,7 @@ import { environment } from '../environments/environment';
     GrowlModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [AuthGuard, DeactGuard, MainMenuService],
+  providers: [AuthGuard, DeactGuard, MainMenuService, ConnectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

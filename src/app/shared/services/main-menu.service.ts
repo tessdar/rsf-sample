@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
+import { Message } from 'primeng/components/common/api';
 
 @Injectable()
 export class MainMenuService {
   private language: string;
+  private isConnected: boolean;
 
   private menuItems: MenuItem[];
   private menuActive: boolean;
@@ -140,7 +142,59 @@ export class MainMenuService {
               ];
               this.setBreadItems(menuLang);
             }
-          }
+          },
+          {
+            label: menuLang.basicWebcam,
+            icon: 'fas fa-camera',
+            routerLink: '/layout/sample-page/basic-webcam',
+            command: (event) => {
+              this.menuActive = !this.menuActive;
+              this.breadKeys = [
+                { 'key': 'samplePage' },
+                { 'key': 'basicWebcam' }
+              ];
+              this.setBreadItems(menuLang);
+            }
+          },
+          {
+            label: menuLang.barcodeScan,
+            icon: 'fas fa-barcode',
+            routerLink: '/layout/sample-page/barcode-scan',
+            command: (event) => {
+              this.menuActive = !this.menuActive;
+              this.breadKeys = [
+                { 'key': 'samplePage' },
+                { 'key': 'barcodeScan' }
+              ];
+              this.setBreadItems(menuLang);
+            }
+          },
+          {
+            label: menuLang.signPad,
+            icon: 'fas fa-signature',
+            routerLink: '/layout/sample-page/sign-pad',
+            command: (event) => {
+              this.menuActive = !this.menuActive;
+              this.breadKeys = [
+                { 'key': 'samplePage' },
+                { 'key': 'signPad' }
+              ];
+              this.setBreadItems(menuLang);
+            }
+          },
+          {
+            label: menuLang.googleMaps,
+            icon: 'fas fa-map',
+            routerLink: '/layout/sample-page/google-maps',
+            command: (event) => {
+              this.menuActive = !this.menuActive;
+              this.breadKeys = [
+                { 'key': 'samplePage' },
+                { 'key': 'googleMaps' }
+              ];
+              this.setBreadItems(menuLang);
+            }
+          }             
         ]
       },
       {
@@ -264,6 +318,26 @@ export class MainMenuService {
       });
     });
 
+  }
+
+  public getIsConnected(): boolean {
+    return this.isConnected;
+  }
+
+  public setIsConnected(isConnected: boolean) {
+    this.isConnected = isConnected;
+  }
+
+  /**
+   * 메시지 출력하는 메서드 
+   * @param severity: 메시지 종류 
+   * @param summary: 메시지 헤더
+   * @param detail: 메시지 상세내역
+   */
+  public showMessage(severity: string, summary: string, detail: string): Message[] {
+    let msgs = [] as Message[];
+    msgs.push({ severity: severity, summary: summary, detail: detail });
+    return msgs;
   }
 
 }

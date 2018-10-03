@@ -6,7 +6,7 @@ export interface PieChartSet {
     datasets: DataSet[];
 }
 
-interface DataSet{
+export interface DataSet{
     label?: string,
     backgroundColor?: string[],
     borderColor?: string[],

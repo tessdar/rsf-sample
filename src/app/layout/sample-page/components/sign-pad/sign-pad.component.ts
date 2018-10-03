@@ -1,0 +1,82 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { Message } from 'primeng/components/common/api';
+import { MainMenuService } from '../../../../shared/services/main-menu.service';
+import { saveAs } from 'file-saver/FileSaver';
+
+import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+
+@Component({
+  selector: 'app-sign-pad',
+  templateUrl: './sign-pad.component.html',
+  styleUrls: ['./sign-pad.component.scss']
+})
+export class SignPadComponent implements OnInit {
+
+  @ViewChild(SignaturePad) signaturePad: SignaturePad;
+
+  public signImage: string;
+  public msgs: Message[] = []; // i18n 텍스트 변환 변수
+
+  public signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
+    'minWidth': 5,
+    'canvasWidth': 500,
+    'canvasHeight': 300,
+    'backgroundColor': "#FAFAD2"
+  };
+
+  constructor(
+    public mainMenu: MainMenuService,
+    private translate: TranslateService
+  ) { }
+
+  ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    // this.signaturePad is now available
+    this.signaturePad.set('minWidth', 5); // set szimek/signature_pad options at runtime
+    this.signaturePad.clear(); // invoke functions from szimek/signature_pad API
+  }
+
+  public drawComplete() {
+    // will be notified of szimek/signature_pad's onEnd event
+    this.signImage = this.signaturePad.toDataURL();
+    console.log('end drawing');
+  }
+
+  public drawStart() {
+    // will be notified of szimek/signature_pad's onBegin event
+    console.log('begin drawing');
+  }
+
+  public drawClear() {
+    this.signaturePad.clear();
+    this.signImage = this.signaturePad.toDataURL();
+    console.log('clear drawing');
+  }
+
+  public drawSave() {
+    if (this.signaturePad.isEmpty()) {
+      this.translate.get('shared.message').subscribe(msg => {
+        this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.noSaveData);
+      });
+
+    } else {      
+      const imageBlob = this.dataURItoBlob(this.signImage.substring(22));
+      saveAs(imageBlob, 'sign.png');      
+    }
+  }
+
+  private dataURItoBlob(dataURI) {
+    const byteString = atob(dataURI);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([arrayBuffer], { type: 'image/png' });
+    return blob;
+  }
+
+}

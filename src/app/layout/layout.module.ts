@@ -15,6 +15,7 @@ import { DataViewModule } from 'primeng/dataview';
 // Pages
 import { LayoutComponent } from '../layout/layout.component';
 import { HomeComponent } from './home/home.component';
+import { ConfigComponent } from './config/config.component';
 
 // Providers
 import { MainMenuService } from '../shared/services/main-menu.service';
@@ -32,7 +33,8 @@ import { MainMenuService } from '../shared/services/main-menu.service';
   ],
   declarations: [
     LayoutComponent,
-    HomeComponent
+    HomeComponent,
+    ConfigComponent
   ],
   providers: [
     MainMenuService

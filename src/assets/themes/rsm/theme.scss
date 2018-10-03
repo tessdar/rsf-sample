@@ -528,10 +528,14 @@ form.ui-form {
     color: $inputTopBdColor;
 }
 
-.ui-inputgroup .ui-inputgroup-addon {
-    border-radius: 0px !important;
-    border: 1px solid $inputBdColor;
-    width: 120px;
+.ui-inputgroup {
+    width: 100%;
+
+    .ui-inputgroup-addon {
+        border-radius: 0px !important;
+        border: 1px solid $inputBdColor;
+        width: 120px;
+    }
 }
 
 /* Password */

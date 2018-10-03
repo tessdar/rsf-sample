@@ -1,9 +1,12 @@
-<button (click)="requestPermission()">
+<!-- <button (click)="requestPermission()">
     Hey this is a chat app, you should let us send you notifications for these reasons!
 </button>
 
 <button (click)="listen()">
     Get notified!
-</button>
+</button> -->
+
+<!-- 메시지 -->
+<p-growl [value]="msgs" [baseZIndex]="9999"></p-growl>
 
 <router-outlet></router-outlet>

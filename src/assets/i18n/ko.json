@@ -26,6 +26,10 @@
             "basicTree": "기본 Tree",
             "headDetail": "헤더 디테일",
             "chartForm": "차트 Form",
+            "basicWebcam": "카메라",
+            "barcodeScan": "바코드 스캔",
+            "signPad": "서명 패드",
+            "googleMaps": "구글 지도",
             "helpAdvice": "도움말",
             "archHelp": "폴더구조",
             "newComp": "모듈 & 컴포넌트",
@@ -49,13 +53,19 @@
             "confProc": "저장하시겠습니까?",
             "noResponse": "서버로부터 응답이 없습니다.",
             "askQuit": "저장되지 않은 수정한 내역이 존재합니다. 그래도 나가시겠습니까?",
-            "loginFail": "존재하지 않은 ID 또는 비밀번호가 잘못 입력되었습니다."
+            "loginFail": "존재하지 않은 ID 또는 비밀번호가 잘못 입력되었습니다.",
+            "noGeoSupport": "브라우저에서 위치찾기 기능을 지원하지 않습니다.",
+            "onLine": "온라인 모드",
+            "offLine": "오프라인 모드"
         }
     },
     "home": {
         "requireTitle": "시스템 요구사항",
         "mainPackTitle": "주요 패키지"
     },
+    "config": {
+        "configTitle": "환경설정"
+    },    
     "designGuide": {
         "btnLib": {
             "buttonTitle": "버튼",
@@ -129,7 +139,30 @@
         "chartForm": {
             "departStatus": "부서 현황",
             "jobStatus": "업무 현황"
-        }
+        },
+        "basicWebcam": {
+            "camera": "카메라",
+            "takeShot": "촬영",
+            "toggle": "토글",
+            "nextCam": "전환",
+            "AllowSwitch": "카메라 전환 허용",
+            "deviceId": "디바이스",
+            "activate": "활성화",
+            "camImage": "이미지",
+            "fileSave": "파일 저장"
+        },
+        "barcodeScan": {
+            "barcode": "바코드"
+        },
+        "signPad": {
+            "signature": "서명 패드",
+            "clear": "지우기",
+            "signImage": "이미지",
+            "fileSave": "파일 저장"
+        },
+        "googleMaps": {
+            "maps": "지도"            
+        }                 
     },
     "helpAdvice": {
         "archHelp": {

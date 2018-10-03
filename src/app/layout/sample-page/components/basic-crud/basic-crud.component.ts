@@ -7,8 +7,7 @@ import { BasicCrudService } from '../../services/basic-crud/basic-crud.service';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
 import { _Status } from '../../../../shared/enums/status.enum';
 import { TableCol } from '../../../../shared/interfaces/table-col';
-import { DataSet } from '../../interfaces/basic-crud/data-set';
-import { SaveSet } from '../../interfaces/basic-crud/save-set';
+import { DataSet, SaveSet } from '../../interfaces/basic-crud/data-set';
 
 @Component({
   selector: 'app-basic-crud',
@@ -99,13 +98,13 @@ export class BasicCrudComponent implements OnInit {
     this.basicCrudService.getEmpList(departmentId).then((res: any) => {
       if (!res) {
         this.translate.get('shared.message').subscribe(msg => {
-          this.showMessage('info', msg.info, msg.dataNotFound);
+          this.msgs = this.mainMenu.showMessage('info', msg.info, msg.dataNotFound);
         });
 
       } else {
         if (res.ok == false) {
           this.translate.get('shared.message').subscribe(msg => {
-            this.showMessage('error', msg.error, 'Status: ' + res.status + ', ' + res.statusText);
+            this.msgs = this.mainMenu.showMessage('error', msg.error, 'Status: ' + res.status + ', ' + res.statusText);
           });
 
         } else {
@@ -165,14 +164,14 @@ export class BasicCrudComponent implements OnInit {
 
     if (!this.selectedRows) {
       this.translate.get('shared.message').subscribe(msg => {
-        this.showMessage('warn', msg.warn, msg.noSelected);
+        this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.noSelected);
       });
       return;
 
     } else {
       if (this.selectedRows.length < 1) {
         this.translate.get('shared.message').subscribe(msg => {
-          this.showMessage('warn', msg.warn, msg.noSelected);
+          this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.noSelected);
         });
         return;
 
@@ -270,7 +269,7 @@ export class BasicCrudComponent implements OnInit {
     if (saveList.length < 1) {
       this.loading = false;
       this.translate.get('shared.message').subscribe(msg => {
-        this.showMessage('info', msg.info, msg.noSaveData);
+        this.msgs = this.mainMenu.showMessage('info', msg.info, msg.noSaveData);
       });
       return;
 
@@ -286,17 +285,17 @@ export class BasicCrudComponent implements OnInit {
               this.loading = false;
 
               if (!res) {
-                this.showMessage('error', msg.error, msg.noResponse);
+                this.msgs = this.mainMenu.showMessage('error', msg.error, msg.noResponse);
 
               } else {
                 if (res.ok == false) {
-                  this.showMessage('error', msg.error + ' / ' + res.status, res.error.message);
+                  this.msgs = this.mainMenu.showMessage('error', msg.error + ' / ' + res.status, res.error.message);
 
                 } else {
                   this.delList = [];
                   saveList = [];
 
-                  this.showMessage('success', msg.success, res.message);
+                  this.msgs = this.mainMenu.showMessage('success', msg.success, res.message);
                   this.retrieve(this.departmentId);
                 }
               }
@@ -363,17 +362,6 @@ export class BasicCrudComponent implements OnInit {
         });
       });
     })
-  }
-
-  /**
-   * 메시지 출력하는 메서드 
-   * @param severity: 메시지 종류 
-   * @param summary: 메시지 헤더
-   * @param detail: 메시지 상세내역
-   */
-  private showMessage(severity: string, summary: string, detail: string) {
-    this.msgs = [];
-    this.msgs.push({ severity: severity, summary: summary, detail: detail });
   }
 
 }
