@@ -30,6 +30,7 @@
             "barcodeScan": "Barcode Scan",
             "signPad": "Signature Pad",
             "googleMaps": "Google Maps",
+            "webBluetooth": "Web Bluetooth",
             "helpAdvice": "Help",
             "archHelp": "Folder",
             "newComp": "Module & Component",
@@ -162,7 +163,10 @@
         },
         "googleMaps": {
             "maps": "Maps"            
-        }                 
+        },
+        "webBluetooth": {
+            "bluetooth": "Bluetooth"            
+        }                  
     },
     "helpAdvice": {
         "archHelp": {

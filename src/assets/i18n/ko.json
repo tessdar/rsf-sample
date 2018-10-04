@@ -30,6 +30,7 @@
             "barcodeScan": "바코드 스캔",
             "signPad": "서명 패드",
             "googleMaps": "구글 지도",
+            "webBluetooth": "블루투스",
             "helpAdvice": "도움말",
             "archHelp": "폴더구조",
             "newComp": "모듈 & 컴포넌트",
@@ -162,7 +163,10 @@
         },
         "googleMaps": {
             "maps": "지도"            
-        }                 
+        },
+        "webBluetooth": {
+            "bluetooth": "블루투스"            
+        }                                   
     },
     "helpAdvice": {
         "archHelp": {

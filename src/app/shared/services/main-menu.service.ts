@@ -194,7 +194,20 @@ export class MainMenuService {
               ];
               this.setBreadItems(menuLang);
             }
-          }             
+          },
+          {
+            label: menuLang.webBluetooth,
+            icon: 'fab fa-bluetooth',
+            routerLink: '/layout/sample-page/web-bluetooth',
+            command: (event) => {
+              this.menuActive = !this.menuActive;
+              this.breadKeys = [
+                { 'key': 'samplePage' },
+                { 'key': 'webBluetooth' }
+              ];
+              this.setBreadItems(menuLang);
+            }
+          }               
         ]
       },
       {

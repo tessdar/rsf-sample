@@ -41,6 +41,7 @@ import { BasicWebcamComponent } from './components/basic-webcam/basic-webcam.com
 import { BarcodeScanComponent } from './components/barcode-scan/barcode-scan.component';
 import { SignPadComponent } from './components/sign-pad/sign-pad.component';
 import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
+import { WebBluetoothComponent } from './components/web-bluetooth/web-bluetooth.component';
 
 @NgModule({
   imports: [
@@ -82,7 +83,8 @@ import { GoogleMapsComponent } from './components/google-maps/google-maps.compon
     BasicWebcamComponent,
     BarcodeScanComponent,
     SignPadComponent,
-    GoogleMapsComponent
+    GoogleMapsComponent,
+    WebBluetoothComponent
   ],
   exports: [TranslatePipe],
   providers: [TranslateModule]
