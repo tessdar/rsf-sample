@@ -14,53 +14,47 @@
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; 서비스를 추가하려면 프로그램소스가 있는 최상위 폴더에서 아래 명령어를 실행한다.
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; [주의] 반드시 Internet이 접속된 상태에서 실행해야 파일이 정상적으로 생성된다.
 </p>
-<p-panel header="Console" [toggleable]="false">
-  <pre>
-    $ ng g service /layout/sample-page/services/basic-crud
-
-    create src/app/layout/sample-page/services/basic-crud-service.spec.ts (253 bytes)
-    create src/app/layout/sample-page/services/basic-crud.service.ts (296 bytes)
-  </pre>
+<p-panel header="Console" [toggleable]="false">  
+  <br/>$ ng g service /layout/sample-page/services/basic-crud
+  <br/>
+  <br/>create src/app/layout/sample-page/services/basic-crud-service.spec.ts (253 bytes)
+  <br/>create src/app/layout/sample-page/services/basic-crud.service.ts (296 bytes)  
 </p-panel>
 
 <p> &nbsp;&nbsp;&nbsp;&nbsp; 실행이 완료되면 아래와 같이 basic-crud.service.ts 파일이 생성된다.</p>
-<p-panel header="basic-crud.service.ts" [toggleable]="false">
-  <pre>
-    import &#123; Injectable &#125; from '@angular/core';
-    
-    @Injectable()
-    export class BasicCrudService &#123;
-    
-      constructor() &#123; &#125;
-    
-    &#125;
-  </pre>
+<p-panel header="basic-crud.service.ts" [toggleable]="false">  
+  <br/>import &#123; Injectable &#125; from '@angular/core';
+  <br/>
+  <br/>@Injectable()
+  <br/>export class BasicCrudService &#123;
+  <br/>
+  <br/>&nbsp;&nbsp;constructor() &#123; &#125;
+  <br/>
+  <br/>&#125;  
 </p-panel>
-
+<br/>
 <p>[2] HttpClient, HttpHeaders, environment, MainMenuService 를 import 한다.
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * HttpClient: 웹 서비스를 호출하기 위한 http 모듈
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * HttpHeaders: 웹 서비스 호출 시 Header 옵션을 설정하기 위한 모듈
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * environment: 개발, 운영을 설정하는 프로파일 변수를 호출하기 위한 모듈
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * MainMenuService: 설정된 언어를 참조하기 위한 모듈
 </p>
-<p-panel header="basic-crud.service.ts" [toggleable]="false">
-  <pre>
-      import &#123; Injectable &#125; from '@angular/core';
-      import &#123; HttpClient, HttpHeaders &#125; from '@angular/common/http';
-      import &#123; environment &#125; from '../../../environments/environment';
-
-      import &#123; MainMenuService &#125; from '../../shared/services/main-menu.service';
-
-      @Injectable()
-      export class BasicCrudService &#123;
-      
-        constructor(public http: HttpClient,
-          public mainMenu: MainMenuService) &#123; &#125;
-      
-      &#125;
-    </pre>
+<p-panel header="basic-crud.service.ts" [toggleable]="false">  
+  <br/>import &#123; Injectable &#125; from '@angular/core';
+  <br/>import &#123; HttpClient, HttpHeaders &#125; from '@angular/common/http';
+  <br/>import &#123; environment &#125; from '../../../environments/environment';
+  <br/>
+  <br/>import &#123; MainMenuService &#125; from '../../shared/services/main-menu.service';
+  <br/>
+  <br/>@Injectable()
+  <br/>export class BasicCrudService &#123;
+  <br/>
+  <br/>&nbsp;&nbsp; constructor(public http: HttpClient,
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp; public mainMenu: MainMenuService) &#123; &#125;
+  <br/>
+  <br/>&#125;    
 </p-panel>
-
+<br/>
 <p>[3] 메서드를 생성한다.
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * 메서드 이름 및 매개변수 설정한다.
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * return new Promise(resolve =>&#123; &#125;) 반드시 설정한다. Promise 타입으로 리턴을 해야 콜백처리가 가능하다.
@@ -72,53 +66,46 @@
   <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Parameter 뒤에 앞서 설정한 httpOptions를 옵션으로 붙여준다.
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * 호출 후 정상적으로 값을 가져온 경우 resolve(data)로 리턴하고 에러가 난 경우 에러값을 resolve(err)로 리턴한다.
 </p>
-<p-panel header="basic-crud.service.ts" [toggleable]="false">
-  <pre>
-    getEmpList(departmentId: string): any &#123;
-      return new Promise(resolve => &#123;
-        const httpOptions = &#123;
-          headers: new HttpHeaders(&#123;
-            'Language': this.mainMenu.getLanguage(),
-            'Authorization': localStorage.getItem('AuthToken')
-          &#125;)
-        &#125;;
-  
-        this.http.get(environment.restURL + '/api/emp/list?departmentId=' + departmentId, httpOptions)
-          .subscribe(data => &#123;
-            resolve(data);
-          &#125;, err => &#123;
-            console.log(err);
-            resolve(err);
-          &#125;);
-      &#125;);
-  
-    &#125;
-  </pre>
+<p-panel header="basic-crud.service.ts" [toggleable]="false">  
+  <br/>getEmpList(departmentId: string): any &#123;
+  <br/>&nbsp;&nbsp;return new Promise(resolve => &#123;
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp; const httpOptions = &#123;
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   headers: new HttpHeaders(&#123;
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     'Language': this.mainMenu.getLanguage(),
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     'Authorization': localStorage.getItem('AuthToken')
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &#125;)
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp; &#125;;
+  <br/>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp; this.http.get(environment.restURL + '/api/emp/list?departmentId=' + departmentId, httpOptions)
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;   .subscribe(data => &#123;
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     resolve(data);
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &#125;, err => &#123;
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     console.log(err);
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     resolve(err);
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;   &#125;);
+  <br/>&nbsp;&nbsp;&#125;);  
+  <br/>&#125;  
 </p-panel>
-
+<br/>
 <p>[4] 컴포넌트에 서비스를 의존성 주입한다.
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; 컴포넌트의 providers Array에 앞서 작성한 서비스를 주입한다.
 </p>
-<p-panel header="basic-crud.component.ts" [toggleable]="false">
-  <pre>
-    import &#123; BasicCrudService &#125; from '../../services/basic-crud/basic-crud.service';
-
-    @Component(&#123;
-      selector: 'app-basic-crud',
-      templateUrl: './basic-crud.component.html',
-      styleUrls: ['./basic-crud.component.scss'],
-      providers: [MessageService, BasicCrudService, ConfirmationService]
-    &#125;)
-    export class BasicCrudComponent implements OnInit &#123;
-  </pre>
+<p-panel header="basic-crud.component.ts" [toggleable]="false">  
+  <br/>import &#123; BasicCrudService &#125; from '../../services/basic-crud/basic-crud.service';
+  <br/>
+  <br/>@Component(&#123;
+  <br/>&nbsp;&nbsp; selector: 'app-basic-crud',
+  <br/>&nbsp;&nbsp; templateUrl: './basic-crud.component.html',
+  <br/>&nbsp;&nbsp; styleUrls: ['./basic-crud.component.scss'],
+  <br/>&nbsp;&nbsp; providers: [MessageService, BasicCrudService, ConfirmationService]
+  <br/>&#125;)
+  <br/> export class BasicCrudComponent implements OnInit &#123;  
 </p-panel>
-
+<br/>
 <p>[5] 컴포넌트에 주입된 서비스를 호출하는 메서드를 추가한다.
 </p>
 <p-panel header="basic-crud.component.ts" [toggleable]="false">
-  <pre>
-    this.basicCrudService.getEmpList(departmentId).then((res: any) => &#123;
-      ...
-    &#125;);
-  </pre>
+  <br/>this.basicCrudService .getEmpList(departmentId) .then((res: any) => &#123;
+  <br/>&nbsp;&nbsp;...
+  <br/>&#125;);
 </p-panel>

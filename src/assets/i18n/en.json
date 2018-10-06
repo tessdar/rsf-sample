@@ -57,7 +57,8 @@
             "loginFail": "ID doesn't exists or wrong password.",
             "noGeoSupport": "Geolocation is not supported by this browser.",
             "onLine": "Online Mode",
-            "offLine": "Offline Mode"
+            "offLine": "Offline Mode",
+            "NewApp": "Newer version of the app is available."
         }
     },
     "home": {

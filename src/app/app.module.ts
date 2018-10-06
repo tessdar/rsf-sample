@@ -28,6 +28,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { GrowlModule } from 'primeng/growl';
+import { ToastrModule } from 'ngx-toastr';
 
 // AuthGuard
 import { reducers } from './shared/state/reducers';
@@ -72,6 +73,7 @@ import { environment } from '../environments/environment';
     PasswordModule,
     ButtonModule,
     GrowlModule,
+    ToastrModule.forRoot(),
     // WebBluetoothModule.forRoot({
     //   enableTracing: true
     // }),

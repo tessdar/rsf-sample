@@ -10,53 +10,48 @@
 </div>
 
 <p>[1] 서브 모듈을 생성한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; 만일 기존 모듈에 컴포넌트만 추가한다고 하면 하단에 컴포넌트 생성 부분부터 참조하면 된다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; 모듈을 추가하려면 프로그램소스가 있는 최상위 폴더에서 아래 명령어를 실행한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; [주의] 반드시 Internet이 접속된 상태에서 실행해야 파일이 정상적으로 생성된다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; 만일 기존 모듈에 컴포넌트만 추가한다고 하면 하단에 컴포넌트 생성 부분부터 참조하면 된다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; 모듈을 추가하려면 프로그램소스가 있는 최상위 폴더에서 아래 명령어를 실행한다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; [주의] 반드시 Internet이 접속된 상태에서 실행해야 파일이 정상적으로 생성된다.
 </p>
-<p-panel header="Console" [toggleable]="false">
-  <pre>
-    $ ng g module /layout/help-advice --routing
 
-    create src/app/layout/help-advice/help-advice-routing.module.ts (253 bytes)
-    create src/app/layout/help-advice/help-advice.module.ts (296 bytes)
-  </pre>
+<p-panel header="Console" [toggleable]="false">
+  $ ng g module /layout/help-advice --routing
+  <br />
+  <br /> create src/app/layout/help-advice/help-advice-routing.module.ts (253 bytes)
+  <br /> create src/app/layout/help-advice/help-advice.module.ts (296 bytes)
 </p-panel>
 
 <p> &nbsp;&nbsp;&nbsp;&nbsp; 실행이 완료되면 아래와 같이 help-advice-routing.module.ts, help-advice.module.ts 두 개 파일이 생성된다.</p>
-<p-panel header="help-advice-routing.module.ts" [toggleable]="false">
-  <pre>
-    import &#123; NgModule &#125; from '@angular/core';
-    import &#123; Routes, RouterModule &#125; from '@angular/router';
-    
-    const routes: Routes = [];
-    
-    @NgModule(&#123;
-      imports: [RouterModule.forChild(routes)],
-      exports: [RouterModule]
-      &#125;)
-    export class HelpAdviceRoutingModule &#123; &#125;
-  </pre>
+<p-panel header="help-advice-routing.module.ts" [toggleable]="false">  
+  import &#123; NgModule &#125; from '@angular/core';
+  <br />import &#123; Routes, RouterModule &#125; from '@angular/router';
+  <br />
+  <br />const routes: Routes = [];
+  <br />
+  <br />@NgModule(&#123;
+  <br />&nbsp;&nbsp; imports: [RouterModule.forChild(routes)],
+  <br />&nbsp;&nbsp; exports: [RouterModule]
+  <br /> &#125;)
+  <br />export class HelpAdviceRoutingModule &#123; &#125;
 </p-panel>
-<br/>
+<br />
 <p-panel header="help-advice.module.ts" [toggleable]="false">
-  <pre>
-    import &#123; NgModule &#125; from '@angular/core';
-    import &#123; CommonModule &#125; from '@angular/common';
-    
-    import &#123; HelpAdviceRoutingModule &#125; from './help-advice-routing.module';
-    
-    @NgModule(&#123;
-      imports: [
-        CommonModule,
-        HelpAdviceRoutingModule
-      ],
-      declarations: []
-      &#125;)
-    export class HelpAdviceModule &#123; &#125;    
-  </pre>
+  import &#123; NgModule &#125; from '@angular/core';
+  <br />import &#123; CommonModule &#125; from '@angular/common';
+  <br />
+  <br />import &#123; HelpAdviceRoutingModule &#125; from './help-advice-routing.module';
+  <br />
+  <br />@NgModule(&#123;
+  <br />&nbsp;&nbsp;imports: [
+  <br />&nbsp;&nbsp;&nbsp;&nbsp; CommonModule,
+  <br />&nbsp;&nbsp;&nbsp;&nbsp; HelpAdviceRoutingModule
+  <br />&nbsp;&nbsp;],
+  <br />&nbsp;&nbsp; declarations: []
+  <br />&#125;)
+  <br />export class HelpAdviceModule &#123; &#125;
 </p-panel>
-
+<br />
 <div class="ui-g">
   <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
     <h3 style="font-family: 'RSMBold';">
@@ -64,39 +59,36 @@
     </h3>
   </div>
 </div>
-
 <p>[2] 생성한 서브 모듈의 라우팅 경로를 추가한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; 만일 기존 모듈에 컴포넌트만 추가한다고 하면 하단에 컴포넌트 생성 부분부터 참조하면 된다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; layout-routing.module.ts 파일의 Routes 변수의 "children" 배열 속성에 아래와 같이 경로를 추가한다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; 만일 기존 모듈에 컴포넌트만 추가한다고 하면 하단에 컴포넌트 생성 부분부터 참조하면 된다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; layout-routing.module.ts 파일의 Routes 변수의 "children" 배열 속성에 아래와 같이 경로를 추가한다.
 </p>
 
 <p-panel header="layout-routing.module.ts" [toggleable]="false">
-  <pre>
-    import &#123; NgModule &#125; from '@angular/core';
-    import &#123; Routes, RouterModule &#125; from '@angular/router';
-    import &#123; LayoutComponent &#125; from '../layout/layout.component';
-    import &#123; HomeComponent &#125; from './home/home.component';
-    
-    const routes: Routes = [
-    &#123;
-        path: '',
-        component: LayoutComponent,
-        children: [
-          &#123; path: '', component: HomeComponent &#125;,
-          &#123; ... &#125;,
-          &#123; path: 'help-advice', loadChildren: './help-advice/help-advice.module#HelpAdviceModule' &#125;
-        ]
-      &#125;
-    ];
-    
-    @NgModule(&#123;
-      imports: [RouterModule.forChild(routes)],
-      exports: [RouterModule]
-    &#125;)
-    export class LayoutRoutingModule &#123; &#125;
-  </pre>
+  import &#123; NgModule &#125; from '@angular/core';
+  <br />import &#123; Routes, RouterModule &#125; from '@angular/router';
+  <br />import &#123; LayoutComponent &#125; from '../layout/layout.component';
+  <br />import &#123; HomeComponent &#125; from './home/home.component';
+  <br />
+  <br />const routes: Routes = [
+  <br />&nbsp;&nbsp;&#123;
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;path: '',
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;component: LayoutComponent,
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;children: [
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#123; path: '', component: HomeComponent &#125;,
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#123; ... &#125;,
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#123; path: 'help-advice', loadChildren: './help-advice/help-advice.module#HelpAdviceModule' &#125;
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;]
+  <br />&nbsp;&nbsp;&#125;
+  <br />];
+  <br />
+  <br />@NgModule(&#123;
+  <br />&nbsp;&nbsp;imports: [RouterModule.forChild(routes)],
+  <br />&nbsp;&nbsp;exports: [RouterModule]
+  <br />&#125;)
+  <br />export class LayoutRoutingModule &#123; &#125;
 </p-panel>
-
+<br />
 <div class="ui-g">
   <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
     <h3 style="font-family: 'RSMBold';">
@@ -104,67 +96,61 @@
     </h3>
   </div>
 </div>
-
 <p>[3] 컴포넌트를 생성한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; 컴포넌트를 생성하려면 프로그램소스가 있는 최상위 폴더에서 아래 명령어를 실행한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; 실행이 완료되면 아래와 같이 arch-help.component.html, arch-help.component.scss, arch-help.component.ts 파일
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; 컴포넌트를 생성하려면 프로그램소스가 있는 최상위 폴더에서 아래 명령어를 실행한다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; 실행이 완료되면 아래와 같이 arch-help.component.html, arch-help.component.scss,
+  arch-help.component.ts 파일
   및
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; 테스트를 위한 arch-help.component.spec.ts 파일이 생성된다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; [주의] 반드시 Internet이 접속된 상태에서 실행해야 파일이 정상적으로 생성된다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; 테스트를 위한 arch-help.component.spec.ts 파일이 생성된다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; [주의] 반드시 Internet이 접속된 상태에서 실행해야 파일이 정상적으로 생성된다.
 </p>
 
 <p-panel header="Console" [toggleable]="false">
-  <pre>
-    $ ng g component /layout/help-advice/component/arch-help
-
-    create src/app/layout/help-advice/component/arch-help/arch-help.component.scss (0 bytes)
-    create src/app/layout/help-advice/component/arch-help/arch-help.component.html (28 bytes)
-    create src/app/layout/help-advice/component/arch-help/arch-help.component.spec.ts (643 bytes)
-    create src/app/layout/help-advice/component/arch-help/arch-help.component.ts (281 bytes)
-    update src/app/layout/help-advice/help-advice.module.ts (392 bytes)
-  </pre>
+  $ ng g component /layout/help-advice/component/arch-help
+  <br />
+  <br />create src/app/layout/help-advice/component/arch-help/arch-help.component.scss (0 bytes)
+  <br />create src/app/layout/help-advice/component/arch-help/arch-help.component.html (28 bytes)
+  <br />create src/app/layout/help-advice/component/arch-help/arch-help.component.spec.ts (643 bytes)
+  <br />create src/app/layout/help-advice/component/arch-help/arch-help.component.ts (281 bytes)
+  <br />update src/app/layout/help-advice/help-advice.module.ts (392 bytes)
 </p-panel>
 
 <p>
   &nbsp;&nbsp;&nbsp;&nbsp; 컴포넌트가 생성되면 아래와 같이 help-advice.module.ts 파일에 생성한 컴포넌트 선언문이 자동으로 업데이트 된다.
 </p>
-<p-panel header="help-advice.module.ts" [toggleable]="false">
-  <pre>
-    import &#123; NgModule &#125; from '@angular/core';
-    import &#123; CommonModule &#125; from '@angular/common';
-    
-    import &#123; HelpAdviceRoutingModule &#125; from './help-advice-routing.module';
-    import &#123; ArchHelpComponent &#125; from './component/arch-help/arch-help.component';
-    
-    @NgModule(&#123;
-      imports: [
-        CommonModule,
-        HelpAdviceRoutingModule
-      ],
-      declarations: [ArchHelpComponent]
-      &#125;)
-    export class HelpAdviceModule &#123; &#125;       
-  </pre>
+<p-panel header="help-advice.module.ts" [toggleable]="false">  
+  import &#123; NgModule &#125; from '@angular/core';
+  <br />import &#123; CommonModule &#125; from '@angular/common';
+  <br />
+  <br />import &#123; HelpAdviceRoutingModule &#125; from './help-advice-routing.module';
+  <br />import &#123; ArchHelpComponent &#125; from './component/arch-help/arch-help.component';
+  <br />
+  <br />@NgModule(&#123;
+  <br />&nbsp;&nbsp;imports: [
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;CommonModule,
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;HelpAdviceRoutingModule
+  <br />&nbsp;&nbsp;],
+  <br />&nbsp;&nbsp;declarations: [ArchHelpComponent]
+  <br />&#125;)
+  <br />export class HelpAdviceModule &#123; &#125;
 </p-panel>
 
 <p>
   &nbsp;&nbsp;&nbsp;&nbsp; 화면 우측에 메뉴경로바를 출력하기 위해 BreadcrumbModule을 import 한다. 이미 존재하면 이 단계를 skip 한다.
 </p>
-<p-panel header="help-advice.module.ts" [toggleable]="false">
-  <pre>
-    import &#123; BreadcrumbModule &#125; from 'primeng/breadcrumb';
-    
-    @NgModule(&#123;
-      imports: [
-        ...
-        BreadcrumbModule
-      ],
-      declarations: [ArchHelpComponent]
-      &#125;)
-    export class HelpAdviceModule &#123; &#125;       
-  </pre>
+<p-panel header="help-advice.module.ts" [toggleable]="false">  
+  import &#123; BreadcrumbModule &#125; from 'primeng/breadcrumb';
+  <br />
+  <br />@NgModule(&#123;
+  <br />&nbsp;&nbsp;imports: [
+  <br />&nbsp;&nbsp;&nbsp;&nbsp; ...
+  <br />&nbsp;&nbsp;&nbsp;&nbsp; BreadcrumbModule
+  <br />&nbsp;&nbsp;],
+  <br />&nbsp;&nbsp;declarations: [ArchHelpComponent]
+  <br />&#125;)
+  <br />export class HelpAdviceModule &#123; &#125;  
 </p-panel>
-
+<br />
 <div class="ui-g">
   <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
     <h3 style="font-family: 'RSMBold';">
@@ -172,33 +158,30 @@
     </h3>
   </div>
 </div>
-
 <p>[4] 생성한 컴포넌트에 라우팅 경로를 설정한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; help-advice-routing.module.ts 파일의 Routes 변수에 "children" 배열 속성에 아래와 같이 경로를 추가한다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; help-advice-routing.module.ts 파일의 Routes 변수에 "children" 배열 속성에 아래와 같이 경로를 추가한다.
 </p>
 
-<p-panel header="help-advice-routing.module.ts" [toggleable]="false">
-  <pre>
-    import &#123; NgModule &#125; from '@angular/core';
-    import &#123; Routes, RouterModule &#125; from '@angular/router';
-    
-    import &#123; ArchHelpComponent &#125; from '../help-advice/component/arch-help/arch-help.component';
-    
-    const routes: Routes = [&#123;
-      path: '',
-      children: [
-        &#123; path: 'arch-help', component: ArchHelpComponent &#125;
-      ]
-    &#125;];
-    
-    @NgModule(&#123;
-      imports: [RouterModule.forChild(routes)],
-      exports: [RouterModule]
-    &#125;)
-    export class HelpAdviceRoutingModule &#123; &#125;  
-  </pre>
+<p-panel header="help-advice-routing.module.ts" [toggleable]="false">  
+  import &#123; NgModule &#125; from '@angular/core';
+  <br />import &#123; Routes, RouterModule &#125; from '@angular/router';
+  <br />
+  <br />import &#123; ArchHelpComponent &#125; from '../help-advice/component/arch-help/arch-help.component';
+  <br />
+  <br />const routes: Routes = [&#123;
+  <br />&nbsp;&nbsp;path: '',
+  <br />&nbsp;&nbsp;children: [
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&#123; path: 'arch-help', component: ArchHelpComponent &#125;
+  <br />&nbsp;&nbsp;]
+  <br />&#125;];
+  <br />
+  <br />@NgModule(&#123;
+  <br />&nbsp;&nbsp;imports: [RouterModule.forChild(routes)],
+  <br />&nbsp;&nbsp;exports: [RouterModule]
+  <br />&#125;)
+  <br />export class HelpAdviceRoutingModule &#123; &#125;  
 </p-panel>
-
+<br />
 <div class="ui-g">
   <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
     <h3 style="font-family: 'RSMBold';">
@@ -206,40 +189,38 @@
     </h3>
   </div>
 </div>
-
 <p>[5] 메뉴 서비스에 생성한 컴포넌트 경로를 추가한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; label: 메뉴명을 입력한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; icon: 적절한 아이콘 코드를 입력한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; routerLink: 라우팅 경로를 입력한다. /layout 을 고정값으로 입력 후 / 서브모듈 명 / 컴포넌트 명 을 입력한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; command: 메뉴를 클릭한 후 발생하는 명령어를 입력한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.menuActive = !this.menuActive; - 메뉴를 클릭 후 좌측메뉴가 닫히도록 한다. (모바일)
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.breadKeys = [] - 우측 메뉴경로바에 출력할 경로명을 설정한다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; label: 메뉴명을 입력한다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; icon: 적절한 아이콘 코드를 입력한다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; routerLink: 라우팅 경로를 입력한다. /layout 을 고정값으로 입력 후 / 서브모듈 명 / 컴포넌트 명 을 입력한다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; command: 메뉴를 클릭한 후 발생하는 명령어를 입력한다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.menuActive = !this.menuActive; - 메뉴를 클릭 후 좌측메뉴가 닫히도록
+  한다. (모바일)
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.breadKeys = [] - 우측 메뉴경로바에 출력할 경로명을 설정한다.
 </p>
 
-<p-panel header="main-menu.service.ts" [toggleable]="false">
-  <pre>
-    &#123;
-      label: menuLang.help,
-      icon: 'fas fa-question',
-      items: [
-      &#123;
-          label: menuLang.architecture,
-          icon: 'far fa-building',
-          routerLink: '/layout/help-advice/arch-help',
-          command: (event) => &#123;
-            this.menuActive = !this.menuActive;
-            this.breadKeys = [
-              &#123; 'key': 'helpAdvice' &#125; ,
-              &#123; 'key': 'archHelp' &#125; 
-            ];
-            this.setBreadItems(menuLang);    
-            &#125;         
-          &#125; 
-        ]
-      &#125;    
-  </pre>
+<p-panel header="main-menu.service.ts" [toggleable]="false">  
+  <br />&#123;
+  <br />&nbsp;&nbsp;label: menuLang.help,
+  <br />&nbsp;&nbsp;icon: 'fas fa-question',
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;items: [
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&#123;
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: menuLang.architecture,
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon: 'far fa-building',
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;routerLink: '/layout/help-advice/arch-help',
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command: (event) => &#123;
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.menuActive = !this.menuActive;
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.breadKeys = [
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#123; 'key': 'helpAdvice' &#125; ,
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#123; 'key': 'archHelp' &#125;
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;];
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.setBreadItems(menuLang);
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#125;
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;&#125;
+  <br />&nbsp;&nbsp;]
+  <br />&#125;  
 </p-panel>
-
+<br />
 <div class="ui-g">
   <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
     <h3 style="font-family: 'RSMBold';">
@@ -247,33 +228,30 @@
     </h3>
   </div>
 </div>
-
 <p>[6] 메뉴 서비스를 컴포넌트에 import 한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; arch-help.component.ts 파일 상단에 import &#123; MainMenuService &#125; from '...'; 입력한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; 생성자에 public mainMenu: MainMenuService 를 입력한다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; arch-help.component.ts 파일 상단에 import &#123; MainMenuService &#125; from '...';
+  입력한다.
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp; 생성자에 public mainMenu: MainMenuService 를 입력한다.
 </p>
 
-<p-panel header="arch-help.component.ts" [toggleable]="false">
-  <pre>
-    import &#123; Component, OnInit &#125; from '@angular/core';
-    import &#123; MainMenuService &#125; from '../../../../shared/services/main-menu.service';
-    
-    @Component(&#123;
-      selector: 'app-arch-help',
-      templateUrl: './arch-help.component.html',
-      styleUrls: ['./arch-help.component.scss']
-    &#125;)
-    export class ArchHelpComponent implements OnInit &#123;
-    
-      constructor(public mainMenu: MainMenuService) &#123; &#125;
-    
-      ngOnInit() &#123;
-      &#125;
-    
-    &#125;       
-  </pre>
+<p-panel header="arch-help.component.ts" [toggleable]="false">  
+  <br />import &#123; Component, OnInit &#125; from '@angular/core';
+  <br />import &#123; MainMenuService &#125; from '../../../../shared/services/main-menu.service';
+  <br />
+  <br />@Component(&#123;
+  <br />&nbsp;&nbsp;selector: 'app-arch-help',
+  <br />&nbsp;&nbsp;templateUrl: './arch-help.component.html',
+  <br />&nbsp;&nbsp;styleUrls: ['./arch-help.component.scss']
+  <br />&#125;)
+  <br />export class ArchHelpComponent implements OnInit &#123;
+  <br />
+  <br />&nbsp;&nbsp;constructor(public mainMenu: MainMenuService) &#123; &#125;
+  <br />
+  <br />&nbsp;&nbsp;ngOnInit() &#123; &#125;
+  <br />
+  <br />&#125;
 </p-panel>
-
+<br />
 <div class="ui-g">
   <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
     <h3 style="font-family: 'RSMBold';">
@@ -281,21 +259,19 @@
     </h3>
   </div>
 </div>
-
 <p>[7] 우측 메뉴 서비스 tag를 컴포넌트 html 파일에 추가한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; arch-help.component.html 파일 상단에 &lt;p-breadcrumb [model]="mainMenu.getBreadItems()"&gt;&lt;/p-breadcrumb&gt; 입력한다.
+  <br />&nbsp;&nbsp;&nbsp;&nbsp; arch-help.component.html 파일 상단에 &lt;p-breadcrumb
+  [model]="mainMenu.getBreadItems()"&gt;&lt;/p-breadcrumb&gt; 입력한다.
 </p>
 
-<p-panel header="arch-help.component.html" [toggleable]="false">
-  <pre>
-    &lt;p-breadcrumb [model]="mainMenu.getBreadItems()"&gt;&lt;/p-breadcrumb&gt;
-
-    &lt;p&gt;
-      arch-help works!
-    &lt;/p&gt;
-  </pre>
+<p-panel header="arch-help.component.html" [toggleable]="false">  
+  <br />&lt;p-breadcrumb [model]="mainMenu.getBreadItems()"&gt;&lt;/p-breadcrumb&gt;
+  <br />
+  <br />&lt;p&gt;
+  <br />&nbsp;&nbsp;arch-help works!
+  <br />&lt;/p&gt;  
 </p-panel>
-
+<br />
 <div class="ui-g">
   <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
     <h3 style="font-family: 'RSMBold';">
@@ -303,69 +279,49 @@
     </h3>
   </div>
 </div>
-
 <p>[8] 메뉴명을 등록한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; 한국어는 shared/i18n/ko.json, 영어는 shared/i18n/en.json 파일의 main > sideMenu 속성에 메뉴명을 각각 입력한다.
+  <br />&nbsp;&nbsp;&nbsp;&nbsp; 한국어는 shared/i18n/ko.json, 영어는 shared/i18n/en.json 파일의 main > sideMenu 속성에 메뉴명을 각각
+  입력한다.
 </p>
 
 <p-panel header="ko.json" [toggleable]="false">
-  <pre>
-    "main": &#123;
-      "siteName": "시스템명",
-      "userInfo": "사용자 정보",
-      "logout": "로그아웃",
-      "changeTheme": "테마 변경",
-      "autoLogout": "30분이상 사용하지 않아서 자동 로그아웃 됩니다.",
-      "sideMenu": &#123;
-          "designGuide": "디자인 가이드",
-          "btnLib": "버튼 라이브러리",
-          "inputLib": "입력 라이브러리",
-          "tabView": "탭 뷰 & 판넬",
-          "scheView": "달력 뷰",
-          "iconLib": "아이콘 라이브러리",
-          "samplePage": "샘플 페이지",
-          "basicCrud": "기본 CRUD",
-          "basicForm": "기본 Form",
-          "basicTree": "기본 Tree",
-          "headDetail": "헤더 디테일",
-          "chartForm": "차트 Form",
-          "helpAdvice": "도움말",
-          "archHelp": "폴더구조",
-          "newComp": "컴포넌트"
-      &#125; 
-    &#125;   
-  </pre>
+  <br />"main": &#123;
+  <br />&nbsp;&nbsp;"siteName": "시스템명",
+  <br />&nbsp;&nbsp;"userInfo": "사용자 정보",
+  <br />&nbsp;&nbsp;"logout": "로그아웃",
+  <br />&nbsp;&nbsp;"changeTheme": "테마 변경",
+  <br />&nbsp;&nbsp;"autoLogout": "30분이상 사용하지 않아서 자동 로그아웃 됩니다.",
+  <br />&nbsp;&nbsp;"sideMenu": &#123;
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"designGuide": "디자인 가이드",
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"btnLib": "버튼 라이브러리",
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"inputLib": "입력 라이브러리",
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;...
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"helpAdvice": "도움말",
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"archHelp": "폴더구조",
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"newComp": "컴포넌트"
+  <br />&nbsp;&nbsp;&#125;
+  <br />&#125;
 </p-panel>
 
-<p-panel header="en.json" [toggleable]="false">
-  <pre>
-    "main": &#123;
-      "siteName": "Site Name",
-      "userInfo": "User Info",
-      "changeTheme": "Change Theme",
-      "logout": "Log out",
-      "autoLogout": "Log out automatically because there were not actions for 30 min.",
-      "sideMenu": &#123;
-          "designGuide": "Design Guide",
-          "btnLib": "Button Library",
-          "inputLib": "Input Library",
-          "tabView": "Tab View & Panel",
-          "scheView": "Calendar View",
-          "iconLib": "Icon Library",
-          "samplePage": "Sample Page",
-          "basicCrud": "Basic CRUD",
-          "basicForm": "Basic Form",
-          "basicTree": "Basic Tree",
-          "headDetail": "Parent Child",
-          "chartForm": "Chart Form",
-          "helpAdvice": "Help",
-          "archHelp": "Folder",
-          "newComp": "Component"
-      &#125;
-    &#125;  
-  </pre>
+<p-panel header="en.json" [toggleable]="false">  
+  <br />"main": &#123;
+  <br />&nbsp;&nbsp;"siteName": "Site Name",
+  <br />&nbsp;&nbsp;"userInfo": "User Info",
+  <br />&nbsp;&nbsp;"changeTheme": "Change Theme",
+  <br />&nbsp;&nbsp;"logout": "Log out",
+  <br />&nbsp;&nbsp;"autoLogout": "Log out automatically because there were not actions for 30 min.",
+  <br />&nbsp;&nbsp;"sideMenu": &#123;
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"designGuide": "Design Guide",
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"btnLib": "Button Library",
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"inputLib": "Input Library",
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;...
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"helpAdvice": "Help",
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"archHelp": "Folder",
+  <br />&nbsp;&nbsp;&nbsp;&nbsp;"newComp": "Component"
+  <br />&nbsp;&nbsp;&#125;
+  <br />&#125;  
 </p-panel>
-
+<br />
 <div class="ui-g">
   <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
     <h3 style="font-family: 'RSMBold';">
@@ -373,11 +329,8 @@
     </h3>
   </div>
 </div>
-
 <p>[9] npm start 실행하여 정상적으로 컴포넌트가 보이는지 확인한다.
 </p>
-<p-panel header="Console" [toggleable]="false">
-  <pre>
-    $ npm start
-  </pre>
+<p-panel header="Console" [toggleable]="false">  
+  $ npm start  
 </p-panel>

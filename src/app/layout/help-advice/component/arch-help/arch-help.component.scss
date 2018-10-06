@@ -1,0 +1,9 @@
+.tree-header {
+    width: 20em;
+}
+
+@media screen and (max-width: 768px) {
+    .tree-header {
+        width: 10em;
+    }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { saveAs } from 'file-saver/FileSaver';
@@ -11,6 +11,9 @@ import { MainMenuService } from '../../../../shared/services/main-menu.service';
   styleUrls: ['./basic-webcam.component.scss']
 })
 export class BasicWebcamComponent implements OnInit {
+
+  public width: number;
+  public height: number;
 
   // toggle webcam on/off
   public showWebcam = true;
@@ -31,6 +34,17 @@ export class BasicWebcamComponent implements OnInit {
   // switch to next / previous / specific webcam; true/false: forward/backwards, string: deviceId
   private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
 
+  /**
+   * 카메라 Auto Resize
+   * @param event 
+   */
+  @HostListener('window:resize', ['$event'])
+  onResize(event?: Event) {
+    const win = !!event ? (event.target as Window) : window;
+    this.width = win.innerWidth;
+    this.height = win.innerHeight;
+  }
+
   constructor(
     public mainMenu: MainMenuService
   ) { }
@@ -40,6 +54,8 @@ export class BasicWebcamComponent implements OnInit {
       .then((mediaDevices: MediaDeviceInfo[]) => {
         this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
       });
+
+    this.onResize();
   }
 
   public triggerSnapshot(): void {
@@ -54,12 +70,12 @@ export class BasicWebcamComponent implements OnInit {
     this.errors.push(error);
   }
 
-  public showNextWebcam(directionOrDeviceId: boolean | string): void {
-    // true => move forward through devices
-    // false => move backwards through devices
-    // string => move to device with given deviceId
-    this.nextWebcam.next(directionOrDeviceId);
-  }
+  // public showNextWebcam(directionOrDeviceId: boolean | string): void {
+  //   // true => move forward through devices
+  //   // false => move backwards through devices
+  //   // string => move to device with given deviceId
+  //   this.nextWebcam.next(directionOrDeviceId);
+  // }
 
   public handleImage(webcamImage: WebcamImage): void {
     console.info('received webcam image', webcamImage);
