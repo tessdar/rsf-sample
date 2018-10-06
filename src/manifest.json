@@ -1,7 +1,7 @@
 {
   "name": "rsf-sample",
   "short_name": "rsf-sample",
-  "theme_color": "#1976d2",
+  "theme_color": "#ffcc33",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "/",

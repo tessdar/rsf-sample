@@ -29,5 +29,16 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": ["/api/emp"],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 100,
+        "maxAge": "3d"
+      }
+    }
   ]
 }

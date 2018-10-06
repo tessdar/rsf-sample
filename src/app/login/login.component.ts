@@ -59,38 +59,35 @@ export class LoginComponent implements OnInit {
    * 토큰 정보가 없으면 ID, 비밀번호 확인하라는 경고 메시지 처리
    */
   public login(value: any) {
-    this.store.dispatch(new ApplicationActions.LogIn());
-    this.router.navigate(['layout', { "lang": this.mainMenu.getLanguage() }]);
+    this.loginService.login(value.userId, value.password).then((res: any) => {
 
-    // this.loginService.login(value.userId, value.password).then((res: any) => {
+      if (!res) {
+        this.translate.get('shared.message').subscribe(msg => {
+          this.msgs = this.mainMenu.showMessage('error', msg.error, msg.noResponse);
+        });
 
-    //   if (!res) {
-    //     this.translate.get('shared.message').subscribe(msg => {
-    //       this.msgs = this.mainMenu.showMessage('error', msg.error, msg.noResponse);
-    //     });
+      } else {
+        if (res.ok == false) {
+          this.translate.get('shared.message').subscribe(msg => {
+            this.msgs = this.mainMenu.showMessage('error', msg.error + ' / ' + res.status, res.error.message);
+          });
 
-    //   } else {
-    //     if (res.ok == false) {
-    //       this.translate.get('shared.message').subscribe(msg => {
-    //         this.msgs = this.mainMenu.showMessage('error', msg.error + ' / ' + res.status, res.error.message);
-    //       });
+        } else {
+          if (res.authToken) {
+            localStorage.setItem('AuthToken', res.authToken);
 
-    //     } else {
-    //       if (res.authToken) {
-    //         localStorage.setItem('AuthToken', res.authToken);
+            this.store.dispatch(new ApplicationActions.LogIn());
+            this.router.navigate(['layout', { "lang": this.mainMenu.getLanguage() }]);
 
-    //         // this.store.dispatch(new ApplicationActions.LogIn());
-    //         this.router.navigate(['layout', { "lang": this.mainMenu.getLanguage() }]);
+          } else {
+            this.translate.get('shared.message').subscribe(msg => {
+              this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.loginFail);
+            });
 
-    //       } else {
-    //         this.translate.get('shared.message').subscribe(msg => {
-    //           this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.loginFail);
-    //         });
-
-    //       }
-    //     }
-    //   }
-    // });
+          }
+        }
+      }
+    });
   }
 
   /**
