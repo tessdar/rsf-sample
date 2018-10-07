@@ -1,25 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireMessaging } from '@angular/fire/messaging';
 import { TranslateService } from '@ngx-translate/core';
-import { Message } from 'primeng/components/common/api';
+import { MessageService } from 'primeng/api';
 
 import { ConnectionService } from 'ng-connection-service';
 import { MainMenuService } from './shared/services/main-menu.service';
 
+import { SwUpdate } from '@angular/service-worker';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [MessageService]
 })
 export class AppComponent implements OnInit {
 
-  public msgs: Message[] = []; // i18n 텍스트 변환 변수
-
   constructor(
+    public mainMenu: MainMenuService,
+    public messageService: MessageService,
     private afMessaging: AngularFireMessaging,
     private translate: TranslateService,
-    public mainMenu: MainMenuService,
-    private connectionService: ConnectionService
+    private connectionService: ConnectionService,
+    private swUpdate: SwUpdate
   ) {
 
     /**
@@ -29,15 +32,26 @@ export class AppComponent implements OnInit {
       this.mainMenu.setIsConnected(isConnected);
       if (isConnected) {
         this.translate.get('shared.message').subscribe(msg => {
-          this.msgs = this.mainMenu.showMessage('info', msg.info, msg.onLine);
+          this.messageService.add({ key: 'connect', severity: 'info', summary: msg.info, detail: msg.onLine });
         });
       }
       else {
         this.translate.get('shared.message').subscribe(msg => {
-          this.msgs = this.mainMenu.showMessage('error', msg.error, msg.offLine);
+          this.messageService.add({ key: 'connect', severity: 'warn', summary: msg.warn, detail: msg.offLine });
         });
       }
     })
+
+    // 신규 버전 업데이트 체크
+    this.swUpdate.available.subscribe(event => {
+      console.log('[App] Update available: current version is', event.current, 'available version is', event.available );
+
+      let newVersion: string = event.available.toString();
+
+      this.translate.get('shared.message').subscribe(msg => {
+        this.messageService.add({ key: 'upnoti', severity: 'info', summary: newVersion, detail: msg.NewApp });
+      });
+    });
 
   }
 
@@ -63,8 +77,8 @@ export class AppComponent implements OnInit {
    */
   public listen() {
     this.afMessaging.messages
-      .subscribe((message: afMessage) => {        
-        this.msgs = this.mainMenu.showMessage('info', message.notification.title, message.notification.body);
+      .subscribe((message: afMessage) => {
+        this.messageService.add({ key: 'connect', severity: 'info', summary: message.notification.title, detail: message.notification.body });
       });
   }
 

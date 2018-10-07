@@ -10,9 +10,6 @@ import * as ApplicationActions from '../shared/state/application/actions';
 
 import { MainMenuService } from '../shared/services/main-menu.service';
 import { LoginService } from '../shared/services/login.service';
-import { ToastrService } from 'ngx-toastr';
-
-import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-login',
@@ -27,12 +24,10 @@ export class LoginComponent implements OnInit {
 
   @HostBinding('class.application') class = 'application';
   constructor(public router: Router,
-    public mainMenu: MainMenuService,
-    private toastr: ToastrService,
+    public mainMenu: MainMenuService,    
     private translate: TranslateService,
     private loginService: LoginService,
-    private store: Store<fromRoot.State>,
-    private swUpdate: SwUpdate,
+    private store: Store<fromRoot.State>,    
     private fb: FormBuilder) {
 
   }
@@ -54,17 +49,6 @@ export class LoginComponent implements OnInit {
       this.mainMenu.setLanguage('ko');
     }
     this.translate.setDefaultLang(this.mainMenu.getLanguage());
-
-    // 신규 버전 업데이트 체크
-    this.swUpdate.available.subscribe(event => {
-
-      console.log('[App] Update available: current version is', event.current, 'available version is', event.available);
-
-      this.translate.get('shared.message').subscribe(msg => {
-        this.toastr.info(msg.NewApp, msg.info, { positionClass: 'toast-bottom-full' });
-      });
-
-    });
 
   }
 
