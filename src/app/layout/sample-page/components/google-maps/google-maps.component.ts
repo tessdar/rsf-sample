@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Message } from 'primeng/components/common/api';
+
+import { MessageService } from 'primeng/api';
 import { MouseEvent } from '@agm/core';
 import { mapMarker } from '../../interfaces/google-maps/map-marker';
 
 @Component({
   selector: 'app-google-maps',
   templateUrl: './google-maps.component.html',
-  styleUrls: ['./google-maps.component.scss']
+  styleUrls: ['./google-maps.component.scss'],
+  providers: [MessageService]
 })
 export class GoogleMapsComponent implements OnInit {
 
@@ -21,11 +23,10 @@ export class GoogleMapsComponent implements OnInit {
   public currentLong = 0 as number;
   public isTracking: boolean;
 
-  public msgs: Message[] = []; // i18n 텍스트 변환 변수
-
   constructor(
     public mainMenu: MainMenuService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -55,7 +56,7 @@ export class GoogleMapsComponent implements OnInit {
       });
     } else {
       this.translate.get('shared.message').subscribe(msg => {
-        this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.noGeoSupport);
+        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noGeoSupport });              
       });
     }
   }
@@ -68,7 +69,7 @@ export class GoogleMapsComponent implements OnInit {
       });
     } else {
       this.translate.get('shared.message').subscribe(msg => {
-        this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.noSupportBrowser);
+        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSupportBrowser });        
       });      
     }
   }

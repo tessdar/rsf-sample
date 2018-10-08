@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
-import { SelectItem } from 'primeng/api';
-import { Message } from 'primeng/components/common/api';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { SelectItem, MessageService } from 'primeng/api';
+// import { DomSanitizer } from '@angular/platform-browser';
 //import * as FileSaver from 'file-saver';
 
 import { BasicFormService } from '../../services/basic-form/basic-form.service';
@@ -21,7 +19,6 @@ export class BasicFormComponent implements OnInit {
   public deptItems: SelectItem[];
   public jobItems: SelectItem[];
 
-  public msgs: Message[] = [];
   public userform: FormGroup;
 
   public uploadedFiles: any[] = [];
@@ -30,11 +27,14 @@ export class BasicFormComponent implements OnInit {
   public imageData: any;
   public showImg: boolean;
 
-  constructor(private sanitizer: DomSanitizer,
+  constructor(
     public mainMenu: MainMenuService,
+    private messageService: MessageService,
     private fb: FormBuilder,
     private dataProvider: BasicFormService,
-    private translate: TranslateService) { }
+    private translate: TranslateService
+    // private sanitizer: DomSanitizer
+    ) { }
 
   /**
    * 화면 초기 설정
@@ -69,7 +69,7 @@ export class BasicFormComponent implements OnInit {
   onSubmit(value: any) {
     this.submitted = true;
     this.translate.get('shared.message').subscribe(msg => {
-      this.msgs = this.mainMenu.showMessage('success', msg.success, msg.okSave);
+      this.messageService.add({ severity: 'success', summary: msg.success, detail: msg.okSave });      
     });
   }
 
@@ -119,7 +119,7 @@ export class BasicFormComponent implements OnInit {
     }
 
     this.translate.get('shared.message').subscribe(msg => {
-      this.msgs = this.mainMenu.showMessage('success', msg.success, msg.okSave);
+      this.messageService.add({ severity: 'success', summary: msg.success, detail: msg.okSave });      
     });
   }
 

@@ -7,6 +7,7 @@ import { ConnectionService } from 'ng-connection-service';
 import { MainMenuService } from './shared/services/main-menu.service';
 
 import { SwUpdate } from '@angular/service-worker';
+// import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     public mainMenu: MainMenuService,
-    public messageService: MessageService,
+    private messageService: MessageService,
     private afMessaging: AngularFireMessaging,
     private translate: TranslateService,
     private connectionService: ConnectionService,
@@ -32,26 +33,62 @@ export class AppComponent implements OnInit {
       this.mainMenu.setIsConnected(isConnected);
       if (isConnected) {
         this.translate.get('shared.message').subscribe(msg => {
-          this.messageService.add({ key: 'connect', severity: 'info', summary: msg.info, detail: msg.onLine });
+          this.messageService.add({ key: 'upnoti', severity: 'info', summary: msg.info, detail: msg.onLine });
         });
       }
       else {
         this.translate.get('shared.message').subscribe(msg => {
-          this.messageService.add({ key: 'connect', severity: 'warn', summary: msg.warn, detail: msg.offLine });
+          this.messageService.add({ key: 'upnoti', severity: 'warn', summary: msg.warn, detail: msg.offLine });
         });
       }
     })
 
-    // 신규 버전 업데이트 체크
-    this.swUpdate.available.subscribe(event => {
-      console.log('[App] Update available: current version is', event.current, 'available version is', event.available );
+    /** 
+     * 신규 버전 업데이트 체크
+     * 아래 3가지 중 하나를 택하고 나머지는 주석처리
+     * 1. 주기적으로 서버에 업데이트 체크하는 방법
+     * 2. 업데이트를 사용자에게 알려주는 방법 (사용자가 직접 Refresh 해 주어야 함.) 
+     * 3. 업데이트 발견 시 바로 업데이트 하는 방법 (하지만 결국 Refresh를 해야 서버로 부터 업데이트 내역을 확인할 수 있음.)
+     */
+    if (this.swUpdate.isEnabled) {
 
-      let newVersion: string = event.available.toString();
+      // 1. 주기적으로 업데이트 체크하는 방법
+      // interval(3600 * 1000).subscribe(() => this.swUpdate.checkForUpdate().then(() => {
+      //   console.log('[App] checkForUpdate');
+      // }).catch(() => {
+      //   this.translate.get('shared.message').subscribe(msg => {
+      //     this.messageService.add({ key: 'upnoti', severity: 'error', summary: msg.error, detail: msg.errApp });
+      //   });
+      // }));
 
-      this.translate.get('shared.message').subscribe(msg => {
-        this.messageService.add({ key: 'upnoti', severity: 'info', summary: newVersion, detail: msg.NewApp });
+      // 2. 업데이트 발생 시 사용자에게 알림 
+      //    신규 버전 업데이트 되면 해당 내역 출력
+      this.swUpdate.available.subscribe(evt => {
+        console.log('[App] Update available: current version is', evt.current, 'available version is', evt.available);
+
+        this.translate.get('shared.message').subscribe(msg => {
+          this.messageService.add({ key: 'upnoti', severity: 'info', summary: msg.info, detail: msg.newApp });
+        });
       });
-    });
+
+      this.swUpdate.activated.subscribe(() => {
+        this.translate.get('shared.message').subscribe(msg => {
+          this.messageService.add({ key: 'upnoti', severity: 'info', summary: msg.info, detail: msg.UpdApp });
+        });
+      });
+
+      // 3. 업데이트 발견 시 바로 업데이트 
+      //    페이지의 업데이트하면 서버로 부터 최신 파일을 받아서 업데이트한다.
+      // this.swUpdate.available.subscribe(() => {        
+      //   this.swUpdate.activateUpdate().then(() => {
+      //     window.location.reload(true) }
+      //   ).catch(() => {
+      //     this.translate.get('shared.message').subscribe(msg => {
+      //       this.messageService.add({ key: 'upnoti', severity: 'error', summary: msg.error, detail: msg.errApp });
+      //     });
+      //   });        
+      // });
+    }
 
   }
 

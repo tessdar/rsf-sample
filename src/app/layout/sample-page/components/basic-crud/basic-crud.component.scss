@@ -1,0 +1,11 @@
+.ui-cust-filter, 
+.ui-cust-reset {
+    display: inline;
+}
+
+@media screen and (max-width: 768px) {
+    .ui-cust-filter, 
+    .ui-cust-reset {
+        display: none;
+    }
+}

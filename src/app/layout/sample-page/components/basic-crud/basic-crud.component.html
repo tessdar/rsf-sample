@@ -1,5 +1,5 @@
 <!-- 메시지 -->
-<p-growl [(value)]="msgs" [baseZIndex]="9999"></p-growl>
+<p-toast [baseZIndex]="9999"></p-toast>
 
 <!-- 컨펌 다이얼로그 -->
 <p-confirmDialog></p-confirmDialog>
@@ -36,8 +36,8 @@
   </div>
 
   <div class="ui-toolbar-group-right">
-    <button pButton type="button" icon="fas fa-filter" class="ui-button-ternary" (click)="filter()"></button>
-    <button pButton type="button" icon="fas fa-backward" class="ui-button-ternary" (click)="dt.reset()"></button>
+    <button pButton type="button" icon="fas fa-filter" class="ui-button-ternary ui-cust-filter" (click)="filter()"></button>
+    <button pButton type="button" icon="fas fa-backward" class="ui-button-ternary ui-cust-reset" (click)="dt.reset()"></button>
     <button pButton type="button" icon="fas fa-download" class="ui-button-ternary" (click)="dt.exportCSV()"></button>
   </div>
 </p-toolbar>

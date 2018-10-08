@@ -1,5 +1,5 @@
 <!-- 메시지 -->
-<p-growl [value]="msgs" [baseZIndex]="9999"></p-growl>
+<p-toast [baseZIndex]="9999"></p-toast>
 
 <div class="login-background">
   <form class="login-panel" [formGroup]="userform" (ngSubmit)="login(userform.value)">
@@ -57,5 +57,8 @@
   </form>
   <div>
     <p class="copy-right">COPYRIGHT 2018 RENAULT SAMSUNG MOTORS ALL RIGHTS RESERVED</p>
+  </div>
+  <div>
+    <p class="version">{{ version }}</p>
   </div>
 </div>

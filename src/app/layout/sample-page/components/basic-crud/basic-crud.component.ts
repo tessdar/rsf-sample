@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ConfirmationService } from 'primeng/api';
-import { Message } from 'primeng/components/common/api';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { BasicCrudService } from '../../services/basic-crud/basic-crud.service';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
 import { _Status } from '../../../../shared/enums/status.enum';
@@ -30,12 +28,12 @@ export class BasicCrudComponent implements OnInit {
   public displayDialog: boolean; // 추가, 수정 다이얼로그 출력 변수
   public departmentId: string; // 조회조건
 
-  public msgs: Message[] = []; // i18n 텍스트 변환 변수
+  // public msgs: Message[] = []; // i18n 텍스트 변환 변수
 
   constructor(
-    private messageService: MessageService,
-    private confirmationService: ConfirmationService,
     public mainMenu: MainMenuService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService,    
     private basicCrudService: BasicCrudService,
     private translate: TranslateService) { }
 
@@ -98,13 +96,13 @@ export class BasicCrudComponent implements OnInit {
     this.basicCrudService.getEmpList(departmentId).then((res: any) => {
       if (!res) {
         this.translate.get('shared.message').subscribe(msg => {
-          this.msgs = this.mainMenu.showMessage('info', msg.info, msg.dataNotFound);
+          this.messageService.add({ severity: 'info', summary: msg.info, detail: msg.dataNotFound });
         });
 
       } else {
         if (res.ok == false) {
           this.translate.get('shared.message').subscribe(msg => {
-            this.msgs = this.mainMenu.showMessage('error', msg.error, 'Status: ' + res.status + ', ' + res.statusText);
+            this.messageService.add({ severity: 'error', summary: msg.error, detail: 'Status: ' + res.status + ', ' + res.statusText });            
           });
 
         } else {
@@ -164,14 +162,14 @@ export class BasicCrudComponent implements OnInit {
 
     if (!this.selectedRows) {
       this.translate.get('shared.message').subscribe(msg => {
-        this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.noSelected);
+        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSelected });  
       });
       return;
 
     } else {
       if (this.selectedRows.length < 1) {
         this.translate.get('shared.message').subscribe(msg => {
-          this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.noSelected);
+          this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSelected });            
         });
         return;
 
@@ -269,7 +267,7 @@ export class BasicCrudComponent implements OnInit {
     if (saveList.length < 1) {
       this.loading = false;
       this.translate.get('shared.message').subscribe(msg => {
-        this.msgs = this.mainMenu.showMessage('info', msg.info, msg.noSaveData);
+        this.messageService.add({ severity: 'info', summary: msg.info, detail: msg.noSaveData });          
       });
       return;
 
@@ -285,17 +283,17 @@ export class BasicCrudComponent implements OnInit {
               this.loading = false;
 
               if (!res) {
-                this.msgs = this.mainMenu.showMessage('error', msg.error, msg.noResponse);
+                this.messageService.add({ severity: 'error', summary: msg.error, detail: msg.noResponse });  
 
               } else {
                 if (res.ok == false) {
-                  this.msgs = this.mainMenu.showMessage('error', msg.error + ' / ' + res.status, res.error.message);
+                  this.messageService.add({ severity: 'error', summary: msg.error + ' / ' + res.status, detail: res.error.message });                    
 
                 } else {
                   this.delList = [];
                   saveList = [];
 
-                  this.msgs = this.mainMenu.showMessage('success', msg.success, res.message);
+                  this.messageService.add({ severity: 'success', summary: msg.success, detail: res.message });                  
                   this.retrieve(this.departmentId);
                 }
               }

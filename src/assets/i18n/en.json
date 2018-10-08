@@ -4,7 +4,7 @@
         "userName": "User ID",
         "password": "Password",
         "login": "LOG IN",
-        "forgot": "Forgot your password?"
+        "forgot": "Forgot your password?"        
     },
     "main": {
         "siteName": "Site Name",
@@ -58,7 +58,9 @@
             "noGeoSupport": "Geolocation is not supported by this browser.",
             "onLine": "Online Mode",
             "offLine": "Offline Mode",
-            "NewApp": "Newer version of the app is available."
+            "newApp": "Newer version of the app is available. Please refresh the page.",
+            "UpdApp": "Updating the new version is complete.",
+            "errApp": "Updating the new version was failed."
         }
     },
     "home": {
@@ -109,7 +111,7 @@
             "search": "Search",
             "add": "Add",
             "edit": "Edit",
-            "delete": "Delete",
+            "delete": "Del",
             "save": "Save",
             "count": "Count",
             "dialHeader": "Employee Info",

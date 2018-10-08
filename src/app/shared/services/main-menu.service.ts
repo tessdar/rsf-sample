@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
-import { Message } from 'primeng/components/common/api';
 
 @Injectable()
 export class MainMenuService {
@@ -341,16 +340,16 @@ export class MainMenuService {
     this.isConnected = isConnected;
   }
 
-  /**
-   * 메시지 출력하는 메서드 
-   * @param severity: 메시지 종류 
-   * @param summary: 메시지 헤더
-   * @param detail: 메시지 상세내역
-   */
-  public showMessage(severity: string, summary: string, detail: string): Message[] {
-    let msgs = [] as Message[];
-    msgs.push({ severity: severity, summary: summary, detail: detail });
-    return msgs;
-  }
+  // /**
+  //  * 메시지 출력하는 메서드 
+  //  * @param severity: 메시지 종류 
+  //  * @param summary: 메시지 헤더
+  //  * @param detail: 메시지 상세내역
+  //  */
+  // public showMessage(severity: string, summary: string, detail: string): Message[] {
+  //   let msgs = [] as Message[];
+  //   msgs.push({ severity: severity, summary: summary, detail: detail });
+  //   return msgs;
+  // }
 
 }

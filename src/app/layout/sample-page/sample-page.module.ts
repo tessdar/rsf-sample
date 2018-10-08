@@ -16,7 +16,7 @@ import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
-import { GrowlModule } from 'primeng/growl';
+import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { DropdownModule } from 'primeng/dropdown';
@@ -57,7 +57,7 @@ import { WebBluetoothComponent } from './components/web-bluetooth/web-bluetooth.
     DialogModule,
     InputTextModule,
     CheckboxModule,
-    GrowlModule,
+    ToastModule,
     ConfirmDialogModule,
     BreadcrumbModule,
     DropdownModule,

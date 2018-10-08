@@ -1,22 +1,23 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Message } from 'primeng/components/common/api';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
 import { saveAs } from 'file-saver/FileSaver';
 
+import { MessageService } from 'primeng/api';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 
 @Component({
   selector: 'app-sign-pad',
   templateUrl: './sign-pad.component.html',
-  styleUrls: ['./sign-pad.component.scss']
+  styleUrls: ['./sign-pad.component.scss'],
+  providers: [MessageService]
 })
 export class SignPadComponent implements OnInit {
 
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
 
   public signImage: string;
-  public msgs: Message[] = []; // i18n 텍스트 변환 변수
+  // public msgs: Message[] = []; // i18n 텍스트 변환 변수
 
   public signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
     'minWidth': 5,
@@ -27,7 +28,8 @@ export class SignPadComponent implements OnInit {
 
   constructor(
     public mainMenu: MainMenuService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -59,7 +61,7 @@ export class SignPadComponent implements OnInit {
   public drawSave() {
     if (this.signaturePad.isEmpty()) {
       this.translate.get('shared.message').subscribe(msg => {
-        this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.noSaveData);
+        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSaveData });        
       });
 
     } else {      

@@ -2,7 +2,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { Message } from 'primeng/components/common/api';
+import { MessageService } from 'primeng/api';
 
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../shared/state/reducers';
@@ -15,19 +15,20 @@ import { LoginService } from '../shared/services/login.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [LoginService]
+  providers: [LoginService, MessageService]
 })
 export class LoginComponent implements OnInit {
-  public msgs: Message[] = []; // i18n 텍스트 변환 변수
 
   public userform: FormGroup;
+  public version: string = '1.0.0';
 
   @HostBinding('class.application') class = 'application';
   constructor(public router: Router,
-    public mainMenu: MainMenuService,    
+    public mainMenu: MainMenuService,
+    private messageService: MessageService,
     private translate: TranslateService,
     private loginService: LoginService,
-    private store: Store<fromRoot.State>,    
+    private store: Store<fromRoot.State>,
     private fb: FormBuilder) {
 
   }
@@ -64,13 +65,13 @@ export class LoginComponent implements OnInit {
 
       if (!res) {
         this.translate.get('shared.message').subscribe(msg => {
-          this.msgs = this.mainMenu.showMessage('error', msg.error, msg.noResponse);
+          this.messageService.add({ severity: 'error', summary: msg.error, detail: msg.noResponse });
         });
 
       } else {
         if (res.ok == false) {
           this.translate.get('shared.message').subscribe(msg => {
-            this.msgs = this.mainMenu.showMessage('error', msg.error + ' / ' + res.status, res.error.message);
+            this.messageService.add({ severity: 'error', summary: msg.error + ' / ' + res.status, detail: res.error.message });
           });
 
         } else {
@@ -82,9 +83,8 @@ export class LoginComponent implements OnInit {
 
           } else {
             this.translate.get('shared.message').subscribe(msg => {
-              this.msgs = this.mainMenu.showMessage('warn', msg.warn, msg.loginFail);
+              this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.loginFail });
             });
-
           }
         }
       }

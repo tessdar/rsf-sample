@@ -27,7 +27,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
-import { GrowlModule } from 'primeng/growl';
 import { ToastModule } from 'primeng/toast';
 
 // AuthGuard
@@ -72,7 +71,6 @@ import { environment } from '../environments/environment';
     InputTextModule,
     PasswordModule,
     ButtonModule,
-    GrowlModule,
     ToastModule,
     // WebBluetoothModule.forRoot({
     //   enableTracing: true
