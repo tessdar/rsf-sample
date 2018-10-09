@@ -28,12 +28,13 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-// Cam/barcode/signpad Module
+// Cam/barcode/signpad/Bluetooth Module
 import { WebcamModule } from 'ngx-webcam';
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { AgmCoreModule } from '@agm/core';
+import { WebBluetoothModule } from '@manekinekko/angular-web-bluetooth';
 
 // Components
 import { BasicCrudComponent } from './components/basic-crud/basic-crud.component';
@@ -73,6 +74,9 @@ import { WebBluetoothComponent } from './components/web-bluetooth/web-bluetooth.
     NgxBarcodeModule,
     ZXingScannerModule,
     SignaturePadModule,
+    WebBluetoothModule.forRoot({
+      enableTracing: true
+    }),
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en

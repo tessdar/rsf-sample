@@ -41,7 +41,7 @@
               "node_modules/quill/dist/quill.min.js",
               "node_modules/chart.js/dist/Chart.min.js",
               "node_modules/fullcalendar/dist/fullcalendar.min.js",
-              "node_modules/fullcalendar/dist/locale/ko.js"
+              "node_modules/fullcalendar/dist/locales/ko.js"
             ]
           },
           "configurations": {

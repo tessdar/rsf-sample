@@ -42,9 +42,6 @@ import { DeactGuard } from './shared/guard/deact.guard';
 import { MainMenuService } from './shared/services/main-menu.service';
 import { ConnectionService } from 'ng-connection-service';
 
-// Bluetooth
-// import { WebBluetoothModule } from '@manekinekko/angular-web-bluetooth';
-
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -76,9 +73,6 @@ import { environment } from '../environments/environment';
     ButtonModule,
     ToastModule,
     FontAwesomeModule,
-    // WebBluetoothModule.forRoot({
-    //   enableTracing: true
-    // }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthGuard, DeactGuard, MainMenuService, ConnectionService],

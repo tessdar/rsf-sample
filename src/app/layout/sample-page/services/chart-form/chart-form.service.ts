@@ -4,7 +4,9 @@ import { environment } from '../../../../../environments/environment';
 
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ChartFormService {
 
   constructor(public http: HttpClient,

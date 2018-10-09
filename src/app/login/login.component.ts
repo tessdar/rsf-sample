@@ -22,7 +22,7 @@ import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 export class LoginComponent implements OnInit {
 
   public userform: FormGroup;
-  public version: string = '1.0.3';
+  public version: string = '1.0.4';
 
   public faEnvelope = faEnvelope;
   public faLock = faLock;

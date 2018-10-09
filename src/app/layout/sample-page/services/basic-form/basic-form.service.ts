@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class BasicFormService {
 
   constructor(public http: HttpClient,

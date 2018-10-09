@@ -6,7 +6,9 @@ import { mapTo, switchMap, takeUntil } from 'rxjs/operators';
 
 import * as ApplicationActions from './actions';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class ApplicationEffects {
     constructor() { }
 

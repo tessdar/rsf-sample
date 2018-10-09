@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class MainMenuService {
   private language: string;
   private isConnected: boolean;

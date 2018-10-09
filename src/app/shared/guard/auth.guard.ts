@@ -7,7 +7,9 @@ import * as fromRoot from '../state/reducers';
 
 import { environment } from '../../../environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthGuard implements CanActivate {
 
   constructor(

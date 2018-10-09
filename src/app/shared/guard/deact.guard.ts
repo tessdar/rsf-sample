@@ -9,7 +9,9 @@ export interface CanComponentDeactivate {
   canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class DeactGuard implements CanDeactivate<CanComponentDeactivate> {
 
   private login = true as boolean;
