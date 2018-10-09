@@ -9,19 +9,19 @@ import { MainMenuService } from '../../../../shared/services/main-menu.service';
 })
 export class InputLibComponent implements OnInit {
   /** 체크박스 */
-  chkbox1: boolean;
-  chkbox2: boolean;
-  chkbox3: boolean;
+  public chkbox1: boolean;
+  public chkbox2: boolean;
+  public chkbox3: boolean;
 
   /** 라디오박스 */
-  val1: string;
+  public val1: string;
 
   /** 드랍다운 */
-  items: SelectItem[];
-  selectedItem: SelectItem;
+  public items: SelectItem[];
+  public selectedItem: SelectItem;
 
   /** 날짜입력 */
-  date3: Date;
+  public date3: Date;
 
   constructor(public mainMenu: MainMenuService) { }
 

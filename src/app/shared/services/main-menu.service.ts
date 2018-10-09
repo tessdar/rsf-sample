@@ -19,7 +19,6 @@ export class MainMenuService {
   /**
    * 메인 메뉴 설정
    * label: 메뉴이름
-   * icon: 메뉴아이콘
    * items: 하위 메뉴
    * routerLink: 메뉴클릭시 이동할 페이지 경로
    * command: - menuActive 변수가 true 이면 false로 false이면 true로 변경
@@ -31,11 +30,9 @@ export class MainMenuService {
     this.menuItems = [
       {
         label: menuLang.designGuide,
-        icon: 'fas fa-desktop',
         items: [
           {
-            label: menuLang.btnLib,
-            icon: 'fas fa-hand-point-up',
+            label: menuLang.btnLib,            
             routerLink: '/layout/design-guide/btn-lib',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -47,8 +44,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.inputLib,
-            icon: 'fas fa-keyboard',
+            label: menuLang.inputLib,            
             routerLink: '/layout/design-guide/input-lib',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -60,8 +56,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.tabView,
-            icon: 'fas fa-file',
+            label: menuLang.tabView,            
             routerLink: '/layout/design-guide/tab-view',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -73,8 +68,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.scheView,
-            icon: 'fas fa-calendar-alt',
+            label: menuLang.scheView,            
             routerLink: '/layout/design-guide/sche-view',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -84,28 +78,14 @@ export class MainMenuService {
               ];
               this.setBreadItems(menuLang);
             }
-          },          
-          {
-            label: menuLang.iconLib,
-            icon: 'fab fa-bandcamp',
-            routerLink: '/layout/design-guide/icon-lib',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'designGuide' },
-                { 'key': 'iconLib' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          }]
+          }     
+        ]
       },
       {
-        label: menuLang.samplePage,
-        icon: 'fas fa-columns',
+        label: menuLang.samplePage,        
         items: [
           {
-            label: menuLang.basicCrud,
-            icon: 'fas fa-edit',
+            label: menuLang.basicCrud,            
             routerLink: '/layout/sample-page/basic-crud',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -117,8 +97,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.basicForm,
-            icon: 'fas fa-window-maximize',
+            label: menuLang.basicForm,            
             routerLink: '/layout/sample-page/basic-form',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -130,8 +109,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.chartForm,
-            icon: 'fas fa-chart-bar',
+            label: menuLang.chartForm,            
             routerLink: '/layout/sample-page/chart-form',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -143,8 +121,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.basicWebcam,
-            icon: 'fas fa-camera',
+            label: menuLang.basicWebcam,            
             routerLink: '/layout/sample-page/basic-webcam',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -156,8 +133,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.barcodeScan,
-            icon: 'fas fa-barcode',
+            label: menuLang.barcodeScan,            
             routerLink: '/layout/sample-page/barcode-scan',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -169,8 +145,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.signPad,
-            icon: 'fas fa-signature',
+            label: menuLang.signPad,            
             routerLink: '/layout/sample-page/sign-pad',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -182,8 +157,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.googleMaps,
-            icon: 'fas fa-map',
+            label: menuLang.googleMaps,            
             routerLink: '/layout/sample-page/google-maps',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -195,8 +169,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.webBluetooth,
-            icon: 'fab fa-bluetooth',
+            label: menuLang.webBluetooth,            
             routerLink: '/layout/sample-page/web-bluetooth',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -210,12 +183,10 @@ export class MainMenuService {
         ]
       },
       {
-        label: menuLang.helpAdvice,
-        icon: 'fas fa-question',
+        label: menuLang.helpAdvice,        
         items: [
           {
-            label: menuLang.archHelp,
-            icon: 'fas fa-building',
+            label: menuLang.archHelp,            
             routerLink: '/layout/help-advice/arch-help',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -227,8 +198,7 @@ export class MainMenuService {
             }        
           },
           {
-            label: menuLang.newComp,
-            icon: 'fas fa-plus-square',
+            label: menuLang.newComp,            
             routerLink: '/layout/help-advice/new-comp',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -240,8 +210,7 @@ export class MainMenuService {
             }        
           },
           {
-            label: menuLang.newServ,
-            icon: 'fas fa-server',
+            label: menuLang.newServ,            
             routerLink: '/layout/help-advice/new-serv',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -253,8 +222,7 @@ export class MainMenuService {
             }        
           },          
           {
-            label: menuLang.designLayout,
-            icon: 'fas fa-image',
+            label: menuLang.designLayout,            
             routerLink: '/layout/help-advice/design-layout',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -339,17 +307,5 @@ export class MainMenuService {
   public setIsConnected(isConnected: boolean) {
     this.isConnected = isConnected;
   }
-
-  // /**
-  //  * 메시지 출력하는 메서드 
-  //  * @param severity: 메시지 종류 
-  //  * @param summary: 메시지 헤더
-  //  * @param detail: 메시지 상세내역
-  //  */
-  // public showMessage(severity: string, summary: string, detail: string): Message[] {
-  //   let msgs = [] as Message[];
-  //   msgs.push({ severity: severity, summary: summary, detail: detail });
-  //   return msgs;
-  // }
 
 }

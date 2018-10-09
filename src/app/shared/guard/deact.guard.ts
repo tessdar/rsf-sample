@@ -24,8 +24,8 @@ export class DeactGuard implements CanDeactivate<CanComponentDeactivate> {
    * 그렇지 않은 경우 컴포넌트의 canDeactivate() 메서드에 정의된 코드에 따라 이동여부를 결정한다.
    * @param component 
    */
-  canDeactivate(component: CanComponentDeactivate) {
-    this.store.select(fromRoot.selectIsLoggedIn).subscribe(res => {
+  canDeactivate(component: CanComponentDeactivate) {    
+    this.store.select(fromRoot.selectIsLoggedIn).subscribe(res => {      
       this.login = res;
     });
 

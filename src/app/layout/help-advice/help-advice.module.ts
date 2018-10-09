@@ -11,6 +11,8 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { TreeTableModule } from 'primeng/treetable';
 import { PanelModule } from 'primeng/panel';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 // Component
 import { ArchHelpComponent } from './component/arch-help/arch-help.component';
 import { NewCompComponent } from './component/new-comp/new-comp.component';
@@ -24,7 +26,8 @@ import { NewServComponent } from './component/new-serv/new-serv.component';
     TranslateModule,
     BreadcrumbModule,
     TreeTableModule,
-    PanelModule
+    PanelModule,
+    FontAwesomeModule
   ],
   declarations: [ArchHelpComponent, NewCompComponent, DesignLayoutComponent, NewServComponent],
   exports: [TranslatePipe],

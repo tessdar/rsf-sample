@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SelectItem, MenuItem } from 'primeng/api';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
 
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-btn-lib',
   templateUrl: './btn-lib.component.html',
@@ -9,13 +11,17 @@ import { MainMenuService } from '../../../../shared/services/main-menu.service';
 })
 export class BtnLibComponent implements OnInit {
 
-  types: SelectItem[];
-  selectedType: string;
-  items: MenuItem[];
+  public types: SelectItem[];
+  public selectedType: string;
+  public items: MenuItem[];
 
-  uploadedFiles: any[] = [];
+  public uploadedFiles: any[] = [];
 
-  constructor(public mainMenu: MainMenuService) { }
+  public faAngleRight = faAngleRight;
+
+  constructor(
+    public mainMenu: MainMenuService
+  ) { }
 
   /**
    * 화면 초기설정
@@ -23,29 +29,27 @@ export class BtnLibComponent implements OnInit {
    */
   ngOnInit() {
     this.types = [
-      { label: 'Lorem Ipsum 1', value: '1', icon: 'fab fa-facebook' },
-      { label: 'Lorem Ipsum 2', value: '2', icon: 'fab fa-google-plus' },
-      { label: 'Lorem Ipsum 3', value: '3', icon: 'fab fa-apple' }
+      { label: 'Lorem Ipsum 1', value: '1' },
+      { label: 'Lorem Ipsum 2', value: '2' },
+      { label: 'Lorem Ipsum 3', value: '3' }
     ];
 
     this.items = [
       {
-        label: 'Update', icon: 'fas fa-sync-alt', command: () => {
+        label: 'Update', command: () => {
           // this.update();
         }
       },
       {
-        label: 'Delete', icon: 'fas fa-times-circle', command: () => {
+        label: 'Delete', command: () => {
           // this.delete();
         }
       },
-      { label: 'Angular.io', icon: 'fas fa-link', url: 'http://angular.io' }
+      { label: 'Angular.io', url: 'http://angular.io' }
     ];
 
   }
 
-  onUpload(event) {
- 
-  }
+  onUpload(event) { }
 
 }

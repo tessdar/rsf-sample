@@ -14,6 +14,8 @@ import { MainMenuService } from '../shared/services/main-menu.service';
 
 import { environment } from '../../environments/environment';
 
+import { faBars, faUser, faCheck, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -24,6 +26,10 @@ export class LayoutComponent implements OnInit {
   public logoutDisplay = false as boolean;
   public userInfoBar = false as boolean;
   public logoutTimer: string;
+  public faBars = faBars;
+  public faUser = faUser;
+  public faCheck = faCheck;
+  public faAngleRight = faAngleRight;
 
   @HostBinding('class.application') class = 'application';
   constructor(

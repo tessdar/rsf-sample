@@ -17,7 +17,6 @@ export class SignPadComponent implements OnInit {
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
 
   public signImage: string;
-  // public msgs: Message[] = []; // i18n 텍스트 변환 변수
 
   public signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
     'minWidth': 5,

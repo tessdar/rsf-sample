@@ -7,6 +7,8 @@ import { _Status } from '../../../../shared/enums/status.enum';
 import { TableCol } from '../../../../shared/interfaces/table-col';
 import { DataSet, SaveSet } from '../../interfaces/basic-crud/data-set';
 
+import { faSearch, faCheck, faPlus, faEdit, faTrashAlt, faSave, faFilter, faBackward, faDownload } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-basic-crud',
   templateUrl: './basic-crud.component.html',
@@ -28,12 +30,21 @@ export class BasicCrudComponent implements OnInit {
   public displayDialog: boolean; // 추가, 수정 다이얼로그 출력 변수
   public departmentId: string; // 조회조건
 
-  // public msgs: Message[] = []; // i18n 텍스트 변환 변수
+  // Icons
+  public faSearch = faSearch;
+  public faPlus = faPlus;
+  public faEdit = faEdit;
+  public faTrashAlt = faTrashAlt;
+  public faSave = faSave;
+  public faFilter = faFilter;
+  public faBackward = faBackward;
+  public faDownload = faDownload;
+  public faCheck = faCheck;
 
   constructor(
     public mainMenu: MainMenuService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService,    
+    private confirmationService: ConfirmationService,
     private basicCrudService: BasicCrudService,
     private translate: TranslateService) { }
 
@@ -68,7 +79,7 @@ export class BasicCrudComponent implements OnInit {
    * 수정한 내역이 있는데 화면을 나가려고 하는 경우 경고 메시지 출력하는 메서드
    * true: 화면이동 / false: 화면이동하지 않음.
    */
-  public canDeactivate(): boolean {
+  public canDeactivate(): boolean {    
     if (this.saveCheck()) {
       return this.askQuit();
 
@@ -102,7 +113,7 @@ export class BasicCrudComponent implements OnInit {
       } else {
         if (res.ok == false) {
           this.translate.get('shared.message').subscribe(msg => {
-            this.messageService.add({ severity: 'error', summary: msg.error, detail: 'Status: ' + res.status + ', ' + res.statusText });            
+            this.messageService.add({ severity: 'error', summary: msg.error, detail: 'Status: ' + res.status + ', ' + res.statusText });
           });
 
         } else {
@@ -162,14 +173,14 @@ export class BasicCrudComponent implements OnInit {
 
     if (!this.selectedRows) {
       this.translate.get('shared.message').subscribe(msg => {
-        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSelected });  
+        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSelected });
       });
       return;
 
     } else {
       if (this.selectedRows.length < 1) {
         this.translate.get('shared.message').subscribe(msg => {
-          this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSelected });            
+          this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSelected });
         });
         return;
 
@@ -267,7 +278,7 @@ export class BasicCrudComponent implements OnInit {
     if (saveList.length < 1) {
       this.loading = false;
       this.translate.get('shared.message').subscribe(msg => {
-        this.messageService.add({ severity: 'info', summary: msg.info, detail: msg.noSaveData });          
+        this.messageService.add({ severity: 'info', summary: msg.info, detail: msg.noSaveData });
       });
       return;
 
@@ -276,24 +287,24 @@ export class BasicCrudComponent implements OnInit {
 
         this.confirmationService.confirm({
           message: msg.confProc,
+          icon: 'pi pi-question-circle',
           header: msg.confm,
-          icon: 'fas fa-question-circle',
           accept: () => {
             this.basicCrudService.setEmp(saveList).then((res: any) => {
               this.loading = false;
 
               if (!res) {
-                this.messageService.add({ severity: 'error', summary: msg.error, detail: msg.noResponse });  
+                this.messageService.add({ severity: 'error', summary: msg.error, detail: msg.noResponse });
 
               } else {
                 if (res.ok == false) {
-                  this.messageService.add({ severity: 'error', summary: msg.error + ' / ' + res.status, detail: res.error.message });                    
+                  this.messageService.add({ severity: 'error', summary: msg.error + ' / ' + res.status, detail: res.error.message });
 
                 } else {
                   this.delList = [];
                   saveList = [];
 
-                  this.messageService.add({ severity: 'success', summary: msg.success, detail: res.message });                  
+                  this.messageService.add({ severity: 'success', summary: msg.success, detail: res.message });
                   this.retrieve(this.departmentId);
                 }
               }
@@ -343,8 +354,8 @@ export class BasicCrudComponent implements OnInit {
       this.translate.get('shared.message').subscribe(msg => {
         this.confirmationService.confirm({
           message: msg.askQuit,
+          icon: 'pi pi-question-circle',
           header: msg.confm,
-          icon: 'fas fa-question-circle',
           accept: () => {
             resolve(true);
           },

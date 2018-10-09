@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
 
 @Component({
@@ -11,11 +11,9 @@ export class ScheViewComponent implements OnInit {
   public headerConfig: any;
   public events: any[];
 
-  constructor(public mainMenu: MainMenuService,
-    private renderer: Renderer2,
-    private elementRef: ElementRef) {
-
-  }
+  constructor(
+    public mainMenu: MainMenuService
+  ) { }
 
   ngOnInit() {
     this.headerConfig = {
@@ -53,22 +51,7 @@ export class ScheViewComponent implements OnInit {
         "color": "#36A2EB"
       }
     ];
-    
-  }
 
-  ngAfterViewInit() {
-    let leftArrow = this.elementRef.nativeElement.querySelector('.ui-icon-circle-triangle-w');
-    let rightArrow = this.elementRef.nativeElement.querySelector('.ui-icon-circle-triangle-e');
-
-    this.renderer.removeClass(leftArrow, 'ui-icon');
-    this.renderer.removeClass(leftArrow, 'ui-icon-circle-triangle-w');
-    this.renderer.addClass(leftArrow,'fas');
-    this.renderer.addClass(leftArrow,'fa-caret-left');
-
-    this.renderer.removeClass(rightArrow, 'ui-icon');
-    this.renderer.removeClass(rightArrow, 'ui-icon-circle-triangle-e');
-    this.renderer.addClass(rightArrow,'fas');
-    this.renderer.addClass(rightArrow,'fa-caret-right');
   }
 
 }

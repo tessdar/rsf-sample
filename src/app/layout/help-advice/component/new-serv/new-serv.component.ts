@@ -10,7 +10,6 @@ export class NewServComponent implements OnInit {
 
   constructor(public mainMenu: MainMenuService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

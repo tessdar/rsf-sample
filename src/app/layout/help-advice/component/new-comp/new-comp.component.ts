@@ -10,7 +10,6 @@ export class NewCompComponent implements OnInit {
 
   constructor(public mainMenu: MainMenuService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

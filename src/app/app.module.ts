@@ -29,6 +29,9 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 
+// Icon
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 // AuthGuard
 import { reducers } from './shared/state/reducers';
 import { ApplicationEffects } from './shared/state/application/effects';
@@ -72,6 +75,7 @@ import { environment } from '../environments/environment';
     PasswordModule,
     ButtonModule,
     ToastModule,
+    FontAwesomeModule,
     // WebBluetoothModule.forRoot({
     //   enableTracing: true
     // }),

@@ -46,7 +46,8 @@
       <div class="ui-sm-12 ui-md-6 ui-lg-8 ui-g-nopad">
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon required">{{ 'samplePage.basicForm.jobId' | translate }}</span>
-          <p-dropdown [options]="jobItems" formControlName="jobId" [ngClass]="'ui-dropdown-cust'" [autoWidth]="false" [autoDisplayFirst]="true"></p-dropdown>
+          <p-dropdown [options]="jobItems" formControlName="jobId" [ngClass]="'ui-dropdown-cust'" [autoWidth]="false"
+            [autoDisplayFirst]="true"></p-dropdown>
         </div>
       </div>
       <p-message severity="error" [text]="'samplePage.basicForm.RequiredField' | translate" *ngIf="!userform.controls['jobId'].valid&&userform.controls['jobId'].dirty"></p-message>
@@ -55,14 +56,17 @@
       <div class="ui-sm-12 ui-md-6 ui-lg-8 ui-g-nopad">
         <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon required">{{ 'samplePage.basicForm.departmentId' | translate }}</span>
-          <p-dropdown [options]="deptItems" formControlName="departmentId" [ngClass]="'ui-dropdown-cust'" [autoWidth]="false" [autoDisplayFirst]="true"></p-dropdown>
+          <p-dropdown [options]="deptItems" formControlName="departmentId" [ngClass]="'ui-dropdown-cust'" [autoWidth]="false"
+            [autoDisplayFirst]="true"></p-dropdown>
         </div>
       </div>
       <p-message severity="error" [text]="'samplePage.basicForm.RequiredField' | translate" *ngIf="!userform.controls['departmentId'].valid&&userform.controls['departmentId'].dirty"></p-message>
     </div>
     <div class="ui-g ui-fluid">
       <div class="ui-sm-offset-8 ui-sm-4 ui-md-offset-8 ui-md-2 ui-lg-offset-6 ui-lg-2 ui-g-lrpad">
-        <button pButton type="submit" [disabled]="!userform.valid" icon="fas fa-save" label="{{ 'samplePage.basicForm.save' | translate }}"></button>
+        <button pButton type="submit" [disabled]="!userform.valid" label="{{ 'samplePage.basicForm.save' | translate }}">
+          <fa-icon [icon]="faSave"></fa-icon>
+        </button>
       </div>
     </div>
   </p-panel>

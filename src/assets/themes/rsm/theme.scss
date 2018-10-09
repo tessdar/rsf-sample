@@ -1,4 +1,4 @@
-$fontFamily:  "RSMRegular", "RSMLight", "RSMBold", "Trebuchet MS", Arial, Helvetica, sans-serif;
+$fontFamily:  "RSMRegular", "Trebuchet MS", Arial, Helvetica, sans-serif;
 $fontSize: 1em;
 $borderRadius: 3px;
 $disabledOpacity: 0.35;
@@ -94,32 +94,6 @@ $ternaryTxtHvColor: #fff;
       url("./fonts/RenaultSamsungMotorsRegular.ttf") format("truetype"), /* Safari, Android, iOS */
       url("./fonts/RenaultSamsungMotorsRegular.woff") format("woff"), /* Modern Browsers */
       url("./fonts/RenaultSamsungMotorsRegular.woff2") format("woff2"); /* Modern Browsers */
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* RSMLight */
-@font-face {
-    font-family: "RSMLight";
-    src: url("./fonts/RenaultSamsungMotorsLight.eot"); /* IE9 Compat Modes */
-    src: url("./fonts/RenaultSamsungMotorsLight.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-      url("./fonts/RenaultSamsungMotorsLight.svg") format("svg"), /* Legacy iOS */
-      url("./fonts/RenaultSamsungMotorsLight.ttf") format("truetype"), /* Safari, Android, iOS */
-      url("./fonts/RenaultSamsungMotorsLight.woff") format("woff"), /* Modern Browsers */
-      url("./fonts/RenaultSamsungMotorsLight.woff2") format("woff2"); /* Modern Browsers */
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* RSMBold */
-@font-face {
-    font-family: "RSMBold";
-    src: url("./fonts/RenaultSamsungMotorsBold.eot"); /* IE9 Compat Modes */
-    src: url("./fonts/RenaultSamsungMotorsBold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-      url("./fonts/RenaultSamsungMotorsBold.svg") format("svg"), /* Legacy iOS */
-      url("./fonts/RenaultSamsungMotorsBold.ttf") format("truetype"), /* Safari, Android, iOS */
-      url("./fonts/RenaultSamsungMotorsBold.woff") format("woff"), /* Modern Browsers */
-      url("./fonts/RenaultSamsungMotorsBold.woff2") format("woff2"); /* Modern Browsers */
     font-weight: normal;
     font-style: normal;
 }
@@ -274,6 +248,27 @@ $ternaryTxtHvColor: #fff;
 }
 
 /* Buttons & Links */
+.ui-button.ui-button-text-empty fa-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;    
+    transform: translate(-50%, -50%);
+    display: block; 
+}
+
+.ui-button.ui-button-text-only fa-icon {
+    position: absolute;
+    top: 50%;
+    left: 20%;    
+    transform: translate(-50%, -50%);
+    display: block;  
+    
+    + .ui-button-text {
+        padding-left: 1.7em;
+        padding-right: 0.7em;
+    }
+}
+
 
 /* Primary Button */
 .ui-widget-header .ui-button,		
@@ -936,31 +931,31 @@ form.ui-form {
 }
 
 /* Growl */
-.ui-growl {
-	top: 75px;
-}
+// .ui-growl {
+// 	top: 75px;
+// }
 
-.ui-growl-item-container.ui-state-highlight {
-    &.ui-growl-message-info {
-        background-color: #2196f3;
-        border-color :#2196f3;
-    }
+// .ui-growl-item-container.ui-state-highlight {
+//     &.ui-growl-message-info {
+//         background-color: #2196f3;
+//         border-color :#2196f3;
+//     }
     
-    &.ui-growl-message-error {
-        background-color: #f44336;
-        border-color :#f44336;
-    }
+//     &.ui-growl-message-error {
+//         background-color: #f44336;
+//         border-color :#f44336;
+//     }
     
-    &.ui-growl-message-warn {
-        background-color: #FFB300;
-        border-color :#FFB300;
-    }
+//     &.ui-growl-message-warn {
+//         background-color: #FFB300;
+//         border-color :#FFB300;
+//     }
     
-    &.ui-growl-message-success {
-        background-color: #4CAF50;
-        border-color :#4CAF50;
-    }
-}
+//     &.ui-growl-message-success {
+//         background-color: #4CAF50;
+//         border-color :#4CAF50;
+//     }
+// }
 
 /* Toast */
 body .ui-toast .ui-toast-message {
@@ -1215,17 +1210,29 @@ body .ui-toast .ui-toast-message {
             color: $inputTextColor;
         }
     }
-
     .fc-day-grid-event {
         background: $primaryBgColor;
         border: 1px solid $primaryBdColor;
         border-radius: 0px;
         color: black;
     }
-
     .fc-day-header {
         padding: 5px 0px 5px 0px;
         border-radius: 0px;
         background: $inputHeaderBgColor;
+    }
+    .fc-toolbar .ui-button .ui-icon-circle-triangle-w {
+        font-family: 'PrimeIcons';
+        text-indent: 0; 
+    }
+    .fc-toolbar .ui-button .ui-icon-circle-triangle-w:before {
+        content: ""; 
+    }
+    .fc-toolbar .ui-button .ui-icon-circle-triangle-e {
+        font-family: 'PrimeIcons';
+        text-indent: 0; 
+    }
+    .fc-toolbar .ui-button .ui-icon-circle-triangle-e:before {
+        content: "";
     }
 }

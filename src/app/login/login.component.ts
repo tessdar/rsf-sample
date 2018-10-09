@@ -11,6 +11,8 @@ import * as ApplicationActions from '../shared/state/application/actions';
 import { MainMenuService } from '../shared/services/main-menu.service';
 import { LoginService } from '../shared/services/login.service';
 
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +22,10 @@ import { LoginService } from '../shared/services/login.service';
 export class LoginComponent implements OnInit {
 
   public userform: FormGroup;
-  public version: string = '1.0.0';
+  public version: string = '1.0.3';
+
+  public faEnvelope = faEnvelope;
+  public faLock = faLock;
 
   @HostBinding('class.application') class = 'application';
   constructor(public router: Router,

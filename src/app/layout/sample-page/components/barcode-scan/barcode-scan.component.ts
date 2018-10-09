@@ -1,4 +1,4 @@
-import { Component, VERSION, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
 
@@ -12,18 +12,15 @@ import { Result } from '@zxing/library';
 })
 export class BarcodeScanComponent implements OnInit {
 
-  ngVersion = VERSION.full;
-
   @ViewChild('scanner')
   scanner: ZXingScannerComponent;
 
-  hasDevices: boolean;
-  hasPermission: boolean;
-  qrResultString: string;
-  qrResult: Result;
-
+  public hasDevices: boolean;
+  public hasPermission: boolean;
+  public qrResultString: string;
+  private qrResult: Result;
   public currentDevice: MediaDeviceInfo;
-
+  
   public deviceLists = [] as SelectItem[];
 
   constructor(
@@ -77,12 +74,14 @@ export class BarcodeScanComponent implements OnInit {
   }
 
   handleQrCodeResult(resultString: string) {
-    // console.log('Result: ', resultString);
+    let snd = new Audio();
+    snd.src = '../../../../../assets/audio/beep.mp3'
+    snd.load();
+    snd.play();
     this.qrResultString = resultString;
   }
 
-  onDeviceSelectChange(event: any) {
-    // console.log('Selection changed: ', event.value);
+  onDeviceSelectChange(event: any) {    
     this.currentDevice = this.scanner.getDeviceById(event.value);
   }
 

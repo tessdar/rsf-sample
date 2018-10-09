@@ -27,11 +27,12 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ScheduleModule } from 'primeng/schedule';
 import { FileUploadModule } from 'primeng/fileupload';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 // Pipes
 import { SearchFilterPipe } from '../../shared/pipes/search-filter.pipe';
 
 // Components
-import { IconLibComponent } from './components/icon-lib/icon-lib.component';
 import { BtnLibComponent } from './components/btn-lib/btn-lib.component';
 import { InputLibComponent } from './components/input-lib/input-lib.component';
 import { TabViewComponent } from './components/tab-view/tab-view.component';
@@ -59,11 +60,11 @@ import { ScheViewComponent } from './components/sche-view/sche-view.component';
     EditorModule,
     InputTextareaModule,
     ScheduleModule,
-    FileUploadModule
+    FileUploadModule,
+    FontAwesomeModule
   ],
   declarations: [
-    SearchFilterPipe,
-    IconLibComponent,
+    SearchFilterPipe,    
     BtnLibComponent,
     InputLibComponent,
     TabViewComponent,

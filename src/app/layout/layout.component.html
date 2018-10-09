@@ -1,23 +1,27 @@
 <!-- 로그아웃 다이얼로그 -->
-<p-dialog header="{{ 'main.logout' | translate }}" [(visible)]="logoutDisplay" modal="modal" [responsive]="true" [width]="350"
-    [minWidth]="200" [baseZIndex]="9999" [closeOnEscape]="false" [closable]="false">
+<p-dialog header="{{ 'main.logout' | translate }}" [(visible)]="logoutDisplay" modal="modal" [responsive]="true"
+    [width]="350" [minWidth]="200" [baseZIndex]="9999" [closeOnEscape]="false" [closable]="false">
     <span>{{ 'main.autoLogout' | translate }}</span>
     <p-footer>
-        <button type="button" pButton icon="fas fa-check" (click)="logout()" label="OK"></button>
+        <button pButton type="button" (click)="logout()" label="OK">
+            <fa-icon [icon]="faCheck"></fa-icon>
+        </button>
     </p-footer>
 </p-dialog>
 
 <!-- 상단 헤더 -->
 <div id="layout-topbar">
     <a href="#" class="menu-button" (click)="onMenuButtonClick($event)">
-        <i class="fas fa-bars"></i>
+        <fa-icon [icon]="faBars"></fa-icon>
     </a>
     <div class="logo">
         <span class="logobox"></span>
         <span class="first">GROUP&nbsp;</span>
         <span class="second">RENAULT</span>
         <span class="actbtn" [ngClass]="{'inactive': mainMenu.getMenuInactive()}">
-            <button pButton type="button" icon="fas fa-angle-right fa-2x" class="ui-button-act ui-button-act-small" (click)="onMenuInactive($event)"></button>
+            <button pButton type="button" class="ui-button-act ui-button-act-small" (click)="onMenuInactive($event)">
+                <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
+            </button>
         </span>
         <a href="#" class="sitename" [routerLink]="['/layout']">
             <br>
@@ -41,7 +45,9 @@
             </ul>
         </li>
         <li class="topbar-submenu">
-            <a><i class="icon-user"></i>&nbsp; ISTO</a>
+            <a>
+                <fa-icon [icon]="faUser"></fa-icon>&nbsp; ISTO
+            </a>
             <ul>
                 <li class="topbar-submenu-header">ISTO</li>
                 <li>
@@ -49,7 +55,7 @@
                 </li>
                 <li>
                     <a href="#" [routerLink]="['/layout/config']">{{ 'main.config' | translate }}</a>
-                </li>    
+                </li>
                 <li>
                     <a (click)="logout()">{{ 'main.logout' | translate }}</a>
                 </li>

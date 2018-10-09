@@ -519,23 +519,6 @@
     }
 }
 
-.fc {
-    .fc-toolbar {
-        .fc-prev-button {
-            .ui-icon-circle-triangle-w {
-                margin-top: .3em;
-                @include icon_override("\f053");
-            }
-        }
-        .fc-next-button {
-            .ui-icon-circle-triangle-e {
-                margin-top: .3em;
-                @include icon_override("\f054");
-            }
-        }
-    }
-}
-
 .ui-rating {
     a {
         color: $inputTextColor;

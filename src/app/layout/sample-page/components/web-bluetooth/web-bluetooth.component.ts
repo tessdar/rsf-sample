@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
-import { TranslateService } from '@ngx-translate/core';
-
+// import { TranslateService } from '@ngx-translate/core';
 // import { BluetoothCore } from '@manekinekko/angular-web-bluetooth'
 
 @Component({
@@ -13,7 +12,7 @@ export class WebBluetoothComponent implements OnInit {
 
   constructor(
     public mainMenu: MainMenuService,
-    private translate: TranslateService
+    // private translate: TranslateService
     // private bluetoothCore: BluetoothCore
   ) { }
 

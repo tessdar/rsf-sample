@@ -10,7 +10,7 @@ import { TreeNode } from 'primeng/api';
 })
 export class ArchHelpComponent implements OnInit {
 
-  folders: TreeNode[];
+  public folders: TreeNode[];
 
   constructor(public mainMenu: MainMenuService) { }
 

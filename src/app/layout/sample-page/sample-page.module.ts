@@ -26,6 +26,8 @@ import { ChartModule } from 'primeng/chart';
 import { FileUploadModule } from 'primeng/fileupload';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 // Cam/barcode/signpad Module
 import { WebcamModule } from 'ngx-webcam';
 import { NgxBarcodeModule } from 'ngx-barcode';
@@ -66,6 +68,7 @@ import { WebBluetoothComponent } from './components/web-bluetooth/web-bluetooth.
     ChartModule,
     FileUploadModule,
     OverlayPanelModule,
+    FontAwesomeModule,
     WebcamModule,
     NgxBarcodeModule,
     ZXingScannerModule,

@@ -62,18 +62,11 @@ export class AppComponent implements OnInit {
       // }));
 
       // 2. 업데이트 발생 시 사용자에게 알림 
-      //    신규 버전 업데이트 되면 해당 내역 출력
       this.swUpdate.available.subscribe(evt => {
         console.log('[App] Update available: current version is', evt.current, 'available version is', evt.available);
 
         this.translate.get('shared.message').subscribe(msg => {
           this.messageService.add({ key: 'upnoti', severity: 'info', summary: msg.info, detail: msg.newApp });
-        });
-      });
-
-      this.swUpdate.activated.subscribe(() => {
-        this.translate.get('shared.message').subscribe(msg => {
-          this.messageService.add({ key: 'upnoti', severity: 'info', summary: msg.info, detail: msg.UpdApp });
         });
       });
 

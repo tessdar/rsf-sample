@@ -59,6 +59,11 @@ export class BasicWebcamComponent implements OnInit {
   }
 
   public triggerSnapshot(): void {
+    let shutter = new Audio();
+    shutter.src = '../../../../../assets/audio/shutter.mp3'
+    shutter.load();
+    shutter.play();
+    // window.navigator.vibrate(500);
     this.trigger.next();
   }
 

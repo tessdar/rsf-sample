@@ -10,7 +10,6 @@ export class TabViewComponent implements OnInit {
 
   constructor(public mainMenu: MainMenuService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

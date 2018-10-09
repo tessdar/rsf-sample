@@ -3,9 +3,9 @@
 
 <!-- Buttons -->
 <div class="ui-g">
-  <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
-    <h3 style="font-family: 'RSMBold';">
-      <i class="far fa-square" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.buttonTitle' | translate }}
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+    <h3 style="font-weight: bolder;">
+      <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.buttonTitle' | translate }}
     </h3>
   </div>
 </div>
@@ -35,20 +35,28 @@
 
 <div class="ui-g">
   <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
-    <h3 style="font-family: 'RSMBold';">
-      <i class="far fa-square" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.actTitle' | translate }}
+    <h3 style="font-weight: bolder;">
+      <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.actTitle' | translate }}
     </h3>
   </div>
 </div>
 
 <div class="ui-g">
   <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
-    <button pButton type="button" icon="fas fa-angle-right fa-2x" class="ui-button-act"></button>
-    <button pButton type="button" icon="fas fa-angle-right fa-2x" [disabled]="true" class="ui-button-act"></button>
+    <button pButton type="button" class="ui-button-act">
+      <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
+    </button>
+    <button pButton type="button" [disabled]="true" class="ui-button-act">
+      <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
+    </button>
   </div>
   <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
-    <button pButton type="button" icon="fas fa-angle-right fa-2x" class="ui-button-second-act"></button>
-    <button pButton type="button" icon="fas fa-angle-right fa-2x" [disabled]="true" class="ui-button-second-act"></button>
+    <button pButton type="button" class="ui-button-second-act">
+      <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
+    </button>
+    <button pButton type="button" [disabled]="true" class="ui-button-second-act">
+      <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
+    </button>
   </div>
   <div class="ui-sm-12 ui-md-4 ui-lg-4 ui-g-nolr-pad">
     <a href="#" class="ui-links">Lorem Ipsum</a>
@@ -65,8 +73,8 @@
 
 <div class="ui-g">
   <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
-    <h3 style="font-family: 'RSMBold';">
-      <i class="far fa-square" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.selBtnTitle' | translate }}
+    <h3 style="font-weight: bolder;">
+      <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.selBtnTitle' | translate }}
     </h3>
   </div>
 </div>
@@ -87,15 +95,15 @@
 
 <div class="ui-g">
   <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
-    <h3 style="font-family: 'RSMBold';">
-      <i class="far fa-square" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.splBtnTitle' | translate }}
+    <h3 style="font-weight: bolder;">
+      <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.splBtnTitle' | translate }}
     </h3>
   </div>
 </div>
 
 <div class="ui-g">
   <div class="ui-sm-12 ui-md-6 ui-lg-6 ui-g-nolr-pad">
-    <p-splitButton label="Save" icon="fas fa-check" [model]="items"></p-splitButton>
+    <p-splitButton label="Save" [model]="items"></p-splitButton>
   </div>
 </div>
 
@@ -109,8 +117,8 @@
 
 <div class="ui-g">
   <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
-    <h3 style="font-family: 'RSMBold';">
-      <i class="far fa-square" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.fileUploadTitle' | translate }}
+    <h3 style="font-weight: bolder;">
+      <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.fileUploadTitle' | translate }}
     </h3>
   </div>
 </div>

@@ -10,7 +10,6 @@ export class DesignLayoutComponent implements OnInit {
 
   constructor(public mainMenu: MainMenuService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

@@ -8,6 +8,8 @@ import { SelectItem, MessageService } from 'primeng/api';
 
 import { BasicFormService } from '../../services/basic-form/basic-form.service';
 
+import { faSave } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-basic-form',
   templateUrl: './basic-form.component.html',
@@ -26,6 +28,9 @@ export class BasicFormComponent implements OnInit {
   public submitted: boolean;
   public imageData: any;
   public showImg: boolean;
+
+  // Icon
+  public faSave = faSave;
 
   constructor(
     public mainMenu: MainMenuService,

@@ -12,6 +12,8 @@ import { DialogModule } from 'primeng/dialog';
 import { SidebarModule } from 'primeng/sidebar';
 import { DataViewModule } from 'primeng/dataview';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 // Pages
 import { LayoutComponent } from '../layout/layout.component';
 import { HomeComponent } from './home/home.component';
@@ -29,7 +31,8 @@ import { MainMenuService } from '../shared/services/main-menu.service';
     ButtonModule,
     DialogModule,
     SidebarModule,
-    DataViewModule
+    DataViewModule,
+    FontAwesomeModule
   ],
   declarations: [
     LayoutComponent,
