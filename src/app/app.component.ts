@@ -33,12 +33,12 @@ export class AppComponent implements OnInit {
       this.mainMenu.setIsConnected(isConnected);
       if (isConnected) {
         this.translate.get('shared.message').subscribe(msg => {
-          this.messageService.add({ key: 'upnoti', severity: 'info', summary: msg.info, detail: msg.onLine });
+          this.messageService.add({ key: 'connect', severity: 'info', summary: msg.info, detail: msg.onLine });
         });
       }
       else {
         this.translate.get('shared.message').subscribe(msg => {
-          this.messageService.add({ key: 'upnoti', severity: 'warn', summary: msg.warn, detail: msg.offLine });
+          this.messageService.add({ key: 'connect', severity: 'warn', summary: msg.warn, detail: msg.offLine });
         });
       }
     })
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
      * 아래 3가지 중 하나를 택하고 나머지는 주석처리
      * 1. 주기적으로 서버에 업데이트 체크하는 방법
      * 2. 업데이트를 사용자에게 알려주는 방법 (사용자가 직접 Refresh 해 주어야 함.) 
-     * 3. 업데이트 발견 시 바로 업데이트 하는 방법 (하지만 결국 Refresh를 해야 서버로 부터 업데이트 내역을 확인할 수 있음.)
+     * 3. 업데이트 발견 시 바로 업데이트 하는 방법 
      */
     if (this.swUpdate.isEnabled) {
 
@@ -71,7 +71,6 @@ export class AppComponent implements OnInit {
       });
 
       // 3. 업데이트 발견 시 바로 업데이트 
-      //    페이지의 업데이트하면 서버로 부터 최신 파일을 받아서 업데이트한다.
       // this.swUpdate.available.subscribe(() => {        
       //   this.swUpdate.activateUpdate().then(() => {
       //     window.location.reload(true) }
