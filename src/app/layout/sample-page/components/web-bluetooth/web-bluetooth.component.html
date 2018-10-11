@@ -9,4 +9,8 @@
   </div>
 </div>
 
-<a (click)="getBatteryLevel()">Get Battery Level ({{batteryLevel || 'N/A'}}%)</a>
+<div class="ui-g ui-fluid">
+  <div class="ui-sm-12 ui-md-6 ui-lg-6">
+    <button pButton type="button" (click)="getBatteryLevel()" label="Get Battery Level ({{batteryLevel || 'N/A'}}%)"></button>
+  </div>
+</div>

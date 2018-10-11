@@ -10,39 +10,42 @@
 </div>
 
 <div class="ui-g ui-fluid">
-  <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12 wrapper" (window:resize)="onResize($event)">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12 wrapper" (window:resize)="onResize($event)">
     <webcam [height]="height" [width]="width" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
       [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions"
       (cameraSwitched)="cameraWasSwitched($event)" (initError)="handleInitError($event)">
     </webcam>
     <br />
   </div>
+</div>
 
-  <div class="ui-g ui-sm-6 ui-md-3 ui-lg-3">
+<div class="ui-g ui-fluid">
+  <div class="ui-sm-5 ui-md-3 ui-lg-3">
     <button pButton type="button" label="{{ 'samplePage.basicWebcam.takeShot' | translate }}" (click)="triggerSnapshot();"></button>
   </div>
-  <div class="ui-g ui-sm-6 ui-md-3 ui-lg-3">
+  <div class="ui-sm-5 ui-md-3 ui-lg-3">
     <button pButton type="button" label="{{ 'samplePage.basicWebcam.toggle' | translate }}" (click)="toggleWebcam();"></button>
   </div>
 
-  <!-- <div class="ui-g ui-sm-4 ui-md-2 ui-lg-2">
+<!-- <div class="ui-sm-4 ui-md-2 ui-lg-2">
     <button pButton type="button" label="{{ 'samplePage.basicWebcam.nextCam' | translate }}" class="ui-button-secondary"
       (click)="showNextWebcam(true);" [disabled]="!multipleWebcamsAvailable"></button>
   </div> -->
-  <div class="ui-g ui-sm-8 ui-md-4 ui-lg-4">
+
+  <div class="ui-sm-8 ui-md-4 ui-lg-4">
     <p-checkbox id="cameraSwitchCheckbox" label="{{ 'samplePage.basicWebcam.AllowSwitch' | translate }}" [(ngModel)]="allowCameraSwitch"
       binary="true"></p-checkbox>
   </div>
 </div>
 
 <div class="ui-g ui-fluid">
-  <div class="ui-g ui-sm-12 ui-md-12 ui-lg-12">
+  <div class="ui-sm-12 ui-md-12 ui-lg-12">
     <div class="ui-inputgroup">
       <span class="ui-inputgroup-addon">{{ 'samplePage.basicWebcam.deviceId' | translate }}</span>
       <input pInputText id="deviceId" type="text" [(ngModel)]="deviceId">
     </div>
   </div>
-  <!-- <div class="ui-g ui-sm-4 ui-md-3 ui-lg-2">
+  <!-- <div class="ui-sm-4 ui-md-3 ui-lg-2">
     <button pButton type="button" label="{{ 'samplePage.basicWebcam.activate' | translate }}" class="ui-button-secondary"
       (click)="showNextWebcam(deviceId);"></button>
   </div> -->

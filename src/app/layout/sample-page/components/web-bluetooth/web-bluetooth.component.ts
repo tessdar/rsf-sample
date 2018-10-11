@@ -3,7 +3,6 @@ import { MainMenuService } from '../../../../shared/services/main-menu.service';
 // import { TranslateService } from '@ngx-translate/core';
 
 import { WebBluetoothService } from '../../services/web-bluetooth/web-bluetooth.service';
-import { BluetoothCore } from '@manekinekko/angular-web-bluetooth';
 
 @Component({
   selector: 'app-web-bluetooth',
@@ -34,8 +33,7 @@ export class WebBluetoothComponent implements OnInit {
   
   getDeviceStatus() {
     this._batteryLevelService.getDevice().subscribe(
-      (device) => {
-
+      (device) => {        
         if(device) {
           this.device = device;
         }
