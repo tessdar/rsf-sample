@@ -90,7 +90,7 @@ export class BasicCrudComponent implements OnInit {
 
   /**
    * 데이터 조회하는 메서드
-   * 1. 로딩 Spinner 출력변수 true / 총건수 초기화 / 데이터 테이블 초기화 / selectRows 초기화
+   * 1. 로딩 Spinner 출력변수 true / 총건수 초기화 / 삭제 테이블 초기화 / 데이터 테이블 초기화 / selectRows 초기화
    * 2. 데이터조회 API 호출
    * 3. Requestbody에 아무런 값이 없으면 정보 메시지 출력
    * 4. 응답실패(에러)가 발생한 경우 에러 메시지 출력
@@ -103,6 +103,7 @@ export class BasicCrudComponent implements OnInit {
     this.totalRecords = 0;
     this.dataList = [];
     this.selectedRows = [];
+    this.delList = [];
 
     this.basicCrudService.getEmpList(departmentId).then((res: any) => {
       if (!res) {
