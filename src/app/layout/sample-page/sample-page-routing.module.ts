@@ -10,6 +10,7 @@ import { BarcodeScanComponent } from './components/barcode-scan/barcode-scan.com
 import { SignPadComponent } from './components/sign-pad/sign-pad.component';
 import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
 import { WebBluetoothComponent } from './components/web-bluetooth/web-bluetooth.component';
+import { PushCarouselComponent } from './components/push-carousel/push-carousel.component';
 
 const routes: Routes = [{
   path: '',
@@ -21,7 +22,8 @@ const routes: Routes = [{
     { path: 'barcode-scan', component: BarcodeScanComponent },
     { path: 'sign-pad', component: SignPadComponent },
     { path: 'google-maps', component: GoogleMapsComponent },
-    { path: 'web-bluetooth', component: WebBluetoothComponent }
+    { path: 'web-bluetooth', component: WebBluetoothComponent },
+    { path: 'push-carousel', component: PushCarouselComponent }
   ]
 }];
 

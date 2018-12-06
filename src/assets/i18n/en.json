@@ -31,6 +31,7 @@
             "signPad": "Signature Pad",
             "googleMaps": "Google Maps",
             "webBluetooth": "Web Bluetooth",
+            "pushCarousel": "Firebase",
             "helpAdvice": "Help",
             "archHelp": "Folder",
             "newComp": "Module & Component",
@@ -169,6 +170,12 @@
         },
         "webBluetooth": {
             "bluetooth": "Bluetooth"            
+        },
+        "pushCarousel": {
+            "Carousel": "Carousel",
+            "header": "Diversity W/O",   
+            "qualityCheck": "Quality Check",
+            "helpCall": "Help Call"            
         }                  
     },
     "helpAdvice": {

@@ -8,6 +8,7 @@ import { MainMenuService } from './shared/services/main-menu.service';
 
 import { SwUpdate } from '@angular/service-worker';
 // import { interval } from 'rxjs';
+import { afMessage } from './shared/interfaces/af-message';
 
 @Component({
   selector: 'app-root',
@@ -111,14 +112,4 @@ export class AppComponent implements OnInit {
       });
   }
 
-}
-
-interface afMessage {
-  collapse_key?: string
-  from?: string
-  notification: {
-    title: string,
-    body: string,
-    click_action?: string
-  }
 }

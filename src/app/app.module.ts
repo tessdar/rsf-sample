@@ -12,6 +12,8 @@ import { EffectsModule } from '@ngrx/effects';
 // Firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 // Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -65,6 +67,8 @@ import { environment } from '../environments/environment';
     }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireMessagingModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([ApplicationEffects]),

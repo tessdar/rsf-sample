@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://localhost:5000/api",
+    "target": "http://10.211.55.6:8090/rsf-sample-backend/api",
     "secure": false,
     "pathRewrite": {
       "^/api": ""

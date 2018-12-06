@@ -34,7 +34,7 @@ export class MainMenuService {
         label: menuLang.designGuide,
         items: [
           {
-            label: menuLang.btnLib,            
+            label: menuLang.btnLib,
             routerLink: '/layout/design-guide/btn-lib',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -46,7 +46,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.inputLib,            
+            label: menuLang.inputLib,
             routerLink: '/layout/design-guide/input-lib',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -58,7 +58,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.tabView,            
+            label: menuLang.tabView,
             routerLink: '/layout/design-guide/tab-view',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -70,7 +70,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.scheView,            
+            label: menuLang.scheView,
             routerLink: '/layout/design-guide/sche-view',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -80,14 +80,14 @@ export class MainMenuService {
               ];
               this.setBreadItems(menuLang);
             }
-          }     
+          }
         ]
       },
       {
-        label: menuLang.samplePage,        
+        label: menuLang.samplePage,
         items: [
           {
-            label: menuLang.basicCrud,            
+            label: menuLang.basicCrud,
             routerLink: '/layout/sample-page/basic-crud',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -99,7 +99,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.basicForm,            
+            label: menuLang.basicForm,
             routerLink: '/layout/sample-page/basic-form',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -111,7 +111,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.chartForm,            
+            label: menuLang.chartForm,
             routerLink: '/layout/sample-page/chart-form',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -123,7 +123,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.basicWebcam,            
+            label: menuLang.basicWebcam,
             routerLink: '/layout/sample-page/basic-webcam',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -135,7 +135,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.barcodeScan,            
+            label: menuLang.barcodeScan,
             routerLink: '/layout/sample-page/barcode-scan',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -147,7 +147,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.signPad,            
+            label: menuLang.signPad,
             routerLink: '/layout/sample-page/sign-pad',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -159,7 +159,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.googleMaps,            
+            label: menuLang.googleMaps,
             routerLink: '/layout/sample-page/google-maps',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -171,7 +171,7 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.webBluetooth,            
+            label: menuLang.webBluetooth,
             routerLink: '/layout/sample-page/web-bluetooth',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -181,14 +181,26 @@ export class MainMenuService {
               ];
               this.setBreadItems(menuLang);
             }
-          }               
+          },
+          {
+            label: menuLang.pushCarousel,
+            routerLink: '/layout/sample-page/push-carousel',
+            command: (event) => {
+              this.menuActive = !this.menuActive;
+              this.breadKeys = [
+                { 'key': 'samplePage' },
+                { 'key': 'pushCarousel' }
+              ];
+              this.setBreadItems(menuLang);
+            }
+          }
         ]
       },
       {
-        label: menuLang.helpAdvice,        
+        label: menuLang.helpAdvice,
         items: [
           {
-            label: menuLang.archHelp,            
+            label: menuLang.archHelp,
             routerLink: '/layout/help-advice/arch-help',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -196,11 +208,11 @@ export class MainMenuService {
                 { 'key': 'helpAdvice' },
                 { 'key': 'archHelp' }
               ];
-              this.setBreadItems(menuLang);    
-            }        
+              this.setBreadItems(menuLang);
+            }
           },
           {
-            label: menuLang.newComp,            
+            label: menuLang.newComp,
             routerLink: '/layout/help-advice/new-comp',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -208,11 +220,11 @@ export class MainMenuService {
                 { 'key': 'helpAdvice' },
                 { 'key': 'newComp' }
               ];
-              this.setBreadItems(menuLang);    
-            }        
+              this.setBreadItems(menuLang);
+            }
           },
           {
-            label: menuLang.newServ,            
+            label: menuLang.newServ,
             routerLink: '/layout/help-advice/new-serv',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -220,11 +232,11 @@ export class MainMenuService {
                 { 'key': 'helpAdvice' },
                 { 'key': 'newServ' }
               ];
-              this.setBreadItems(menuLang);    
-            }        
-          },          
+              this.setBreadItems(menuLang);
+            }
+          },
           {
-            label: menuLang.designLayout,            
+            label: menuLang.designLayout,
             routerLink: '/layout/help-advice/design-layout',
             command: (event) => {
               this.menuActive = !this.menuActive;
@@ -232,9 +244,9 @@ export class MainMenuService {
                 { 'key': 'helpAdvice' },
                 { 'key': 'designLayout' }
               ];
-              this.setBreadItems(menuLang);    
-            }        
-          }          
+              this.setBreadItems(menuLang);
+            }
+          }
         ]
       }
     ];
@@ -272,7 +284,7 @@ export class MainMenuService {
     return this.breadItems;
   }
 
-  public setBreadKeys(key: any[], menuLang ) {
+  public setBreadKeys(key: any[], menuLang) {
     this.breadKeys = key;
     this.setBreadItems(menuLang);
   }

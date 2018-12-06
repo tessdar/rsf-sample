@@ -25,6 +25,8 @@ import { MessageModule } from 'primeng/message';
 import { ChartModule } from 'primeng/chart';
 import { FileUploadModule } from 'primeng/fileupload';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { CarouselModule } from 'primeng/carousel';
+import { MenuModule } from 'primeng/menu';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -36,6 +38,9 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 import { AgmCoreModule } from '@agm/core';
 import { WebBluetoothModule } from '@manekinekko/angular-web-bluetooth';
 
+// Pipes
+import { DesendSortPipe } from '../../shared/pipes/desend-sort.pipe';
+
 // Components
 import { BasicCrudComponent } from './components/basic-crud/basic-crud.component';
 import { BasicFormComponent } from './components/basic-form/basic-form.component';
@@ -45,6 +50,7 @@ import { BarcodeScanComponent } from './components/barcode-scan/barcode-scan.com
 import { SignPadComponent } from './components/sign-pad/sign-pad.component';
 import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
 import { WebBluetoothComponent } from './components/web-bluetooth/web-bluetooth.component';
+import { PushCarouselComponent } from './components/push-carousel/push-carousel.component';
 
 @NgModule({
   imports: [
@@ -69,6 +75,8 @@ import { WebBluetoothComponent } from './components/web-bluetooth/web-bluetooth.
     ChartModule,
     FileUploadModule,
     OverlayPanelModule,
+    CarouselModule,
+    MenuModule,
     FontAwesomeModule,
     WebcamModule,
     NgxBarcodeModule,
@@ -84,6 +92,7 @@ import { WebBluetoothComponent } from './components/web-bluetooth/web-bluetooth.
     })
   ],
   declarations: [
+    DesendSortPipe,
     BasicCrudComponent,
     BasicFormComponent,
     ChartFormComponent,
@@ -91,7 +100,8 @@ import { WebBluetoothComponent } from './components/web-bluetooth/web-bluetooth.
     BarcodeScanComponent,
     SignPadComponent,
     GoogleMapsComponent,
-    WebBluetoothComponent
+    WebBluetoothComponent,
+    PushCarouselComponent
   ],
   exports: [TranslatePipe],
   providers: [TranslateModule]
