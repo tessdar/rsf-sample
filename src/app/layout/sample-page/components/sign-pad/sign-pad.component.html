@@ -5,7 +5,7 @@
 <p-toast [baseZIndex]="9999"></p-toast>
 
 <div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+  <div class="ui-g-12 ui-g-nopad">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'samplePage.signPad.signature' | translate }}
     </h3>
@@ -13,7 +13,7 @@
 </div>
 
 <div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12">
+  <div class="ui-g-12">
     <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()">
     </signature-pad>
   </div>
@@ -26,7 +26,7 @@
 </div>
 
 <div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12">
+  <div class="ui-g-12">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'samplePage.signPad.signImage' | translate }}
     </h3>
@@ -34,7 +34,7 @@
 </div>
 
 <div class="ui-g ui-fluid" *ngIf="signImage">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12">
+  <div class="ui-g-12">
     <img style="width: 100%; height: 100%;" [src]="signImage" />
   </div>
   <div class="ui-sm-6 ui-md-3 ui-lg-3">

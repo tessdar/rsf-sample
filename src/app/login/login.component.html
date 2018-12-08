@@ -4,7 +4,7 @@
 <div class="login-background">
   <form class="login-panel" [formGroup]="userform" (ngSubmit)="login(userform.value)">
     <div class="ui-g ui-fluid">
-      <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-lrpad">
+      <div class="ui-g-12 ui-g-lrpad">
         <h2>{{ 'login.siteName' | translate }}</h2>
       </div>
     </div>
@@ -16,7 +16,7 @@
     </div>
     <br>
     <div class="ui-g ui-fluid">
-      <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-lrpad">
+      <div class="ui-g-12 ui-g-lrpad">
         <div class="ui-inputgroup">
           <span class="ui-float-label">
             <input pInputText id="float-name" type="text" formControlName="userId">
@@ -30,7 +30,7 @@
     </div>
     <br>
     <div class="ui-g ui-fluid">
-      <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-lrpad">
+      <div class="ui-g-12 ui-g-lrpad">
         <div class="ui-inputgroup">
           <span class="ui-float-label">
             <input pInputText id="float-pass" type="password" formControlName="password" />
@@ -46,7 +46,7 @@
     <br>
     <br>
     <div class="ui-g ui-fluid">
-      <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-lrpad">
+      <div class="ui-g-12 ui-g-lrpad">
         <button pButton type="submit" [disabled]="!userform.valid" label="{{ 'login.login' | translate }}"></button>
       </div>
     </div>

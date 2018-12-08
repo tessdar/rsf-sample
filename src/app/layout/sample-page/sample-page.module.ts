@@ -32,7 +32,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Cam/barcode/signpad/Bluetooth Module
 import { WebcamModule } from 'ngx-webcam';
-import { NgxBarcodeModule } from 'ngx-barcode';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { AgmCoreModule } from '@agm/core';
@@ -79,7 +78,6 @@ import { PushCarouselComponent } from './components/push-carousel/push-carousel.
     MenuModule,
     FontAwesomeModule,
     WebcamModule,
-    NgxBarcodeModule,
     ZXingScannerModule,
     SignaturePadModule,
     WebBluetoothModule.forRoot({
