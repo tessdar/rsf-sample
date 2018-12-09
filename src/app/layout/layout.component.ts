@@ -76,9 +76,7 @@ export class LayoutComponent implements OnInit {
     // 언어 번역
     this.translate.setDefaultLang(this.mainMenu.getLanguage());
 
-    this.translate.get('main.sideMenu').subscribe(res => {
-      this.mainMenu.setMenuItems(res);
-    });
+    this.mainMenu.setMenuItems();
 
     // 잔여시간 출력
     interval(1000).subscribe(() => {
@@ -128,10 +126,7 @@ export class LayoutComponent implements OnInit {
     this.mainMenu.setLanguage(language);
     this.translate.use(language);
 
-    this.translate.get('main.sideMenu').subscribe(res => {
-      this.mainMenu.setMenuItems(res);
-      this.mainMenu.setBreadItems(res);
-    });
+    this.mainMenu.setMenuItems();
   }
 
   /**

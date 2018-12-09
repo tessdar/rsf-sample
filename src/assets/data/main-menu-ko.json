@@ -1,0 +1,85 @@
+[
+    {
+        "label": "디자인 가이드",
+        "items": [
+            {
+                "label": "버튼 라이브러리",
+                "routerLink": "/layout/design-guide/btn-lib"
+            },
+            {
+                "label": "입력 라이브러리",
+                "routerLink": "/layout/design-guide/input-lib"
+            },
+            {
+                "label": "탭 뷰 & 판넬",
+                "routerLink": "/layout/design-guide/tab-view"
+            },
+            {
+                "label": "달력 뷰",
+                "routerLink": "/layout/design-guide/sche-view"
+            }
+        ]
+    },
+    {
+        "label": "샘플 페이지",
+        "items": [
+            {
+                "label": "기본 CRUD",
+                "routerLink": "/layout/sample-page/basic-crud"
+            },
+            {
+                "label": "기본 Form",
+                "routerLink": "/layout/sample-page/basic-form"
+            },
+            {
+                "label": "차트 Form",
+                "routerLink": "/layout/sample-page/chart-form"
+            },
+            {
+                "label": "카메라",
+                "routerLink": "/layout/sample-page/basic-webcam"
+            },
+            {
+                "label": "바코드 스캔",
+                "routerLink": "/layout/sample-page/barcode-scan"
+            },
+            {
+                "label": "서명 패드",
+                "routerLink": "/layout/sample-page/sign-pad"
+            },
+            {
+                "label": "구글 지도",
+                "routerLink": "/layout/sample-page/google-maps"
+            },
+            {
+                "label": "블루투스",
+                "routerLink": "/layout/sample-page/web-bluetooth"
+            },
+            {
+                "label": "Firebase",
+                "routerLink": "/layout/sample-page/push-carousel"
+            }
+        ]
+    },
+    {
+        "label": "도움말",
+        "items": [
+            {
+                "label": "폴더구조",
+                "routerLink": "/layout/help-advice/arch-help"
+            },
+            {
+                "label": "모듈 & 컴포넌트",
+                "routerLink": "/layout/help-advice/new-comp"
+            },
+            {
+                "label": "서비스",
+                "routerLink": "/layout/help-advice/new-serv"
+            },
+            {
+                "label": "디자인 레이아웃",
+                "routerLink": "/layout/help-advice/design-layout"
+            }
+        ]
+    }
+]

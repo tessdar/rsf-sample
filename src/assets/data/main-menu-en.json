@@ -1,0 +1,85 @@
+[
+    {
+        "label": "Design Guide",
+        "items": [
+            {
+                "label": "Button Library",
+                "routerLink": "/layout/design-guide/btn-lib"
+            },
+            {
+                "label": "Input Library",
+                "routerLink": "/layout/design-guide/input-lib"
+            },
+            {
+                "label": "Tab View & Panel",
+                "routerLink": "/layout/design-guide/tab-view"
+            },
+            {
+                "label": "Calendar View",
+                "routerLink": "/layout/design-guide/sche-view"
+            }
+        ]
+    },
+    {
+        "label": "Sample Page",
+        "items": [
+            {
+                "label": "Basic CRUD",
+                "routerLink": "/layout/sample-page/basic-crud"
+            },
+            {
+                "label": "Basic Form",
+                "routerLink": "/layout/sample-page/basic-form"
+            },
+            {
+                "label": "Chart Form",
+                "routerLink": "/layout/sample-page/chart-form"
+            },
+            {
+                "label": "Camera",
+                "routerLink": "/layout/sample-page/basic-webcam"
+            },
+            {
+                "label": "Barcode Scan",
+                "routerLink": "/layout/sample-page/barcode-scan"
+            },
+            {
+                "label": "Signature Pad",
+                "routerLink": "/layout/sample-page/sign-pad"
+            },
+            {
+                "label": "Google Maps",
+                "routerLink": "/layout/sample-page/google-maps"
+            },
+            {
+                "label": "Web Bluetooth",
+                "routerLink": "/layout/sample-page/web-bluetooth"
+            },
+            {
+                "label": "Firebase",
+                "routerLink": "/layout/sample-page/push-carousel"
+            }
+        ]
+    },
+    {
+        "label": "Help",
+        "items": [
+            {
+                "label": "Folder",
+                "routerLink": "/layout/help-advice/arch-help"
+            },
+            {
+                "label": "Module & Component",
+                "routerLink": "/layout/help-advice/new-comp"
+            },
+            {
+                "label": "Service",
+                "routerLink": "/layout/help-advice/new-serv"
+            },
+            {
+                "label": "Design Layout",
+                "routerLink": "/layout/help-advice/design-layout"
+            }
+        ]
+    }
+]

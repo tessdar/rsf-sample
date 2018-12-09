@@ -79,7 +79,7 @@ export class BasicCrudComponent implements OnInit {
    * 수정한 내역이 있는데 화면을 나가려고 하는 경우 경고 메시지 출력하는 메서드
    * true: 화면이동 / false: 화면이동하지 않음.
    */
-  public canDeactivate(): boolean {    
+  public canDeactivate(): boolean {
     if (this.saveCheck()) {
       return this.askQuit();
 
@@ -361,12 +361,7 @@ export class BasicCrudComponent implements OnInit {
             resolve(true);
           },
           reject: () => {
-            this.translate.get('main.sideMenu').subscribe(res => {
-              this.mainMenu.setBreadKeys([
-                { 'key': 'samplePage' },
-                { 'key': 'basicCrud' }
-              ], res);
-            });
+            this.mainMenu.getPrevBreadItems();
             resolve(false);
           }
         });
