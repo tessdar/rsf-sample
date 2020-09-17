@@ -8,7 +8,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: '', component: LoginComponent, pathMatch: "full" },
     // { path: '', redirectTo: 'login', pathMatch: "full" },
-    { path: 'layout', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard] },
+    { path: 'layout', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule), canActivate: [AuthGuard] },
     { path: '**', component: NotFoundComponent }
 ];
 

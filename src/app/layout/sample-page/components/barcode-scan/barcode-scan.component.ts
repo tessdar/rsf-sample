@@ -12,7 +12,7 @@ import { Result } from '@zxing/library';
 })
 export class BarcodeScanComponent implements OnInit {
 
-  @ViewChild('scanner')
+  @ViewChild('scanner', { static: true })
   scanner: ZXingScannerComponent;
 
   public hasDevices: boolean;

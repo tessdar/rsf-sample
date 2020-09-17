@@ -11,9 +11,9 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'config', component: ConfigComponent },
-      { path: 'design-guide', loadChildren: './design-guide/design-guide.module#DesignGuideModule' },
-      { path: 'sample-page', loadChildren: './sample-page/sample-page.module#SamplePageModule' },
-      { path: 'help-advice', loadChildren: './help-advice/help-advice.module#HelpAdviceModule' }
+      { path: 'design-guide', loadChildren: () => import('./design-guide/design-guide.module').then(m => m.DesignGuideModule) },
+      { path: 'sample-page', loadChildren: () => import('./sample-page/sample-page.module').then(m => m.SamplePageModule) },
+      { path: 'help-advice', loadChildren: () => import('./help-advice/help-advice.module').then(m => m.HelpAdviceModule) }
     ]
   }
 ];

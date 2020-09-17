@@ -3,7 +3,7 @@ import { AngularFireMessaging } from '@angular/fire/messaging';
 import { TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
 
-import { ConnectionService } from 'ng-connection-service';
+// import { ConnectionService } from 'ng-connection-service';
 import { MainMenuService } from './shared/services/main-menu.service';
 
 import { SwUpdate } from '@angular/service-worker';
@@ -23,26 +23,26 @@ export class AppComponent implements OnInit {
     private messageService: MessageService,
     private afMessaging: AngularFireMessaging,
     private translate: TranslateService,
-    private connectionService: ConnectionService,
+    // private connectionService: ConnectionService,
     private swUpdate: SwUpdate
   ) {
 
     /**
      * 네트워크 접속 상태 확인
      */
-    this.connectionService.monitor().subscribe(isConnected => {
-      this.mainMenu.setIsConnected(isConnected);
-      if (isConnected) {
-        this.translate.get('shared.message').subscribe(msg => {
-          this.messageService.add({ key: 'connect', severity: 'info', summary: msg.info, detail: msg.onLine });
-        });
-      }
-      else {
-        this.translate.get('shared.message').subscribe(msg => {
-          this.messageService.add({ key: 'connect', severity: 'warn', summary: msg.warn, detail: msg.offLine });
-        });
-      }
-    })
+    // this.connectionService.monitor().subscribe(isConnected => {
+    //   this.mainMenu.setIsConnected(isConnected);
+    //   if (isConnected) {
+    //     this.translate.get('shared.message').subscribe(msg => {
+    //       this.messageService.add({ key: 'connect', severity: 'info', summary: msg.info, detail: msg.onLine });
+    //     });
+    //   }
+    //   else {
+    //     this.translate.get('shared.message').subscribe(msg => {
+    //       this.messageService.add({ key: 'connect', severity: 'warn', summary: msg.warn, detail: msg.offLine });
+    //     });
+    //   }
+    // })
 
     /** 
      * 신규 버전 업데이트 체크

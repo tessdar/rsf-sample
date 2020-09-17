@@ -66,34 +66,34 @@ export class LoginComponent implements OnInit {
    * 토큰 정보가 없으면 ID, 비밀번호 확인하라는 경고 메시지 처리
    */
   public login(value: any) {
-    this.loginService.login(value.userId, value.password).then((res: any) => {
+    // this.loginService.login(value.userId, value.password).then((res: any) => {
 
-      if (!res) {
-        this.translate.get('shared.message').subscribe(msg => {
-          this.messageService.add({ severity: 'error', summary: msg.error, detail: msg.noResponse });
-        });
+    //   if (!res) {
+    //     this.translate.get('shared.message').subscribe(msg => {
+    //       this.messageService.add({ severity: 'error', summary: msg.error, detail: msg.noResponse });
+    //     });
 
-      } else {
-        if (res.ok == false) {
-          this.translate.get('shared.message').subscribe(msg => {
-            this.messageService.add({ severity: 'error', summary: msg.error + ' / ' + res.status, detail: res.error.message });
-          });
+    //   } else {
+    //     if (res.ok == false) {
+    //       this.translate.get('shared.message').subscribe(msg => {
+    //         this.messageService.add({ severity: 'error', summary: msg.error + ' / ' + res.status, detail: res.error.message });
+    //       });
 
-        } else {
-          if (res.authToken) {
-            localStorage.setItem('AuthToken', res.authToken);
+    //     } else {
+    //       if (res.authToken) {
+    //         localStorage.setItem('AuthToken', res.authToken);
 
             this.store.dispatch(new ApplicationActions.LogIn());
             this.router.navigate(['layout', { "lang": this.mainMenu.getLanguage() }]);
 
-          } else {
-            this.translate.get('shared.message').subscribe(msg => {
-              this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.loginFail });
-            });
-          }
-        }
-      }
-    });
+    //       } else {
+    //         this.translate.get('shared.message').subscribe(msg => {
+    //           this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.loginFail });
+    //         });
+    //       }
+    //     }
+    //   }
+    // });
   }
 
   /**

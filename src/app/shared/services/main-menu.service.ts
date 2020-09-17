@@ -171,18 +171,6 @@ export class MainMenuService {
             }
           },
           {
-            label: menuLang.webBluetooth,
-            routerLink: '/layout/sample-page/web-bluetooth',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'samplePage' },
-                { 'key': 'webBluetooth' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
             label: menuLang.pushCarousel,
             routerLink: '/layout/sample-page/push-carousel',
             command: (event) => {

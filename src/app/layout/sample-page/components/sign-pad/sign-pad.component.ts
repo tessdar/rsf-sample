@@ -14,7 +14,7 @@ import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 })
 export class SignPadComponent implements OnInit {
 
-  @ViewChild(SignaturePad) signaturePad: SignaturePad;
+  @ViewChild(SignaturePad, { static: true }) signaturePad: SignaturePad;
 
   public signImage: string;
 
