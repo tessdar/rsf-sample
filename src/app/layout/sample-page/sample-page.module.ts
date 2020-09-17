@@ -48,7 +48,6 @@ import { BasicWebcamComponent } from './components/basic-webcam/basic-webcam.com
 import { BarcodeScanComponent } from './components/barcode-scan/barcode-scan.component';
 import { SignPadComponent } from './components/sign-pad/sign-pad.component';
 import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
-import { PushCarouselComponent } from './components/push-carousel/push-carousel.component';
 
 @NgModule({
   imports: [
@@ -96,8 +95,7 @@ import { PushCarouselComponent } from './components/push-carousel/push-carousel.
     BasicWebcamComponent,
     BarcodeScanComponent,
     SignPadComponent,
-    GoogleMapsComponent,
-    PushCarouselComponent
+    GoogleMapsComponent
   ],
   exports: [TranslatePipe],
   providers: [TranslateModule]

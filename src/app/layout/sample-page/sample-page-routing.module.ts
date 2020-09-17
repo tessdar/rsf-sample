@@ -9,7 +9,6 @@ import { BasicWebcamComponent } from './components/basic-webcam/basic-webcam.com
 import { BarcodeScanComponent } from './components/barcode-scan/barcode-scan.component';
 import { SignPadComponent } from './components/sign-pad/sign-pad.component';
 import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
-import { PushCarouselComponent } from './components/push-carousel/push-carousel.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,8 +19,7 @@ const routes: Routes = [{
     { path: 'basic-webcam', component: BasicWebcamComponent },
     { path: 'barcode-scan', component: BarcodeScanComponent },
     { path: 'sign-pad', component: SignPadComponent },
-    { path: 'google-maps', component: GoogleMapsComponent },
-    { path: 'push-carousel', component: PushCarouselComponent }
+    { path: 'google-maps', component: GoogleMapsComponent }
   ]
 }];
 

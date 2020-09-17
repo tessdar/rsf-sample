@@ -169,18 +169,6 @@ export class MainMenuService {
               ];
               this.setBreadItems(menuLang);
             }
-          },
-          {
-            label: menuLang.pushCarousel,
-            routerLink: '/layout/sample-page/push-carousel',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'samplePage' },
-                { 'key': 'pushCarousel' }
-              ];
-              this.setBreadItems(menuLang);
-            }
           }
         ]
       },

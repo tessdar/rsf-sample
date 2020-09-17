@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
+import { FullCalendar } from 'primeng/fullcalendar';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 @Component({
   selector: 'app-sche-view',
@@ -8,7 +12,9 @@ import { MainMenuService } from '../../../../shared/services/main-menu.service';
 })
 export class ScheViewComponent implements OnInit {
 
-  public headerConfig: any;
+  @ViewChild('calendar') private calendar: FullCalendar;
+
+  public options: any;
   public events: any[];
 
   constructor(
@@ -16,38 +22,48 @@ export class ScheViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.headerConfig = {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay'
-    };
+
+    this.options = {
+      plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+      header: {
+        left: 'prev,next',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      }
+    }
+
+    // this.headerConfig = {
+    //   left: 'prev,next today',
+    //   center: 'title',
+    //   right: 'month,agendaWeek,agendaDay'
+    // };
 
     this.events = [
       {
         "title": "All Day Event",
-        "start": "2018-10-01",
+        "start": "2020-09-01",
         "color": "#FF6384"
       },
       {
         "title": "Long Event",
-        "start": "2018-10-07",
-        "end": "2018-10-10",
+        "start": "2020-09-07",
+        "end": "2020-09-10",
         "color": "#4BC0C0"
       },
       {
         "title": "Repeating Event",
-        "start": "2018-10-09T16:00:00",
+        "start": "2020-09-09T16:00:00",
         "color": "#FFCE56"
       },
       {
         "title": "Repeating Event",
-        "start": "2018-10-16T16:00:00",
+        "start": "2020-09-16T16:00:00",
         "color": "#FFCE56"
       },
       {
         "title": "Conference",
-        "start": "2018-10-11",
-        "end": "2018-10-13",
+        "start": "2020-09-11",
+        "end": "2020-09-13",
         "color": "#36A2EB"
       }
     ];

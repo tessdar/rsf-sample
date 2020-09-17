@@ -26,7 +26,7 @@ export class BasicCrudService {
           .set('departmentId', departmentId)
       };
 
-      this.http.get(environment.restURL + '/api/emp/list', httpOptions)
+      this.http.get(environment.restURL + '/api/emp/list', httpOptions)              
         .subscribe(data => {
           resolve(data);
         }, err => {

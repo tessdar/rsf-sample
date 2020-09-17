@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<p-schedule [events]="events" [locale]="mainMenu.getLanguage()" [header]="headerConfig"></p-schedule>
+<p-fullCalendar #calendar [events]="events" [options]="options"></p-fullCalendar>
 
 <div class="ui-g">
   <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">

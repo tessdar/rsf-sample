@@ -1,6 +1,6 @@
 <!-- 로그아웃 다이얼로그 -->
 <p-dialog header="{{ 'main.logout' | translate }}" [(visible)]="logoutDisplay" modal="modal" [responsive]="true"
-    [width]="350" [minWidth]="200" [baseZIndex]="9999" [closeOnEscape]="false" [closable]="false">
+    styleClass="layout-dialog" [baseZIndex]="9999" [closeOnEscape]="false" [closable]="false">
     <span>{{ 'main.autoLogout' | translate }}</span>
     <p-footer>
         <button pButton type="button" (click)="logout()" label="OK">

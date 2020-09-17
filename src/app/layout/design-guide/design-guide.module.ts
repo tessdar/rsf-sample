@@ -24,7 +24,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { AccordionModule } from 'primeng/accordion';
 import { EditorModule } from 'primeng/editor';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { ScheduleModule } from 'primeng/schedule';
+import { FullCalendarModule } from 'primeng/fullcalendar';
 import { FileUploadModule } from 'primeng/fileupload';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -59,7 +59,7 @@ import { ScheViewComponent } from './components/sche-view/sche-view.component';
     AccordionModule,
     EditorModule,
     InputTextareaModule,
-    ScheduleModule,
+    FullCalendarModule,    
     FileUploadModule,
     FontAwesomeModule
   ],
@@ -68,7 +68,7 @@ import { ScheViewComponent } from './components/sche-view/sche-view.component';
     BtnLibComponent,
     InputLibComponent,
     TabViewComponent,
-    ScheViewComponent
+    ScheViewComponent    
   ],
   exports: [TranslatePipe],
   providers: [TranslateModule]
