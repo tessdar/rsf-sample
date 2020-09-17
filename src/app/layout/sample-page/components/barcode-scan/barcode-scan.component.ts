@@ -82,7 +82,7 @@ export class BarcodeScanComponent implements OnInit {
   }
 
   onDeviceSelectChange(event: any) {    
-    this.currentDevice = this.scanner.getDeviceById(event.value);
+    //this.currentDevice = this.scanner.getDeviceById(event.value);
   }
 
 }
