@@ -1,122 +1,122 @@
 <!-- 메뉴바 -->
-<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+<p-breadcrumb [model]="mainMenu.breadItems"></p-breadcrumb>
 
 <!-- Buttons -->
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.buttonTitle' | translate }}
     </h3>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+<div class="p-grid">
+  <div class="p-col p-lg-4 p-md-4 p-sm-12">
     <button pButton type="button" label="Primary"></button>
     <button pButton type="button" [disabled]="true" label="Primary Disabled"></button>
   </div>
-  <div class="ui-sm-12 ui-md-4 ui-lg-4 ui-g-nolr-pad">
-    <button pButton type="button" label="Secondary" class="ui-button-secondary"></button>
-    <button pButton type="button" [disabled]="true" label="Secondary Disabled" class="ui-button-secondary"></button>
+  <div class="p-col p-lg-4 p-md-4 p-sm-12">
+    <button pButton type="button" label="Secondary" class="p-button-secondary"></button>
+    <button pButton type="button" [disabled]="true" label="Secondary Disabled" class="p-button-secondary"></button>
   </div>
-  <div class="ui-sm-12 ui-md-4 ui-lg-4 ui-g-nolr-pad">
-    <button pButton type="button" label="Ternary" class="ui-button-ternary"></button>
-    <button pButton type="button" [disabled]="true" label="Ternary Disabled" class="ui-button-ternary"></button>
+  <div class="p-col p-lg-4 p-md-4 p-sm-12">
+    <button pButton type="button" label="Ternary" class="p-button-ternary"></button>
+    <button pButton type="button" [disabled]="true" label="Ternary Disabled" class="p-button-ternary"></button>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>
 
 <!-- Action Buttons -->
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.actTitle' | translate }}
     </h3>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
-    <button pButton type="button" class="ui-button-act">
+<div class="p-grid">
+  <div class="p-col p-lg-4 p-md-4 p-sm-6">
+    <button pButton pRipple type="button" icon="pi" class="p-button-rounded">
       <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
     </button>
-    <button pButton type="button" [disabled]="true" class="ui-button-act">
-      <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
-    </button>
-  </div>
-  <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
-    <button pButton type="button" class="ui-button-second-act">
-      <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
-    </button>
-    <button pButton type="button" [disabled]="true" class="ui-button-second-act">
+    <button pButton pRipple type="button" icon="pi" [disabled]="true" class="p-button-rounded">
       <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
     </button>
   </div>
-  <div class="ui-sm-12 ui-md-4 ui-lg-4 ui-g-nolr-pad">
-    <a href="#" class="ui-links">Lorem Ipsum</a>
+  <div class="p-col p-lg-4 p-md-4 p-sm-6">
+    <button pButton pRipple type="button" icon="pi" class="p-button-rounded p-button-secondary">
+      <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
+    </button>
+    <button pButton pRipple type="button" icon="pi" [disabled]="true" class="p-button-rounded p-button-secondary">
+      <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
+    </button>
+  </div>
+  <div class="p-col p-lg-4 p-md-4 p-sm-12">
+    <a href="#" class="p-links">Lorem Ipsum</a>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>
 
 <!-- Select Button -->
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.selBtnTitle' | translate }}
     </h3>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-6 ui-lg-6 ui-g-nolr-pad">
+<div class="p-grid">
+  <div class="p-col p-lg-6 p-md-6 p-sm-12">
     <p-selectButton [options]="types" [(ngModel)]="selectedType"></p-selectButton>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>
 
 <!-- Split Button -->
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.splBtnTitle' | translate }}
     </h3>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-6 ui-lg-6 ui-g-nolr-pad">
+<div class="p-grid">
+  <div class="p-col p-lg-6 p-md-6 p-sm-12">
     <p-splitButton label="Save" [model]="items"></p-splitButton>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>
 
 <!-- File Upload -->
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.btnLib.fileUploadTitle' | translate }}
     </h3>

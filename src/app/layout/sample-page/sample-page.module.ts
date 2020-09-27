@@ -35,7 +35,6 @@ import { WebcamModule } from 'ngx-webcam';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { AgmCoreModule } from '@agm/core';
-// import { WebBluetoothModule } from '@manekinekko/angular-web-bluetooth';
 
 // Pipes
 import { DesendSortPipe } from '../../shared/pipes/desend-sort.pipe';
@@ -78,9 +77,6 @@ import { GoogleMapsComponent } from './components/google-maps/google-maps.compon
     WebcamModule,
     ZXingScannerModule,
     SignaturePadModule,
-    // WebBluetoothModule.forRoot({
-    //   enableTracing: true
-    // }),
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en

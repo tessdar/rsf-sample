@@ -4,7 +4,7 @@ import * as ApplicationActions from './actions';
  * 로그인 상태
  */
 export interface State {
-    isLoggedIn: boolean
+    isLoggedIn: boolean;
 }
 
 /**
@@ -18,8 +18,8 @@ const initialState: State = {
  * 상태와 액션에 대한 리듀서 함수
  * 액션이 로그아웃인 경우 isLoggedIs 변수 false
  * 액션이 로그인인 경우 isLoggedIs 변수 true
- * @param state 
- * @param action 
+ * @param state : 상태
+ * @param action : 행동 (로그인, 로그아웃)
  */
 export function reducer(state = initialState, action: ApplicationActions.All): State {
     switch (action.type) {
@@ -27,14 +27,14 @@ export function reducer(state = initialState, action: ApplicationActions.All): S
             return {
                 ...state,
                 isLoggedIn: false
-            }
+            };
         }
 
         case ApplicationActions.LOG_IN: {
             return {
                 ...state,
                 isLoggedIn: true
-            }
+            };
         }
 
         default: {

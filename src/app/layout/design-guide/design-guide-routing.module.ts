@@ -8,9 +8,9 @@ import { ScheViewComponent } from './components/sche-view/sche-view.component';
 
 const routes: Routes = [{
   path: '',
-  children: [    
+  children: [
     { path: 'btn-lib', component: BtnLibComponent },
-    { path: 'input-lib', component: InputLibComponent },    
+    { path: 'input-lib', component: InputLibComponent },
     { path: 'tab-view', component: TabViewComponent },
     { path: 'sche-view', component: ScheViewComponent }
   ]

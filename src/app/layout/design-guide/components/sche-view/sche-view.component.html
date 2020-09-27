@@ -1,9 +1,9 @@
 <!-- 메뉴바 -->
-<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+<p-breadcrumb [model]="mainMenu.breadItems"></p-breadcrumb>
 
 <!-- Tabs -->
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.scheView.scheTitle' | translate }}
     </h3>
@@ -12,8 +12,8 @@
 
 <p-fullCalendar #calendar [events]="events" [options]="options"></p-fullCalendar>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>

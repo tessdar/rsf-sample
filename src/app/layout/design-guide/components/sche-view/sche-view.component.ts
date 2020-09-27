@@ -30,41 +30,35 @@ export class ScheViewComponent implements OnInit {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       }
-    }
-
-    // this.headerConfig = {
-    //   left: 'prev,next today',
-    //   center: 'title',
-    //   right: 'month,agendaWeek,agendaDay'
-    // };
+    };
 
     this.events = [
       {
-        "title": "All Day Event",
-        "start": "2020-09-01",
-        "color": "#FF6384"
+        'title': 'All Day Event',
+        'start': '2020-09-01',
+        'color': '#FF6384'
       },
       {
-        "title": "Long Event",
-        "start": "2020-09-07",
-        "end": "2020-09-10",
-        "color": "#4BC0C0"
+        'title': 'Long Event',
+        'start': '2020-09-07',
+        'end': '2020-09-10',
+        'color': '#4BC0C0'
       },
       {
-        "title": "Repeating Event",
-        "start": "2020-09-09T16:00:00",
-        "color": "#FFCE56"
+        'title': 'Repeating Event',
+        'start': '2020-09-09T16:00:00',
+        'color': '#FFCE56'
       },
       {
-        "title": "Repeating Event",
-        "start": "2020-09-16T16:00:00",
-        "color": "#FFCE56"
+        'title': 'Repeating Event',
+        'start': '2020-09-16T16:00:00',
+        'color': '#FFCE56'
       },
       {
-        "title": "Conference",
-        "start": "2020-09-11",
-        "end": "2020-09-13",
-        "color": "#36A2EB"
+        'title': 'Conference',
+        'start': '2020-09-11',
+        'end': '2020-09-13',
+        'color': '#36A2EB'
       }
     ];
 

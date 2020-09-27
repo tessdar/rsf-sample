@@ -1,265 +1,31 @@
 import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+// import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { MenuItem } from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
+import { MenuList } from '../../shared/interfaces/menu-list';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MainMenuService {
-  private language: string;
-  private isConnected: boolean;
+  public language: string;
+  public isConnected: boolean;
 
-  private menuItems: MenuItem[];
-  private menuActive: boolean;
-  private menuInactive: boolean;
+  public menuItems: MenuItem[];
+  public menuActive: boolean;
+  public menuInactive: boolean;
 
   public breadItems: MenuItem[];
   public breadKeys: any[];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(public http: HttpClient) { }
 
   /**
-   * 메인 메뉴 설정
-   * label: 메뉴이름
-   * items: 하위 메뉴
-   * routerLink: 메뉴클릭시 이동할 페이지 경로
-   * command: - menuActive 변수가 true 이면 false로 false이면 true로 변경
-   *            모바일환경에서 메뉴버튼 클릭 시 자동으로 메뉴가 닫히도록 하기 위함
-   *          - 우측 메뉴경로 설정
-   * @param menuLang : 언어코드
+   * Breadmenu Key 설정하는 메서드
+   * @param key : Breadmenu 설정 Key
+   * @param menuLang : 언어
    */
-  public setMenuItems(menuLang) {
-    this.menuItems = [
-      {
-        label: menuLang.designGuide,
-        items: [
-          {
-            label: menuLang.btnLib,
-            routerLink: '/layout/design-guide/btn-lib',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'designGuide' },
-                { 'key': 'btnLib' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.inputLib,
-            routerLink: '/layout/design-guide/input-lib',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'designGuide' },
-                { 'key': 'inputLib' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.tabView,
-            routerLink: '/layout/design-guide/tab-view',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'designGuide' },
-                { 'key': 'tabView' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.scheView,
-            routerLink: '/layout/design-guide/sche-view',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'designGuide' },
-                { 'key': 'scheView' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          }
-        ]
-      },
-      {
-        label: menuLang.samplePage,
-        items: [
-          {
-            label: menuLang.basicCrud,
-            routerLink: '/layout/sample-page/basic-crud',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'samplePage' },
-                { 'key': 'basicCrud' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.basicForm,
-            routerLink: '/layout/sample-page/basic-form',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'samplePage' },
-                { 'key': 'basicForm' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.chartForm,
-            routerLink: '/layout/sample-page/chart-form',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'samplePage' },
-                { 'key': 'chartForm' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.basicWebcam,
-            routerLink: '/layout/sample-page/basic-webcam',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'samplePage' },
-                { 'key': 'basicWebcam' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.barcodeScan,
-            routerLink: '/layout/sample-page/barcode-scan',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'samplePage' },
-                { 'key': 'barcodeScan' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.signPad,
-            routerLink: '/layout/sample-page/sign-pad',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'samplePage' },
-                { 'key': 'signPad' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.googleMaps,
-            routerLink: '/layout/sample-page/google-maps',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'samplePage' },
-                { 'key': 'googleMaps' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          }
-        ]
-      },
-      {
-        label: menuLang.helpAdvice,
-        items: [
-          {
-            label: menuLang.archHelp,
-            routerLink: '/layout/help-advice/arch-help',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'helpAdvice' },
-                { 'key': 'archHelp' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.newComp,
-            routerLink: '/layout/help-advice/new-comp',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'helpAdvice' },
-                { 'key': 'newComp' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.newServ,
-            routerLink: '/layout/help-advice/new-serv',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'helpAdvice' },
-                { 'key': 'newServ' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          },
-          {
-            label: menuLang.designLayout,
-            routerLink: '/layout/help-advice/design-layout',
-            command: (event) => {
-              this.menuActive = !this.menuActive;
-              this.breadKeys = [
-                { 'key': 'helpAdvice' },
-                { 'key': 'designLayout' }
-              ];
-              this.setBreadItems(menuLang);
-            }
-          }
-        ]
-      }
-    ];
-  }
-
-  public getLanguage(): string {
-    return this.language;
-  }
-
-  public setLanguage(language: string) {
-    this.language = language;
-  }
-
-  public getMenuItems(): MenuItem[] {
-    return this.menuItems;
-  }
-
-  public getMenuActive(): boolean {
-    return this.menuActive;
-  }
-
-  public setMenuActive(menuActive: boolean) {
-    this.menuActive = menuActive;
-  }
-
-  public getMenuInactive(): boolean {
-    return this.menuInactive;
-  }
-
-  public setMenuInactive(menuInactive: boolean) {
-    this.menuInactive = menuInactive;
-  }
-
-  public getBreadItems(): MenuItem[] {
-    return this.breadItems;
-  }
-
   public setBreadKeys(key: any[], menuLang) {
     this.breadKeys = key;
     this.setBreadItems(menuLang);
@@ -280,22 +46,101 @@ export class MainMenuService {
 
     this.breadKeys.forEach(ele1 => {
       Object.keys(menuLang).forEach(ele2 => {
-        if (ele1.key == ele2) {
+        if (ele1.key === ele2) {
           this.breadItems.push(
             { label: menuLang[ele2] }
-          )
+          );
         }
       });
     });
-
   }
 
-  public getIsConnected(): boolean {
-    return this.isConnected;
+  /**
+   * sankeToCamel 변환
+   * @param str : 입력문자
+   */
+  private snakeToCamel(str: string): string {
+    return str.replace(
+      /([-_][a-z])/g,
+      (group) => group.toUpperCase()
+        .replace('-', '')
+        .replace('_', ''));
   }
 
-  public setIsConnected(isConnected: boolean) {
-    this.isConnected = isConnected;
+  /**
+   * 메뉴 커멘드 설정
+   * @param routerLink : 라우터 경로
+   * @param menuLang : 언어
+   */
+  private setMenuCommand(routerLink: string, menuLang): any {
+    if (!(typeof routerLink === 'undefined' || routerLink === null || routerLink === '')) {
+      return (event) => {
+        this.menuActive = !this.menuActive;
+
+        const words =
+          this.snakeToCamel(event.item.routerLink.replace('/layout/', '')).split('/');
+        this.breadKeys = [];
+        words.forEach((item) => {
+          this.breadKeys.push({ 'key': item });
+        });
+        this.setBreadItems(menuLang);
+      };
+    }
   }
 
+  /**
+   * 하위 메뉴 설정하는 함수
+   * @param menuItem : 메뉴 아이템
+   * @param data : 메뉴 리스트
+   * @param menuLang : 언어
+   */
+  private menuLoop(menuItem: MenuItem[], data: any[], menuLang: string) {
+    let menuitem: MenuItem = {};
+
+    if (menuItem.length < 1) { return; }
+    if (data.length < 1) { return; }
+
+    menuItem.forEach((ele1, idx1) => {
+      menuItem[idx1].items = [];
+
+      data.forEach((ele2) => {
+        if (ele1.id === ele2.upperLv) {
+          menuitem.id = ele2.level;
+          menuitem.label = menuLang[ele2.label];
+          menuitem.routerLink = ele2.routerLink;
+          menuitem.command = this.setMenuCommand(ele2.routerLink, menuLang);
+          menuItem[idx1].items.push(menuitem);
+          menuitem = {};
+        }
+      });
+      if (menuItem[idx1].items.length < 1) { menuItem[idx1].items = null; return; }
+
+      this.menuLoop(menuItem[idx1].items, data, menuLang);
+    });
+  }
+
+  /**
+   * 메뉴리스트 가져오는 메서드
+   * @param menuLang : 언어
+   */
+  public getMenuList(menuLang): any {
+    this.http.get<MenuList[]>('assets/data/menu.json').toPromise()
+      .then((data: any) => {
+        let menuitem: MenuItem = {};
+        this.menuItems = [];
+
+        data.forEach((element) => {
+          if (element.upperLv === 0) {
+            menuitem.id = element.level;
+            menuitem.label = menuLang[element.label];
+            this.menuItems.push(menuitem);
+            menuitem = {};
+          }
+        });
+        this.menuLoop(this.menuItems, data, menuLang);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 }

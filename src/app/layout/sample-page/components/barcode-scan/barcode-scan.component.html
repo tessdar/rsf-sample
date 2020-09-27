@@ -1,22 +1,22 @@
 <!-- 메뉴바 -->
-<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+<p-breadcrumb [model]="mainMenu.breadItems"></p-breadcrumb>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'samplePage.barcodeScan.barcode' | translate }}
     </h3>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12" [hidden]="!hasDevices">
+<div class="p-grid">
+  <div class="p-col" [hidden]="!hasDevices">
     <p-dropdown [options]="deviceLists" [(ngModel)]="currentDevice" [autoDisplayFirst]="true" (onChange)="onDeviceSelectChange($event)">
     </p-dropdown>
   </div>
 </div>
 
-<div class="ui-g ui-fluid">
+<div class="p-grid p-fluid">
   <zxing-scanner #scanner start="true" [device]="currentDevice" (scanSuccess)="handleQrCodeResult($event)" [formats]="['QR_CODE', 'EAN_13', 'CODE_128']">
   </zxing-scanner>
 
@@ -26,7 +26,7 @@
   </section>
 </div>
 
-<div class="ui-g">
+<div class="p-grid">
   <ng-container *ngIf="hasPermission === undefined">
     <h2>Waiting for permissions.</h2>
     <blockquote>

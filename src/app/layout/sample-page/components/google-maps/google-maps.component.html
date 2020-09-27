@@ -1,11 +1,11 @@
 <!-- 메뉴바 -->
-<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+<p-breadcrumb [model]="mainMenu.breadItems"></p-breadcrumb>
 
 <!-- 메시지 -->
 <p-toast [baseZIndex]="9999"></p-toast>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'samplePage.googleMaps.maps' | translate }}
     </h3>

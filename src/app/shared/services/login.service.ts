@@ -18,12 +18,12 @@ export class LoginService {
    * @param password: 비밀번호
    */
   login(userId: string, password: string): any {
-    let login = { "userId": userId, "password": password };
+    const login = { 'userId': userId, 'password': password };
 
     return new Promise(resolve => {
       const httpOptions = {
         headers: new HttpHeaders()
-          .set('Language', this.mainMenu.getLanguage())
+          .set('Language', this.mainMenu.language)
       };
 
       this.http.post(environment.restURL + '/api/auth/login', login, httpOptions)

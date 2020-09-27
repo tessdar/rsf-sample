@@ -1,0 +1,107 @@
+[
+    {
+        "level": 1000,
+        "upperLv": 0,
+        "label": "designGuide"
+    },
+    {
+        "level": 1010,
+        "upperLv": 1000,
+        "label": "btnLib", 
+        "routerLink": "/layout/design-guide/btn-lib"
+    },
+    {
+        "level": 1020,
+        "upperLv": 1000,
+        "label": "inputLib",
+        "routerLink": "/layout/design-guide/input-lib"
+    },   
+    {
+        "level": 1030,
+        "upperLv": 1000,
+        "label": "tabView",
+        "routerLink": "/layout/design-guide/tab-view"
+    },
+    {
+        "level": 1040,
+        "upperLv": 1000,
+        "label": "scheView",
+        "routerLink": "/layout/design-guide/sche-view"
+    },           
+    {
+        "level": 2000,
+        "upperLv": 0,
+        "label": "samplePage"
+    },
+    {
+        "level": 2010,
+        "upperLv": 2000,
+        "label": "basicCrud",
+        "routerLink": "/layout/sample-page/basic-crud"
+    },    
+    {
+        "level": 2020,
+        "upperLv": 2000,
+        "label": "basicForm",
+        "routerLink": "/layout/sample-page/basic-form"
+    },  
+    {
+        "level": 2030,
+        "upperLv": 2000,
+        "label": "chartForm",
+        "routerLink": "/layout/sample-page/chart-form"
+    },
+    {
+        "level": 2040,
+        "upperLv": 2000,
+        "label": "basicWebcam",
+        "routerLink": "/layout/sample-page/basic-webcam"
+    },    
+    {
+        "level": 2050,
+        "upperLv": 2000,
+        "label": "barcodeScan",
+        "routerLink": "/layout/sample-page/barcode-scan"
+    },   
+    {
+        "level": 2060,
+        "upperLv": 2000,
+        "label": "signPad",
+        "routerLink": "/layout/sample-page/sign-pad"
+    }, 
+    {
+        "level": 2070,
+        "upperLv": 2000,
+        "label": "googleMaps",
+        "routerLink": "/layout/sample-page/google-maps"
+    },                    
+    {
+        "level": 3000,
+        "upperLv": 0,
+        "label": "helpAdvice"
+    },
+    {
+        "level": 3010,
+        "upperLv": 3000,
+        "label": "archHelp",
+        "routerLink": "/layout/help-advice/arch-help"
+    },
+    {
+        "level": 3020,
+        "upperLv": 3000,
+        "label": "newComp",
+        "routerLink": "/layout/help-advice/new-comp"
+    },
+    {
+        "level": 3030,
+        "upperLv": 3000,
+        "label": "newServ",
+        "routerLink": "/layout/help-advice/new-serv"
+    },
+    {
+        "level": 3040,
+        "upperLv": 3000,
+        "label": "designLayout",
+        "routerLink": "/layout/help-advice/design-layout"
+    }                     
+]

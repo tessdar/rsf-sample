@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { MessageService } from 'primeng/api';
 import { MouseEvent } from '@agm/core';
-import { mapMarker } from '../../interfaces/google-maps/map-marker';
+import { MapMarker } from '../../interfaces/google-maps/map-marker';
 
 @Component({
   selector: 'app-google-maps',
@@ -15,8 +15,8 @@ import { mapMarker } from '../../interfaces/google-maps/map-marker';
 export class GoogleMapsComponent implements OnInit {
 
   // google maps zoom level
-  public zoom: number = 16;
-  public markers = [] as mapMarker[];
+  public zoom = 16;
+  public markers = [] as MapMarker[];
 
   // initial center position for the map
   public currentLat = 0 as number;
@@ -34,21 +34,21 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   public clickedMarker(label: string, index: number) {
-    console.log('clicked the marker: ${label || index}')
+    console.log('clicked the marker: ${label || index}');
   }
-  
+
   public mapClicked($event: MouseEvent) {
     this.markers.push({
       lat: $event.coords.lat,
-      lng: $event.coords.lng,      
+      lng: $event.coords.lng,
       draggable: true
     });
   }
-  
-  public markerDragEnd(m: mapMarker, $event: MouseEvent) {
+
+  public markerDragEnd(m: MapMarker, $event: MouseEvent) {
     console.log('dragEnd', m, $event);
   }
-  
+
   public findMe() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -56,7 +56,7 @@ export class GoogleMapsComponent implements OnInit {
       });
     } else {
       this.translate.get('shared.message').subscribe(msg => {
-        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noGeoSupport });              
+        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noGeoSupport });
       });
     }
   }
@@ -69,8 +69,8 @@ export class GoogleMapsComponent implements OnInit {
       });
     } else {
       this.translate.get('shared.message').subscribe(msg => {
-        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSupportBrowser });        
-      });      
+        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSupportBrowser });
+      });
     }
   }
 
@@ -80,8 +80,8 @@ export class GoogleMapsComponent implements OnInit {
 
     // this.markers.push({
     //   lat: position.coords.latitude,
-    //   lng: position.coords.longitude,    
-    //   label: 'You',  
+    //   lng: position.coords.longitude,
+    //   label: 'You',
     //   draggable: false
     // });
   }
@@ -93,8 +93,8 @@ export class GoogleMapsComponent implements OnInit {
 
     // this.markers.push({
     //   lat: position.coords.latitude,
-    //   lng: position.coords.longitude,    
-    //   label: 'You',  
+    //   lng: position.coords.longitude,
+    //   label: 'You',
     //   draggable: false
     // });
   }

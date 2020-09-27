@@ -6,8 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: '', component: LoginComponent, pathMatch: "full" },
-    // { path: '', redirectTo: 'login', pathMatch: "full" },
+    { path: '', component: LoginComponent, pathMatch: 'full' },
     { path: 'layout', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule), canActivate: [AuthGuard] },
     { path: '**', component: NotFoundComponent }
 ];

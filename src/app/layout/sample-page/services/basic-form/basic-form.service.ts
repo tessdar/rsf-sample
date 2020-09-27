@@ -16,70 +16,52 @@ export class BasicFormService {
   /**
    * 부서정보 조회하는 웹서비스 호출
    */
-  getDepList(): any {
-    return new Promise(resolve => {
-      const httpOptions = {
-        headers: new HttpHeaders()
-          .set('Language', this.mainMenu.getLanguage())
-          .set('Authorization', localStorage.getItem('AuthToken'))
-      };
+  async getDepList(): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders()
+        .set('Language', this.mainMenu.language)
+        .set('Authorization', localStorage.getItem('AuthToken'))
+    };
 
-      this.http.get(environment.restURL + '/api/emp/dep', httpOptions)
-        .subscribe(data => {
-          resolve(data);
-        }, err => {
-          console.log(err);
-          resolve(err);
-        });
-    });
-
+    return await this.http.get(environment.restURL + '/api/emp/dep', httpOptions)
+      .toPromise()
+      .then(data => data)
+      .catch(err => err);
   }
 
   /**
    * 업무정보 조회하는 웹서비스 호출
    */
-  getJobList(): any {
-    return new Promise(resolve => {
-      const httpOptions = {
-        headers: new HttpHeaders()
-          .set('Language', this.mainMenu.getLanguage())
-          .set('Authorization', localStorage.getItem('AuthToken'))
-      };
+  async getJobList(): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders()
+        .set('Language', this.mainMenu.language)
+        .set('Authorization', localStorage.getItem('AuthToken'))
+    };
 
-      this.http.get(environment.restURL + '/api/emp/job', httpOptions)
-        .subscribe(data => {
-          resolve(data);
-        }, err => {
-          console.log(err);
-          resolve(err);
-        });
-    });
-
+    return await this.http.get(environment.restURL + '/api/emp/job', httpOptions)
+      .toPromise()
+      .then(data => data)
+      .catch(err => err);
   }
 
   /**
    * 파일 다운로드 하는 웹서비스 호출
-   * @param fileName 
+   * fileName
    */
   getFileDownload(fileName): Observable<Blob> {
-    return this.http.get(environment.restURL + '/api/file/download?file=' + fileName, { responseType: "blob" })
+    return this.http.get(environment.restURL + '/api/file/download?file=' + fileName, { responseType: 'blob' });
   }
 
   /**
    * 파일 삭제하는 웹서비스 호출
-   * @param fileName 
+   * fileName
    */
-  delFile(fileName) {
-    return new Promise(resolve => {
-
-      this.http.delete(environment.restURL + '/api/file/delete?file=' + fileName)
-        .subscribe(data => {
-          resolve(data);
-        }, err => {
-          console.log(err);
-          resolve(err);
-        });
-    });
+  async delFile(fileName): Promise<any> {
+    return await this.http.delete(environment.restURL + '/api/file/delete?file=' + fileName)
+      .toPromise()
+      .then(data => data)
+      .catch(err => err);
   }
 
 }

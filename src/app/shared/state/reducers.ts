@@ -1,7 +1,7 @@
 import * as fromApplication from './application/reducer';
 
 /**
- * 로그인 / 로그아웃 상태 
+ * 로그인 / 로그아웃 상태
  */
 export interface State {
     application: fromApplication.State;

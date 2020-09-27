@@ -1,154 +1,154 @@
 <!-- 메뉴바 -->
-<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+<p-breadcrumb [model]="mainMenu.breadItems"></p-breadcrumb>
 
 <!-- Inputs -->
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.inputLib.inputTitle' | translate }}
     </h3>
   </div>
 </div>
 
-<div class="ui-g ui-fluid">
-  <div class="ui-sm-12 ui-md-6 ui-lg-6 ui-g-nopad">
-    <div class="ui-inputgroup">
-      <span class="ui-inputgroup-addon">ID</span>
+<div class="p-grid p-fluid">
+  <div class="p-col-12 p-lg-6 p-md-6 p-sm-12">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">ID</span>
       <input pInputText type="text">
     </div>
   </div>
-  <div class="ui-sm-12 ui-md-6 ui-lg-6 ui-g-nopad">
-    <div class="ui-inputgroup">
-      <span class="ui-inputgroup-addon">Password</span>
-      <input pPassword type="password" [ngClass]="'ui-password-cust'" promptLabel="{{ 'designGuide.inputLib.passLabel' | translate }}"
+  <div class="p-col-12 p-lg-6 p-md-6 p-sm-12">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">Password</span>
+      <input pPassword type="password" promptLabel="{{ 'designGuide.inputLib.passLabel' | translate }}"
         weakLabel="{{ 'designGuide.inputLib.passWeak' | translate }}" mediumLabel="{{ 'designGuide.inputLib.passMedium' | translate }}"
         strongLabel="{{ 'designGuide.inputLib.passStrong' | translate }}" />
     </div>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>
 
 <!-- Calendar -->
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.inputLib.calendarTitle' | translate }}
     </h3>
   </div>
 </div>
 
-<div class="ui-g ui-fluid">
-  <div class="ui-sm-6 ui-md-3 ui-lg-3 ui-g-nolr-pad">
+<div class="p-grid p-fluid">
+  <div class="p-col-12 p-lg-3 p-md-6 p-sm-6">
     <p-calendar [(ngModel)]="date3" dateFormat="yy.mm.dd" [showIcon]="true"></p-calendar>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>
 
 <!-- Check Box -->
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.inputLib.checkTitle' | translate }}
     </h3>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+<div class="p-grid">
+  <div class="p-col-6 p-lg-4 p-md-4 p-sm-6">
     <p-checkbox label="Lorem Ipsum" [(ngModel)]="chkbox1" binary="true"></p-checkbox>
   </div>
-  <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+  <div class="p-col-6 p-lg-4 p-md-4 p-sm-6">
     <p-checkbox label="Lorem Ipsum" [(ngModel)]="chkbox2" [disabled]="true" binary="true"></p-checkbox>
   </div>
-  <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+  <div class="p-col-6 p-lg-4 p-md-4 p-sm-6">
     <p-checkbox label="Lorem Ipsum" [(ngModel)]="chkbox3" binary="true"></p-checkbox>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>
 
 <!-- Radio Box -->
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.inputLib.radioTitle' | translate }}
     </h3>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+<div class="p-grid">
+  <div class="p-col-6 p-lg-4 p-md-4 p-sm-6">
     <p-radioButton name="group1" value="Option 1" label="Option 1" [(ngModel)]="val1" inputId="opt1"></p-radioButton>
   </div>
-  <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+  <div class="p-col-6 p-lg-4 p-md-4 p-sm-6">
     <p-radioButton name="group1" value="Option 2" label="Option 2" [(ngModel)]="val1" inputId="opt2" [disabled]="true"></p-radioButton>
   </div>
-  <div class="ui-sm-6 ui-md-4 ui-lg-4 ui-g-nolr-pad">
+  <div class="p-col-6 p-lg-4 p-md-4 p-sm-6">
     <p-radioButton name="group1" value="Option 3" label="Option 3" [(ngModel)]="val1" inputId="opt3"></p-radioButton>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>
 
 <!-- Dropdown -->
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.inputLib.dropdownTitle' | translate }}
     </h3>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nolr-pad">
+<div class="p-grid">
+  <div class="p-col">
     <p-dropdown [options]="items" [(ngModel)]="selectedItem" placeholder="Lorem Ipsum"></p-dropdown>
   </div>
 </div>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>
 
 <!-- Text Area -->
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.inputLib.textAreaTitle' | translate }}
     </h3>
   </div>
 </div>
 
-<textarea [rows]="5" [cols]="30" pInputTextarea autoResize="true" ></textarea>
+<textarea rows="5" cols="30" pInputTextarea autoResize="autoResize" style="width: 100%;"></textarea>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>
 
 <!-- Editor -->
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'designGuide.inputLib.editorTitle' | translate }}
     </h3>
@@ -157,8 +157,8 @@
 
 <p-editor [style]="{'height':'300px'}"></p-editor>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <br>
   </div>
 </div>

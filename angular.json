@@ -17,6 +17,17 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "angular2-signaturepad",
+              "chart.js",
+              "firebase/app",
+              "@firebase/database",
+              "@firebase/util",
+              "ng-connection-service",
+              "ngx-webcam",
+              "@agm/core",
+              "@zxing/ngx-scanner"
+            ],
             "outputPath": "dist/rsf-sample",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -34,10 +45,10 @@
               "node_modules/@fullcalendar/core/main.min.css",
               "node_modules/@fullcalendar/daygrid/main.min.css",
               "node_modules/@fullcalendar/timegrid/main.min.css",
-              "node_modules/primeng/resources/primeng.min.css",              
               "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/primeng.min.css",                            
               "node_modules/primeflex/primeflex.css",
-              "src/assets/themes/rsm/theme.scss",
+              "src/assets/themes/theme.scss",
               "src/styles.scss"
             ],
             "scripts": [

@@ -3,10 +3,10 @@
  */
 
 export interface TrimInfo {
-    trimNo: string,
-    model: string,
-    diverLoc: string,
-    destination: string,
-    swBzr: string,
-    rrack: string
+    trimNo: string;
+    model: string;
+    diverLoc: string;
+    destination: string;
+    swBzr: string;
+    rrack: string;
 }

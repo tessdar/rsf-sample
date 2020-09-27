@@ -24,7 +24,7 @@ export class ChartFormComponent implements OnInit {
   /**
    * 화면 초기 설정
    * 차트 부서 데이터 조회하는 메서드 실행
-   * 차트 업무 데이터 조회하는 메서드 실행  
+   * 차트 업무 데이터 조회하는 메서드 실행
    */
   ngOnInit() {
     this.getDepChart();
@@ -39,14 +39,14 @@ export class ChartFormComponent implements OnInit {
    * 차트 정보 출력하기 위해 PrimeNG 차트 인터페이스에 값을 설정
    */
   public getDepChart() {
-    let label = [] as any[];
-    let data = [] as any[];
+    const label = [] as any[];
+    const data = [] as any[];
 
     this.chartFormService.getDepChart().then((res: any) => {
       if (!res) {
 
       } else {
-        if (res.ok == false) {
+        if (res.ok === false) {
 
         } else {
           res.forEach(element => {
@@ -64,7 +64,7 @@ export class ChartFormComponent implements OnInit {
                 data: data
               }
             ]
-          }
+          };
 
         }
       }
@@ -81,14 +81,14 @@ export class ChartFormComponent implements OnInit {
    * 차트 정보 출력하기 위해 PrimeNG 차트 인터페이스에 값을 설정
    */
   public getJobChart() {
-    let label = [] as any[];
-    let data = [] as any[];
+    const label = [] as any[];
+    const data = [] as any[];
 
     this.chartFormService.getJobChart().then((res: any) => {
       if (!res) {
 
       } else {
-        if (res.ok == false) {
+        if (res.ok === false) {
 
         } else {
           res.forEach(element => {
@@ -101,19 +101,19 @@ export class ChartFormComponent implements OnInit {
             datasets: [
               {
                 backgroundColor: [
-                  "#FF6384",
-                  "#4BC0C0",
-                  "#FFCE56",
-                  "#36A2EB"],
+                  '#FF6384',
+                  '#4BC0C0',
+                  '#FFCE56',
+                  '#36A2EB'],
                 hoverBackgroundColor: [
-                  "#FF6384",
-                  "#4BC0C0",
-                  "#FFCE56",
-                  "#36A2EB"],
+                  '#FF6384',
+                  '#4BC0C0',
+                  '#FFCE56',
+                  '#36A2EB'],
                 data: data
               }
             ]
-          }
+          };
 
         }
       }

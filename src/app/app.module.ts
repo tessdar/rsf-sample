@@ -42,7 +42,7 @@ import { DeactGuard } from './shared/guard/deact.guard';
 
 // Providers
 import { MainMenuService } from './shared/services/main-menu.service';
-// import { ConnectionService } from 'ng-connection-service';
+import { ConnectionService } from 'ng-connection-service';
 
 import { environment } from '../environments/environment';
 
@@ -79,8 +79,7 @@ import { environment } from '../environments/environment';
     FontAwesomeModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [AuthGuard, DeactGuard, MainMenuService
-    // , ConnectionService
+  providers: [AuthGuard, DeactGuard, MainMenuService, ConnectionService
   ],
   bootstrap: [AppComponent]
 })

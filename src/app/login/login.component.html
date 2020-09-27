@@ -3,60 +3,56 @@
 
 <div class="login-background">
   <form class="login-panel" [formGroup]="userform" (ngSubmit)="login(userform.value)">
-    <div class="ui-g ui-fluid">
-      <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-lrpad">
+    <div class="p-grid p-fluid">
+      <div class="p-col">
         <h2>{{ 'login.siteName' | translate }}</h2>
       </div>
     </div>
-    <div class="ui-g ui-fluid">
-      <div class="ui-sm-offset-8 ui-sm-4 ui-md-offset-8 ui-md-4 ui-lg-offset-8 ui-lg-4 ui-g-nopad">
+    <div class="p-grid p-fluid p-nogutter">
+      <div class="p-offset-8 p-col-4">
         <a class="a-language" (click)="useLanguage('ko')">ko</a> &nbsp; &nbsp;
         <a class="a-language" (click)="useLanguage('en')">en</a>
       </div>
     </div>
     <br>
-    <div class="ui-g ui-fluid">
-      <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-lrpad">
-        <div class="ui-inputgroup">
-          <span class="ui-float-label">
-            <input pInputText id="float-name" type="text" formControlName="userId">
-            <label for="float-name">{{ 'login.userName' | translate }}</label>
+    <div class="p-grid p-fluid">
+      <div class="p-col p-inputgroup">
+          <span class="p-float-label">            
+            <input pInputText id="float-name" type="text" formControlName="userId">   
+            <label for="float-name">{{ 'login.userName' | translate }}</label>            
           </span>
           <span class="ui-inputgroup-login">
             <fa-icon [icon]="faEnvelope"></fa-icon>
           </span>
-        </div>
       </div>
     </div>
     <br>
-    <div class="ui-g ui-fluid">
-      <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-lrpad">
-        <div class="ui-inputgroup">
-          <span class="ui-float-label">
-            <input pInputText id="float-pass" type="password" formControlName="password" />
-            <label for="float-pass">{{ 'login.password' | translate }}</label>
+    <div class="p-grid p-fluid">
+      <div class="p-col p-inputgroup">
+          <span class="p-float-label">            
+            <input pInputText id="float-pass" type="password" formControlName="password" />   
+            <label for="float-pass">{{ 'login.password' | translate }}</label>         
           </span>
           <span class="ui-inputgroup-login">
             <fa-icon [icon]="faLock"></fa-icon>
           </span>
-        </div>
       </div>
     </div>
     <br>
     <br>
     <br>
-    <div class="ui-g ui-fluid">
-      <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-lrpad">
+    <div class="p-grid p-fluid">
+      <div class="p-col" style="padding-left: 30px; padding-right: 30px;">
         <button pButton type="submit" [disabled]="!userform.valid" label="{{ 'login.login' | translate }}"></button>
       </div>
     </div>
     <br>
-    <div class="ui-g ui-fluid">
+    <div class="p-grid p-fluid">
       <a href="#" class="forgot-pass">{{ 'login.forgot' | translate }}</a>
     </div>
   </form>
   <div>
-    <p class="copy-right">COPYRIGHT 2018 RENAULT SAMSUNG MOTORS ALL RIGHTS RESERVED</p>
+    <p class="copy-right">COPYRIGHT 2020 RENAULT SAMSUNG MOTORS ALL RIGHTS RESERVED</p>
   </div>
   <div>
     <p class="version">{{ version }}</p>

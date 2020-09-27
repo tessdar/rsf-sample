@@ -1,8 +1,8 @@
 <!-- 메뉴바 -->
-<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+<p-breadcrumb [model]="mainMenu.breadItems"></p-breadcrumb>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.newComp.newModuleTitle' | translate }}
     </h3>
@@ -52,8 +52,8 @@
   <br />export class HelpAdviceModule &#123; &#125;
 </p-panel>
 <br />
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.newComp.moduleRouteTitle' | translate }}
     </h3>
@@ -89,8 +89,8 @@
   <br />export class LayoutRoutingModule &#123; &#125;
 </p-panel>
 <br />
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.newComp.newCompTitle' | translate }}
     </h3>
@@ -151,8 +151,8 @@
   <br />export class HelpAdviceModule &#123; &#125;  
 </p-panel>
 <br />
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.newComp.addRouteTitle' | translate }}
     </h3>
@@ -182,8 +182,8 @@
   <br />export class HelpAdviceRoutingModule &#123; &#125;  
 </p-panel>
 <br />
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.newComp.newMenuTitle' | translate }}
     </h3>
@@ -199,7 +199,7 @@
 </p>
 
 <p-panel header="main-menu.service.ts" [toggleable]="false">  
-  <br />&#123;
+  &#123;
   <br />&nbsp;&nbsp;label: menuLang.help,
   <br />&nbsp;&nbsp;&nbsp;&nbsp;items: [
   <br />&nbsp;&nbsp;&nbsp;&nbsp;&#123;
@@ -218,8 +218,8 @@
   <br />&#125;  
 </p-panel>
 <br />
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.newComp.injectMenuTitle' | translate }}
     </h3>
@@ -232,7 +232,7 @@
 </p>
 
 <p-panel header="arch-help.component.ts" [toggleable]="false">  
-  <br />import &#123; Component, OnInit &#125; from '@angular/core';
+  import &#123; Component, OnInit &#125; from '@angular/core';
   <br />import &#123; MainMenuService &#125; from '../../../../shared/services/main-menu.service';
   <br />
   <br />@Component(&#123;
@@ -249,8 +249,8 @@
   <br />&#125;
 </p-panel>
 <br />
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.newComp.addBreadTitle' | translate }}
     </h3>
@@ -258,19 +258,19 @@
 </div>
 <p>[7] 우측 메뉴 서비스 tag를 컴포넌트 html 파일에 추가한다.
   <br />&nbsp;&nbsp;&nbsp;&nbsp; arch-help.component.html 파일 상단에 &lt;p-breadcrumb
-  [model]="mainMenu.getBreadItems()"&gt;&lt;/p-breadcrumb&gt; 입력한다.
+  [model]="mainMenu.breadItems"&gt;&lt;/p-breadcrumb&gt; 입력한다.
 </p>
 
 <p-panel header="arch-help.component.html" [toggleable]="false">  
-  <br />&lt;p-breadcrumb [model]="mainMenu.getBreadItems()"&gt;&lt;/p-breadcrumb&gt;
+  &lt;p-breadcrumb [model]="mainMenu.breadItems"&gt;&lt;/p-breadcrumb&gt;
   <br />
   <br />&lt;p&gt;
   <br />&nbsp;&nbsp;arch-help works!
   <br />&lt;/p&gt;  
 </p-panel>
 <br />
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.newComp.addLangTitle' | translate }}
     </h3>
@@ -282,7 +282,7 @@
 </p>
 
 <p-panel header="ko.json" [toggleable]="false">
-  <br />"main": &#123;
+  "main": &#123;
   <br />&nbsp;&nbsp;"siteName": "시스템명",
   <br />&nbsp;&nbsp;"userInfo": "사용자 정보",
   <br />&nbsp;&nbsp;"logout": "로그아웃",
@@ -301,7 +301,7 @@
 </p-panel>
 
 <p-panel header="en.json" [toggleable]="false">  
-  <br />"main": &#123;
+  "main": &#123;
   <br />&nbsp;&nbsp;"siteName": "Site Name",
   <br />&nbsp;&nbsp;"userInfo": "User Info",
   <br />&nbsp;&nbsp;"changeTheme": "Change Theme",
@@ -319,8 +319,8 @@
   <br />&#125;  
 </p-panel>
 <br />
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.newComp.npmStartTitle' | translate }}
     </h3>

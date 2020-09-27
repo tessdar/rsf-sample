@@ -1,0 +1,29 @@
+[{
+    "employeeId": 1,
+    "firstName": "A",
+    "lastName": "B",
+    "phoneNumber": "010",
+    "jobId": "C",
+    "departmentId": 2,
+    "managerId": 3,
+    "email": "D",
+    "hireDate": "2020-09-24",
+    "departmentName": "E",
+    "locationId": 4,
+    "_status": 0
+  },
+  {
+    "employeeId": 2,
+    "firstName": "A",
+    "lastName": "B",
+    "phoneNumber": "010",
+    "jobId": "C",
+    "departmentId": 2,
+    "managerId": 3,
+    "email": "D",
+    "hireDate": "2020-09-24",
+    "departmentName": "E",
+    "locationId": 4,
+    "_status": 0
+  }
+]

@@ -1,8 +1,8 @@
 <!-- 메뉴바 -->
-<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+<p-breadcrumb [model]="mainMenu.breadItems"></p-breadcrumb>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.newServ.newServTitle' | translate }}
     </h3>
@@ -15,7 +15,7 @@
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; [주의] 반드시 Internet이 접속된 상태에서 실행해야 파일이 정상적으로 생성된다.
 </p>
 <p-panel header="Console" [toggleable]="false">  
-  <br/>$ ng g service /layout/sample-page/services/basic-crud
+  $ ng g service /layout/sample-page/services/basic-crud
   <br/>
   <br/>create src/app/layout/sample-page/services/basic-crud-service.spec.ts (253 bytes)
   <br/>create src/app/layout/sample-page/services/basic-crud.service.ts (296 bytes)  
@@ -23,7 +23,7 @@
 
 <p> &nbsp;&nbsp;&nbsp;&nbsp; 실행이 완료되면 아래와 같이 basic-crud.service.ts 파일이 생성된다.</p>
 <p-panel header="basic-crud.service.ts" [toggleable]="false">  
-  <br/>import &#123; Injectable &#125; from '@angular/core';
+  import &#123; Injectable &#125; from '@angular/core';
   <br/>
   <br/>@Injectable()
   <br/>export class BasicCrudService &#123;
@@ -40,7 +40,7 @@
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * MainMenuService: 설정된 언어를 참조하기 위한 모듈
 </p>
 <p-panel header="basic-crud.service.ts" [toggleable]="false">  
-  <br/>import &#123; Injectable &#125; from '@angular/core';
+  import &#123; Injectable &#125; from '@angular/core';
   <br/>import &#123; HttpClient, HttpHeaders &#125; from '@angular/common/http';
   <br/>import &#123; environment &#125; from '../../../environments/environment';
   <br/>
@@ -55,35 +55,59 @@
   <br/>&#125;    
 </p-panel>
 <br/>
-<p>[3] 메서드를 생성한다.
+<p>[3-1] 메서드를 생성한다. - Promise인 경우
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * 메서드 이름 및 매개변수 설정한다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; * return new Promise(resolve =>&#123; &#125;) 반드시 설정한다. Promise 타입으로 리턴을 해야 콜백처리가 가능하다.
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp; * 메서드 이름 앞에 async를 리턴 변수에는 Promise를 기입한다.
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * httpOptions에 Language와 Authorization을 설정한다. Language는 언어, Authorization은 인증체크를 위한
   토큰이다.
   <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 인증이 필요가 없으면 Authorization은 설정하지 않아도 된다.
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * http 메서드를 호출한다. select - get, update - post, delete - delete, insert - put 메서드를 호출한다.
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; * 호출 URI를 설정한다. 개발, 운영 프로파일을 참조하기 위해 environment.restURL을 반드시 앞에 붙이고 뒤에 URI와 Parameter를 추가한다.
   <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Parameter 뒤에 앞서 설정한 httpOptions를 옵션으로 붙여준다.
-  <br/> &nbsp;&nbsp;&nbsp;&nbsp; * 호출 후 정상적으로 값을 가져온 경우 resolve(data)로 리턴하고 에러가 난 경우 에러값을 resolve(err)로 리턴한다.
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp; * 호출 후 정상적으로 값을 가져온 경우 data로 리턴하고 에러가 난 경우 에러값을 err로 리턴한다.
 </p>
 <p-panel header="basic-crud.service.ts" [toggleable]="false">  
-  <br/>getEmpList(departmentId: string): any &#123;
-  <br/>&nbsp;&nbsp;return new Promise(resolve => &#123;
+  async getEmpList(departmentId: string): Promise&lt;any&gt; &#123;
   <br/>&nbsp;&nbsp;&nbsp;&nbsp; const httpOptions = &#123;
   <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   headers: new HttpHeaders(&#123;
-  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     'Language': this.mainMenu.getLanguage(),
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     'Language': this.mainMenu.language,
   <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     'Authorization': localStorage.getItem('AuthToken')
   <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &#125;)
   <br/>&nbsp;&nbsp;&nbsp;&nbsp; &#125;;
   <br/>
-  <br/>&nbsp;&nbsp;&nbsp;&nbsp; this.http.get(environment.restURL + '/api/emp/list?departmentId=' + departmentId, httpOptions)
-  <br/>&nbsp;&nbsp;&nbsp;&nbsp;   .subscribe(data => &#123;
-  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     resolve(data);
-  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &#125;, err => &#123;
-  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     console.log(err);
-  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     resolve(err);
-  <br/>&nbsp;&nbsp;&nbsp;&nbsp;   &#125;);
-  <br/>&nbsp;&nbsp;&#125;);  
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp; return await this.http.get(environment.restURL + '/api/emp/list?departmentId=' + departmentId, httpOptions)
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   .toPromise() 
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   .then(data => data)
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   .catch(err => err);
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;   &#125;
+  <br/>&#125;  
+</p-panel>
+<br/>
+<p>[3-2] 메서드를 생성한다. - Observable인 경우
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp; * 메서드 이름 및 매개변수 설정한다.
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp; * 메서드 이름 앞에 public 리턴 변수에는 Observable인 기입한다.
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp; * httpOptions에 Language와 Authorization을 설정한다. Language는 언어, Authorization은 인증체크를 위한
+  토큰이다.
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 인증이 필요가 없으면 Authorization은 설정하지 않아도 된다.
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp; * http 메서드를 호출한다. select - get, update - post, delete - delete, insert - put 메서드를 호출한다.
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp; * 호출 URI를 설정한다. 개발, 운영 프로파일을 참조하기 위해 environment.restURL을 반드시 앞에 붙이고 뒤에 URI와 Parameter를 추가한다.
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Parameter 뒤에 앞서 설정한 httpOptions를 옵션으로 붙여준다.
+  <br/> &nbsp;&nbsp;&nbsp;&nbsp; * pipe 뒤에 map으로 정상적인 값을 리턴하고 에러인 경우 catchError를 통해 에러 메시지를 반환한다.
+</p>
+<p-panel header="basic-crud.service.ts" [toggleable]="false">  
+  public getEmpList(departmentId: string): Observable&lt;any&gt; &#123;
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp; const httpOptions = &#123;
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   headers: new HttpHeaders(&#123;
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     'Language': this.mainMenu.language,
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     'Authorization': localStorage.getItem('AuthToken')
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &#125;)
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp; &#125;;
+  <br/>
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp; return this.http.get&lt;DataSet[]&gt;(environment.restURL + '/api/emp/list?departmentId=' + departmentId, httpOptions)
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   .pipe(
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   map(res => res),
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   catchError(error => of(&#123; 'ok': error.ok, 'status': error.status, 'statusText': error.statusText &#125;))
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   );
   <br/>&#125;  
 </p-panel>
 <br/>
@@ -91,7 +115,7 @@
   <br/> &nbsp;&nbsp;&nbsp;&nbsp; 컴포넌트의 providers Array에 앞서 작성한 서비스를 주입한다.
 </p>
 <p-panel header="basic-crud.component.ts" [toggleable]="false">  
-  <br/>import &#123; BasicCrudService &#125; from '../../services/basic-crud/basic-crud.service';
+  import &#123; BasicCrudService &#125; from '../../services/basic-crud/basic-crud.service';
   <br/>
   <br/>@Component(&#123;
   <br/>&nbsp;&nbsp; selector: 'app-basic-crud',
@@ -102,10 +126,17 @@
   <br/> export class BasicCrudComponent implements OnInit &#123;  
 </p-panel>
 <br/>
-<p>[5] 컴포넌트에 주입된 서비스를 호출하는 메서드를 추가한다.
+<p>[5-1] 컴포넌트에 주입된 서비스를 호출하는 메서드를 추가한다. - Promise인 경우
 </p>
 <p-panel header="basic-crud.component.ts" [toggleable]="false">
-  <br/>this.basicCrudService .getEmpList(departmentId) .then((res: any) => &#123;
+  this.basicCrudService .getEmpList(departmentId) .then((res: any) => &#123;
+  <br/>&nbsp;&nbsp;...
+  <br/>&#125;);
+</p-panel>
+<p>[5-2] 컴포넌트에 주입된 서비스를 호출하는 메서드를 추가한다. - Observable인 경우
+</p>
+<p-panel header="basic-crud.component.ts" [toggleable]="false">
+  this.basicCrudService .getEmpList(departmentId) .subscribe((res: any) => &#123;
   <br/>&nbsp;&nbsp;...
   <br/>&#125;);
 </p-panel>

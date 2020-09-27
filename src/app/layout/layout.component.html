@@ -1,89 +1,90 @@
 <!-- 로그아웃 다이얼로그 -->
-<p-dialog header="{{ 'main.logout' | translate }}" [(visible)]="logoutDisplay" modal="modal" [responsive]="true"
-    styleClass="layout-dialog" [baseZIndex]="9999" [closeOnEscape]="false" [closable]="false">
-    <span>{{ 'main.autoLogout' | translate }}</span>
-    <p-footer>
-        <button pButton type="button" (click)="logout()" label="OK">
-            <fa-icon [icon]="faCheck"></fa-icon>
-        </button>
-    </p-footer>
+<p-dialog header="{{ 'main.logout' | translate }}" [(visible)]="logoutDisplay" modal="modal" styleClass="layout-dialog"
+  [baseZIndex]="9999" [closeOnEscape]="false" [closable]="false">
+  <span>{{ 'main.autoLogout' | translate }}</span>
+  <p-footer>
+    <button pButton type="button" (click)="logout()" label="OK">
+      <fa-icon [icon]="faCheck"></fa-icon>
+    </button>
+  </p-footer>
 </p-dialog>
 
 <!-- 상단 헤더 -->
 <div id="layout-topbar">
-    <a href="#" class="menu-button" (click)="onMenuButtonClick($event)">
-        <fa-icon [icon]="faBars"></fa-icon>
+  <a href="#" class="menu-button" (click)="onMenuButtonClick($event)">
+    <fa-icon [icon]="faBars"></fa-icon>
+  </a>
+  <div class="logo">
+    <span class="logobox"></span>
+    <span class="first">GROUP&nbsp;</span>
+    <span class="second">RENAULT</span>
+    <span class="actbtn" [ngClass]="{'inactive': mainMenu.menuInactive}">
+      <button pButton pRipple type="button" icon="pi" class="p-button-rounded" (click)="onMenuInactive($event)">
+        <fa-icon [icon]="faAngleLeft" size="2x"></fa-icon>
+      </button>
+    </span>
+    <a href="#" class="sitename" [routerLink]="['/layout']">
+      <br>
+      <span>{{ 'main.siteName' | translate }}</span>
     </a>
-    <div class="logo">
-        <span class="logobox"></span>
-        <span class="first">GROUP&nbsp;</span>
-        <span class="second">RENAULT</span>
-        <span class="actbtn" [ngClass]="{'inactive': mainMenu.getMenuInactive()}">
-            <button pButton type="button" class="ui-button-act ui-button-act-small" (click)="onMenuInactive($event)">
-                <fa-icon [icon]="faAngleRight" size="2x"></fa-icon>
-            </button>
-        </span>
-        <a href="#" class="sitename" [routerLink]="['/layout']">
-            <br>
-            <span>{{ 'main.siteName' | translate }}</span>
-        </a>
-    </div>
+  </div>
 
-    <ul class="topbar-menu">
-        <li class="topbar-subnav">
-            <a>{{logoutTimer}}</a>
+  <ul class="topbar-menu">
+    <li class="topbar-subnav">
+      <a>{{logoutTimer}}</a>
+    </li>
+    <li class="topbar-subnav">
+      <a>{{mainMenu.language}}</a>
+      <ul>
+        <li>
+          <a (click)="useLanguage('ko')">ko</a>
         </li>
-        <li class="topbar-subnav">
-            <a>{{mainMenu.getLanguage()}}</a>
-            <ul>
-                <li>
-                    <a (click)="useLanguage('ko')">ko</a>
-                </li>
-                <li>
-                    <a (click)="useLanguage('en')">en</a>
-                </li>
-            </ul>
+        <li>
+          <a (click)="useLanguage('en')">en</a>
         </li>
-        <li class="topbar-submenu">
-            <a>
-                <fa-icon [icon]="faUser"></fa-icon>&nbsp; ISTO
-            </a>
-            <ul>
-                <li class="topbar-submenu-header">ISTO</li>
-                <li>
-                    <a (click)="userInfo()">{{ 'main.userInfo' | translate }}</a>
-                </li>
-                <li>
-                    <a href="#" [routerLink]="['/layout/config']">{{ 'main.config' | translate }}</a>
-                </li>
-                <li>
-                    <a (click)="logout()">{{ 'main.logout' | translate }}</a>
-                </li>
-            </ul>
+      </ul>
+    </li>
+    <li class="topbar-submenu">
+      <a>
+        <fa-icon [icon]="faUser"></fa-icon>&nbsp; ISTO
+      </a>
+      <ul>
+        <li class="topbar-submenu-header">ISTO</li>
+        <li>
+          <a (click)="userInfo()">{{ 'main.userInfo' | translate }}</a>
         </li>
-    </ul>
+        <li>
+          <a href="#" [routerLink]="['/layout/config']">{{ 'main.config' | translate }}</a>
+        </li>
+        <li>
+          <a (click)="logout()">{{ 'main.logout' | translate }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <!-- 좌측 사이드바 메뉴 -->
-<div id="layout-sidebar" [ngClass]="{'active': mainMenu.getMenuActive(), 'inactive': mainMenu.getMenuInactive()}">
-    <div class="layout-menu">
-        <p-panelMenu [model]="mainMenu.getMenuItems()" [style]="{'width':'300px'}"></p-panelMenu>
-    </div>
+<div id="layout-sidebar" [ngClass]="{'active': mainMenu.menuActive, 'inactive': mainMenu.menuInactive}">
+  <div class="layout-menu">
+    <p-panelMenu [model]="mainMenu.menuItems" [style]="{'width':'300px'}" [multiple]="false"></p-panelMenu>
+  </div>
 </div>
 
 <!-- 메뉴 블럭 -->
-<div class="layout-mask" *ngIf="mainMenu.getMenuActive()" (click)="onMenuButtonClick($event)">
+<div class="layout-mask" *ngIf="mainMenu.menuActive" (click)="onMenuButtonClick($event)">
 </div>
 
 <!-- 우측 사이드 바 -->
 <p-sidebar [(visible)]="userInfoBar" position="right" [baseZIndex]="9999">
-    <h1 style="font-family:'RSMBold'">{{ 'main.userInfo' | translate }}</h1>
-    <button pButton type="button" (click)="userInfoBar = false" label="{{ 'shared.message.close' | translate }}" class="ui-button-secondary"></button>
+  <h1 style="font-family:'RSMBold'">{{ 'main.userInfo' | translate }}</h1>
+  <button pButton type="button" (click)="userInfoBar = false" label="{{ 'shared.message.close' | translate }}"
+    class="p-button-secondary"></button>
 </p-sidebar>
 
 <!-- 본문 -->
-<div id="layout-content" [ngClass]="{'inactive': mainMenu.getMenuInactive()}">
-    <div>
-        <router-outlet></router-outlet>
-    </div>
+<div id="layout-content" [ngClass]="{'inactive': mainMenu.menuInactive}">
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 </div>

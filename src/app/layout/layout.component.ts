@@ -14,7 +14,7 @@ import { MainMenuService } from '../shared/services/main-menu.service';
 
 import { environment } from '../../environments/environment';
 
-import { faBars, faUser, faCheck, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUser, faCheck, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-layout',
@@ -29,7 +29,7 @@ export class LayoutComponent implements OnInit {
   public faBars = faBars;
   public faUser = faUser;
   public faCheck = faCheck;
-  public faAngleRight = faAngleRight;
+  public faAngleLeft = faAngleLeft;
 
   @HostBinding('class.application') class = 'application';
   constructor(
@@ -40,9 +40,9 @@ export class LayoutComponent implements OnInit {
     private effects: ApplicationEffects,
     public mainMenu: MainMenuService) {
 
-    // Initial logoutTimer 
-    let min = Math.floor(this.effects.APPLICATION_TIMEOUT_TIME / 60).toString();
-    let sec = Math.floor(this.effects.APPLICATION_TIMEOUT_TIME % 60).toString();
+    // Initial logoutTimer
+    const min = Math.floor(this.effects.APPLICATION_TIMEOUT_TIME / 60).toString();
+    const sec = Math.floor(this.effects.APPLICATION_TIMEOUT_TIME % 60).toString();
 
     this.logoutTimer = this.padLeft(min, '0', 2) + ':' + this.padLeft(sec, '0', 2);
 
@@ -67,26 +67,27 @@ export class LayoutComponent implements OnInit {
     // 언어 설정
     this.route.params.pipe(map(params => params['lang'])).subscribe((lang) => {
       if (lang) {
-        this.mainMenu.setLanguage(lang);
+        this.mainMenu.language = lang;
       } else {
-        this.mainMenu.setLanguage('ko');
+        this.mainMenu.language = 'ko';
       }
     });
 
     // 언어 번역
-    this.translate.setDefaultLang(this.mainMenu.getLanguage());
+    this.translate.setDefaultLang(this.mainMenu.language);
 
     this.translate.get('main.sideMenu').subscribe(res => {
-      this.mainMenu.setMenuItems(res);
+      this.mainMenu.getMenuList(res);
     });
 
     // 잔여시간 출력
     interval(1000).subscribe(() => {
-      let min = Math.floor(this.effects.counter / 60).toString();
-      let sec = Math.floor(this.effects.counter % 60).toString();
+      const min = Math.floor(this.effects.counter / 60).toString();
+      const sec = Math.floor(this.effects.counter % 60).toString();
 
       this.logoutTimer = this.padLeft(min, '0', 2) + ':' + this.padLeft(sec, '0', 2);
     });
+
   }
 
   /**
@@ -99,12 +100,12 @@ export class LayoutComponent implements OnInit {
 
   /**
   * 모바일 메뉴 토글 버튼
-  * 모바일 화면에서 우측 메인 메뉴 활성화, 비활성화 토글 
+  * 모바일 화면에서 우측 메인 메뉴 활성화, 비활성화 토글
   * @param event : 이벤트
   */
   public onMenuButtonClick(event: Event) {
     event.preventDefault();
-    this.mainMenu.setMenuActive(!this.mainMenu.getMenuActive());
+    this.mainMenu.menuActive = !this.mainMenu.menuActive;
   }
 
   /**
@@ -114,7 +115,7 @@ export class LayoutComponent implements OnInit {
    */
   public onMenuInactive(event: Event) {
     event.preventDefault();
-    this.mainMenu.setMenuInactive(!this.mainMenu.getMenuInactive());
+    this.mainMenu.menuInactive = !this.mainMenu.menuInactive;
   }
 
   /**
@@ -125,11 +126,11 @@ export class LayoutComponent implements OnInit {
    */
   public useLanguage(language: string) {
 
-    this.mainMenu.setLanguage(language);
+    this.mainMenu.language = language;
     this.translate.use(language);
 
     this.translate.get('main.sideMenu').subscribe(res => {
-      this.mainMenu.setMenuItems(res);
+      this.mainMenu.getMenuList(res);
       this.mainMenu.setBreadItems(res);
     });
   }

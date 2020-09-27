@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
 import { saveAs } from 'file-saver/FileSaver';
@@ -12,7 +12,7 @@ import { SignaturePad } from 'angular2-signaturepad/signature-pad';
   styleUrls: ['./sign-pad.component.scss'],
   providers: [MessageService]
 })
-export class SignPadComponent implements OnInit {
+export class SignPadComponent implements OnInit, AfterViewInit {
 
   @ViewChild(SignaturePad, { static: true }) signaturePad: SignaturePad;
 
@@ -22,7 +22,7 @@ export class SignPadComponent implements OnInit {
     'minWidth': 5,
     'canvasWidth': 300,
     'canvasHeight': 200,
-    'backgroundColor': "#FAFAD2"
+    'backgroundColor': '#FAFAD2'
   };
 
   constructor(
@@ -60,12 +60,12 @@ export class SignPadComponent implements OnInit {
   public drawSave() {
     if (this.signaturePad.isEmpty()) {
       this.translate.get('shared.message').subscribe(msg => {
-        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSaveData });        
+        this.messageService.add({ severity: 'warn', summary: msg.warn, detail: msg.noSaveData });
       });
 
-    } else {      
+    } else {
       const imageBlob = this.dataURItoBlob(this.signImage.substring(22));
-      saveAs(imageBlob, 'sign.png');      
+      saveAs(imageBlob, 'sign.png');
     }
   }
 

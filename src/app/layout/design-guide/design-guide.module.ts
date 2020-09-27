@@ -59,16 +59,16 @@ import { ScheViewComponent } from './components/sche-view/sche-view.component';
     AccordionModule,
     EditorModule,
     InputTextareaModule,
-    FullCalendarModule,    
+    FullCalendarModule,
     FileUploadModule,
     FontAwesomeModule
   ],
   declarations: [
-    SearchFilterPipe,    
+    SearchFilterPipe,
     BtnLibComponent,
     InputLibComponent,
     TabViewComponent,
-    ScheViewComponent    
+    ScheViewComponent
   ],
   exports: [TranslatePipe],
   providers: [TranslateModule]

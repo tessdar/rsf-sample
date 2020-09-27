@@ -7,7 +7,7 @@ import { _Status } from '../../../../shared/enums/status.enum';
 import { TableCol } from '../../../../shared/interfaces/table-col';
 import { DataSet, SaveSet } from '../../interfaces/basic-crud/data-set';
 
-import { faSearch, faCheck, faPlus, faEdit, faTrashAlt, faSave, faFilter, faBackward, faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCheck, faPlus, faEdit, faTrashAlt, faSave, faFilter, faRedo, faDownload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-basic-crud',
@@ -17,15 +17,15 @@ import { faSearch, faCheck, faPlus, faEdit, faTrashAlt, faSave, faFilter, faBack
 })
 export class BasicCrudComponent implements OnInit {
 
-  public cols: TableCol[] = [];  // 테이블 컬럼 
+  public cols: TableCol[] = [];  // 테이블 컬럼
   public dataRow = {} as DataSet; // 행 추가, 삭제를 위한 변수
   public dataList: DataSet[] = []; // 테이블 데이터 리스트
-  public totalRecords: number = 0; // 총 건수
+  public totalRecords = 0; // 총 건수
   public selectedRows: DataSet[] = []; // 선택한 행
   public delList: DataSet[] = []; // 삭제 데이터 저장 리스트
   public loading: boolean; // 로딩 Spinner 출력여부
   public onFilter: string; // 필터 행 적용 클래스 변수
-  public editable = false as boolean; // 데이터 테이블 수정여부 
+  public editable = false as boolean; // 데이터 테이블 수정여부
 
   public displayDialog: boolean; // 추가, 수정 다이얼로그 출력 변수
   public departmentId: string; // 조회조건
@@ -37,7 +37,7 @@ export class BasicCrudComponent implements OnInit {
   public faTrashAlt = faTrashAlt;
   public faSave = faSave;
   public faFilter = faFilter;
-  public faBackward = faBackward;
+  public faRedo = faRedo;
   public faDownload = faDownload;
   public faCheck = faCheck;
 
@@ -56,30 +56,30 @@ export class BasicCrudComponent implements OnInit {
    * 컬럼 필터 비활성화 설정
    */
   ngOnInit() {
-    this.departmentId = "50";
+    this.departmentId = '50';
 
     this.cols = [
-      { field: 'employeeId', header: 'samplePage.basicCrud.employeeId', width: "4.5em", editable: false },
-      { field: 'firstName', header: 'samplePage.basicCrud.firstName', width: "8em", editable: true },
-      { field: 'lastName', header: 'samplePage.basicCrud.lastName', width: "8em", editable: true },
-      { field: 'phoneNumber', header: 'samplePage.basicCrud.phoneNumber', width: "8.5em", editable: true },
-      { field: 'jobId', header: 'samplePage.basicCrud.jobId', width: "7em", editable: false },
-      { field: 'departmentId', header: 'samplePage.basicCrud.departmentId', width: "6.5em", editable: false },
-      { field: 'managerId', header: 'samplePage.basicCrud.managerId', width: "7em", editable: false },
-      { field: 'email', header: 'samplePage.basicCrud.email', width: "8em", editable: false },
-      { field: 'hireDate', header: 'samplePage.basicCrud.hireDate', width: "9.5em", editable: false },
-      { field: 'departmentName', header: 'samplePage.basicCrud.departmentName', width: "8em", editable: false },
-      { field: 'locationId', header: 'samplePage.basicCrud.locationId', width: "5em", editable: false }
+      { field: 'employeeId', header: 'samplePage.basicCrud.employeeId', width: '4.5em', editable: false },
+      { field: 'firstName', header: 'samplePage.basicCrud.firstName', width: '8em', editable: true },
+      { field: 'lastName', header: 'samplePage.basicCrud.lastName', width: '8em', editable: true },
+      { field: 'phoneNumber', header: 'samplePage.basicCrud.phoneNumber', width: '8.5em', editable: true },
+      { field: 'jobId', header: 'samplePage.basicCrud.jobId', width: '7em', editable: false },
+      { field: 'departmentId', header: 'samplePage.basicCrud.departmentId', width: '6.5em', editable: false },
+      { field: 'managerId', header: 'samplePage.basicCrud.managerId', width: '7em', editable: false },
+      { field: 'email', header: 'samplePage.basicCrud.email', width: '8em', editable: false },
+      { field: 'hireDate', header: 'samplePage.basicCrud.hireDate', width: '9.5em', editable: false },
+      { field: 'departmentName', header: 'samplePage.basicCrud.departmentName', width: '8em', editable: false },
+      { field: 'locationId', header: 'samplePage.basicCrud.locationId', width: '5em', editable: false }
     ];
 
-    this.onFilter = "ui-table-filter-inactive";
+    this.onFilter = 'ui-table-filter-inactive';
   }
 
   /**
    * 수정한 내역이 있는데 화면을 나가려고 하는 경우 경고 메시지 출력하는 메서드
    * true: 화면이동 / false: 화면이동하지 않음.
    */
-  public canDeactivate(): boolean {    
+  public canDeactivate(): boolean {
     if (this.saveCheck()) {
       return this.askQuit();
 
@@ -96,7 +96,7 @@ export class BasicCrudComponent implements OnInit {
    * 4. 응답실패(에러)가 발생한 경우 에러 메시지 출력
    * 5. 정상적으로 데이터 호출한 경우 데이터 테이블에 리턴값 대입 / 총건수 변수에 리턴값 length를 대입
    * 6. 로딩 Spinner 출력변수 false
-   * @param departmentId: 부서코드 
+   * @param departmentId: 부서코드
    */
   public retrieve(departmentId: string) {
     this.loading = true;
@@ -112,9 +112,13 @@ export class BasicCrudComponent implements OnInit {
         });
 
       } else {
-        if (res.ok == false) {
+        if (res.ok === false) {
           this.translate.get('shared.message').subscribe(msg => {
-            this.messageService.add({ severity: 'error', summary: msg.error, detail: 'Status: ' + res.status + ', ' + res.statusText });
+            this.messageService.add({
+              severity: 'error',
+              summary: msg.error,
+              detail: 'Status: ' + res.status + ', ' + res.statusText
+            });
           });
 
         } else {
@@ -124,8 +128,8 @@ export class BasicCrudComponent implements OnInit {
         }
       }
       this.loading = false;
-
     });
+
   }
 
   /**
@@ -135,7 +139,7 @@ export class BasicCrudComponent implements OnInit {
    * 수정 버튼 클릭한 경우 다이얼로그 창에 입력한 값이 선택한 행에 반영.
    */
   public dialogOk() {
-    let dataList = [...this.dataList];
+    const dataList = [...this.dataList];
 
     dataList.unshift(this.dataRow);
 
@@ -189,7 +193,7 @@ export class BasicCrudComponent implements OnInit {
     }
 
     for (let i = this.dataList.length - 1; i >= 0; i--) {
-      let index = this.dataList.indexOf(this.selectedRows[i])
+      const index = this.dataList.indexOf(this.selectedRows[i]);
 
       if (index >= 0) {
         this.delList.unshift(this.dataList[index]);
@@ -207,10 +211,10 @@ export class BasicCrudComponent implements OnInit {
    * 필터 버튼 클릭 시 필터 비활성화 / 다시 클릭하면 필터 행 활성화
    */
   public filter() {
-    if (this.onFilter == "ui-table-filter") {
-      this.onFilter = "ui-table-filter-inactive";
+    if (this.onFilter === 'ui-table-filter') {
+      this.onFilter = 'ui-table-filter-inactive';
     } else {
-      this.onFilter = "ui-table-filter";
+      this.onFilter = 'ui-table-filter';
     }
   }
 
@@ -246,7 +250,7 @@ export class BasicCrudComponent implements OnInit {
 
     for (let i = 0; i < this.dataList.length; i++) {
 
-      if (this.dataList[i]._status == _Status.New || this.dataList[i]._status == _Status.Modified) {
+      if (this.dataList[i]._status === _Status.New || this.dataList[i]._status === _Status.Modified) {
         saveRow.employeeId = this.dataList[i].employeeId;
 
         saveRow.employeeId = this.dataList[i].employeeId;
@@ -267,7 +271,7 @@ export class BasicCrudComponent implements OnInit {
 
     saveRow = {} as SaveSet;
     for (let i = 0; i < this.delList.length; i++) {
-      if (this.delList[i]._status != _Status.New) {
+      if (this.delList[i]._status !== _Status.New) {
         saveRow.employeeId = this.delList[i].employeeId;
         saveRow._status = _Status.Delete;
 
@@ -298,7 +302,7 @@ export class BasicCrudComponent implements OnInit {
                 this.messageService.add({ severity: 'error', summary: msg.error, detail: msg.noResponse });
 
               } else {
-                if (res.ok == false) {
+                if (res.ok === false) {
                   this.messageService.add({ severity: 'error', summary: msg.error + ' / ' + res.status, detail: res.error.message });
 
                 } else {
@@ -331,14 +335,14 @@ export class BasicCrudComponent implements OnInit {
 
     // 수정여부 체크
     for (let i = 0; i < this.dataList.length; i++) {
-      if (this.dataList[i]._status == _Status.New || this.dataList[i]._status == _Status.Modified) {
+      if (this.dataList[i]._status === _Status.New || this.dataList[i]._status === _Status.Modified) {
         return true;
       }
     }
 
     // 삭제여부 체크
     for (let i = 0; i < this.delList.length; i++) {
-      if (this.delList[i]._status != _Status.New) {
+      if (this.delList[i]._status !== _Status.New) {
         return true;
       }
     }
@@ -347,7 +351,7 @@ export class BasicCrudComponent implements OnInit {
   }
 
   /**
-   * 
+   *
    */
   private askQuit(): any {
 
@@ -371,7 +375,7 @@ export class BasicCrudComponent implements OnInit {
           }
         });
       });
-    })
+    });
   }
 
 }

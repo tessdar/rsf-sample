@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DesendSortPipe implements PipeTransform {
 
   transform(value) {
-    if (!value) return;
+    if (!value) { return; }
 
     return value.reverse();
   }

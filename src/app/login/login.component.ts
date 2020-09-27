@@ -22,7 +22,7 @@ import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 export class LoginComponent implements OnInit {
 
   public userform: FormGroup;
-  public version: string = '1.0.5';
+  public version = '2.0.0';
 
   public faEnvelope = faEnvelope;
   public faLock = faLock;
@@ -51,10 +51,10 @@ export class LoginComponent implements OnInit {
     });
 
     // 언어설정
-    if (!this.mainMenu.getLanguage()) {
-      this.mainMenu.setLanguage('ko');
+    if (!this.mainMenu.language) {
+      this.mainMenu.language = 'ko';
     }
-    this.translate.setDefaultLang(this.mainMenu.getLanguage());
+    this.translate.setDefaultLang(this.mainMenu.language);
 
   }
 
@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
     //         localStorage.setItem('AuthToken', res.authToken);
 
             this.store.dispatch(new ApplicationActions.LogIn());
-            this.router.navigate(['layout', { "lang": this.mainMenu.getLanguage() }]);
+            this.router.navigate(['layout', { 'lang': this.mainMenu.language }]);
 
     //       } else {
     //         this.translate.get('shared.message').subscribe(msg => {
@@ -101,7 +101,7 @@ export class LoginComponent implements OnInit {
    * @param language : 언어
    */
   public useLanguage(language: string) {
-    this.mainMenu.setLanguage(language);
+    this.mainMenu.language = language;
     this.translate.use(language);
   }
 

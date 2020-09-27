@@ -5,20 +5,21 @@
 <p-confirmDialog></p-confirmDialog>
 
 <!-- 메뉴바 -->
-<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+<p-breadcrumb [model]="mainMenu.breadItems"></p-breadcrumb>
 
 <!-- 조회조건 -->
-<p-panel header="{{ 'samplePage.basicCrud.condition' | translate }}" [toggleable]="true" [styleClass]="'ui-panel-search'">
-  <div class="ui-g ui-fluid">
-    <div class="ui-sm-8 ui-md-6 ui-lg-6 ui-g-nopad">
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon required">{{ 'samplePage.basicCrud.departmentId' | translate }}</span>
+<p-panel header="{{ 'samplePage.basicCrud.condition' | translate }}" [toggleable]="true">
+  <div class="p-grid p-fluid">
+    <div class="p-col p-lg-6 p-md-6 p-sm-8">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon required">{{ 'samplePage.basicCrud.departmentId' | translate }}</span>
         <input pInputText type="text" [(ngModel)]="departmentId">
       </div>
     </div>
-    <div class="ui-sm-4 ui-md-offset-4 ui-md-2 ui-lg-offset-4 ui-lg-2 ui-g-nopad">
-      <button pButton type="button" label="{{ 'samplePage.basicCrud.search' | translate }}" (click)="retrieve(departmentId)">
-          <fa-icon [icon]="faSearch"></fa-icon>
+    <div class="p-col p-lg-offset-4 p-lg-2 p-md-offset-4 p-md-2 p-sm-4">
+      <button pButton type="button" label="{{ 'samplePage.basicCrud.search' | translate }}"
+        (click)="retrieve(departmentId)">
+        <fa-icon [icon]="faSearch"></fa-icon>
       </button>
     </div>
   </div>
@@ -26,41 +27,42 @@
 
 <!-- 툴바 -->
 <p-toolbar>
-  <div class="ui-toolbar-group-left">
-    <button pButton type="button" label="{{ 'samplePage.basicCrud.add' | translate }}" class="ui-button-secondary"
-      (click)="add()">    
+  <div class="p-toolbar-group-left">
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.add' | translate }}" class="p-button-secondary"
+      (click)="add()">
       <fa-icon [icon]="faPlus"></fa-icon>
     </button>
-    <button pButton type="button" label="{{ 'samplePage.basicCrud.edit' | translate }}" class="ui-button-secondary"
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.edit' | translate }}" class="p-button-secondary"
       (click)="edit()">
       <fa-icon [icon]="faEdit"></fa-icon>
     </button>
-    <button pButton type="button" label="{{ 'samplePage.basicCrud.delete' | translate }}" class="ui-button-secondary"
-      (click)="delete()">   
-      <fa-icon [icon]="faTrashAlt"></fa-icon>   
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.delete' | translate }}" class="p-button-secondary"
+      (click)="delete()">
+      <fa-icon [icon]="faTrashAlt"></fa-icon>
     </button>
-    <button pButton type="button" label="{{ 'samplePage.basicCrud.save' | translate }}" class="ui-button-secondary"
+    <button pButton type="button" label="{{ 'samplePage.basicCrud.save' | translate }}" class="p-button-secondary"
       (click)="save()">
       <fa-icon [icon]="faSave"></fa-icon>
     </button>
   </div>
 
-  <div class="ui-toolbar-group-right">
-    <button pButton type="button" class="ui-button-ternary ui-cust-filter" (click)="filter()">
-        <fa-icon [icon]="faFilter"></fa-icon>
+  <div class="p-toolbar-group-right">
+    <button pButton type="button" icon="pi" class="p-button-ternary ui-cust-filter" (click)="filter()">
+      <fa-icon [icon]="faFilter"></fa-icon>
     </button>
-    <button pButton type="button" class="ui-button-ternary ui-cust-reset" (click)="dt.reset()">
-        <fa-icon [icon]="faBackward"></fa-icon>
+    <button pButton type="button" icon="pi" class="p-button-ternary ui-cust-reset" (click)="dt.clear()">
+      <fa-icon [icon]="faRedo"></fa-icon>
     </button>
-    <button pButton type="button" class="ui-button-ternary" (click)="dt.exportCSV()">
-        <fa-icon [icon]="faDownload"></fa-icon>
+    <button pButton type="button" icon="pi" class="p-button-ternary" (click)="dt.exportCSV()">
+      <fa-icon [icon]="faDownload"></fa-icon>
     </button>
   </div>
 </p-toolbar>
 
 <!-- 테이블 -->
-<p-table #dt [columns]="cols" [value]="dataList" [responsive]="true" [resizableColumns]="true" [reorderableColumns]="true"
-  [(selection)]="selectedRows" [scrollable]="true" scrollHeight="476px" [loading]="loading">
+<p-table #dt [columns]="cols" [value]="dataList" [responsive]="true" [resizableColumns]="true"
+  [reorderableColumns]="true" [(selection)]="selectedRows" [scrollable]="true" scrollHeight="476px" [loading]="loading"
+  styleClass="p-datatable-striped">
   <ng-template pTemplate="colgroup" let-columns>
     <colgroup>
       <col style="width: 2.25em">
@@ -92,11 +94,13 @@
       <td style="width: 2.25em">
         <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
       </td>
-      <td *ngFor="let col of columns" class="ui-resizable-column" pEditableColumn [ngClass]="col.editable && editable ? 'edit-row' : null">
-        <span class="ui-column-title">{{col.header| translate}}</span>
+      <td *ngFor="let col of columns" pEditableColumn
+        [ngClass]="col.editable && editable ? 'edit-row' : null">
+        <span class="p-column-title">{{col.header| translate}}</span>
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <input pInputText type="text" [(ngModel)]="rowData[col.field]" [disabled]="!col.editable || !editable" (ngModelChange)="onChangeCell(rowIndex, col.field, rowData[col.field])">
+            <input pInputText type="text" [(ngModel)]="rowData[col.field]" [disabled]="!col.editable || !editable"
+              (ngModelChange)="onChangeCell(rowIndex, col.field, rowData[col.field])">
           </ng-template>
           <ng-template pTemplate="output">
             {{rowData[col.field]}}
@@ -106,7 +110,8 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="summary">
-    <p style="text-align: left; margin-top: 5px; margin-bottom: 5px;">{{ 'samplePage.basicCrud.count' | translate }} : &nbsp; {{ totalRecords }}</p>
+    <p style="text-align: left; margin-top: 5px; margin-bottom: 5px;">{{ 'samplePage.basicCrud.count' | translate }} :
+      &nbsp; {{ totalRecords }}</p>
   </ng-template>
   <ng-template pTemplate="emptymessage" let-columns>
     <tr>
@@ -119,68 +124,68 @@
 </p-table>
 
 <!-- Dialog -->
-<p-dialog header="{{ 'samplePage.basicCrud.dialHeader' | translate }}" [(visible)]="displayDialog" [responsive]="true" showEffect="fade"
-  [modal]="true" [styleClass]="'ui-dialog-custom'" [baseZIndex]="9999">
-  <div class="ui-g ui-fluid" *ngIf="dataRow">
-    <div class="ui-g-12 ui-g-nopad">
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.employeeId' | translate }}</span>
+<p-dialog header="{{ 'samplePage.basicCrud.dialHeader' | translate }}" [(visible)]="displayDialog"
+  showEffect="fade" [modal]="true" [styleClass]="'p-dialog-custom'" [baseZIndex]="9999">
+  <div class="p-grid p-fluid" *ngIf="dataRow">
+    <div class="p-col-12">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">{{ 'samplePage.basicCrud.employeeId' | translate }}</span>
         <input pInputText type="number" [(ngModel)]="dataRow.employeeId">
       </div>
     </div>
-    <div class="ui-g-12 ui-g-nopad">
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.firstName' | translate }}</span>
+    <div class="p-col-12">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">{{ 'samplePage.basicCrud.firstName' | translate }}</span>
         <input pInputText type="text" [(ngModel)]="dataRow.firstName">
       </div>
     </div>
-    <div class="ui-g-12 ui-g-nopad">
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.lastName' | translate }}</span>
+    <div class="p-col-12">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">{{ 'samplePage.basicCrud.lastName' | translate }}</span>
         <input pInputText type="text" [(ngModel)]="dataRow.lastName">
       </div>
     </div>
-    <div class="ui-g-12 ui-g-nopad">
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.phoneNumber' | translate }}</span>
+    <div class="p-col-12">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">{{ 'samplePage.basicCrud.phoneNumber' | translate }}</span>
         <input pInputText type="text" [(ngModel)]="dataRow.phoneNumber">
       </div>
     </div>
-    <div class="ui-g-12 ui-g-nopad">
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.jobId' | translate }}</span>
+    <div class="p-col-12">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">{{ 'samplePage.basicCrud.jobId' | translate }}</span>
         <input pInputText type="text" [(ngModel)]="dataRow.jobId">
       </div>
     </div>
-    <div class="ui-g-12 ui-g-nopad">
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.departmentId' | translate }}</span>
+    <div class="p-col-12">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">{{ 'samplePage.basicCrud.departmentId' | translate }}</span>
         <input pInputText type="number" [(ngModel)]="dataRow.departmentId">
       </div>
     </div>
-    <div class="ui-g-12 ui-g-nopad">
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.managerId' | translate }}</span>
+    <div class="p-col-12">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">{{ 'samplePage.basicCrud.managerId' | translate }}</span>
         <input pInputText type="number" [(ngModel)]="dataRow.managerId">
       </div>
     </div>
-    <div class="ui-g-12 ui-g-nopad">
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.email' | translate }}</span>
+    <div class="p-col-12">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">{{ 'samplePage.basicCrud.email' | translate }}</span>
         <input pInputText type="text" [(ngModel)]="dataRow.email">
       </div>
     </div>
-    <!-- <div class="ui-g-12 ui-g-nopad">
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">{{ 'samplePage.basicCrud.hireDate' | translate }}</span>
+    <!-- <div class="p-col">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">{{ 'samplePage.basicCrud.hireDate' | translate }}</span>
         <input pInputText type="text" [(ngModel)]="dataRow.hireDate">
       </div>
     </div> -->
   </div>
-  <p-footer>
-    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+  <p-footer>    
+    <div>
       <button type="button" pButton (click)="dialogOk()" label="OK">
-          <fa-icon [icon]="faCheck"></fa-icon>
+        <fa-icon [icon]="faCheck"></fa-icon>
       </button>
     </div>
   </p-footer>

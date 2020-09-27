@@ -15,7 +15,7 @@ export class ApplicationEffects {
     /**
      * 타이머 시간 설정: ms
      * 타이머 설정: Click, Keydown 실행 시 로그아웃 타이머 연장 수행
-     *           그렇지 않으면 설정된 로그아웃 수행 
+     *           그렇지 않으면 설정된 로그아웃 수행
      *           기본 30분 설정
      */
     APPLICATION_TIMEOUT_TIME = 1800;

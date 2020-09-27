@@ -20,7 +20,7 @@ export class BarcodeScanComponent implements OnInit {
   public qrResultString: string;
   private qrResult: Result;
   public currentDevice: MediaDeviceInfo;
-  
+
   public deviceLists = [] as SelectItem[];
 
   constructor(
@@ -74,15 +74,15 @@ export class BarcodeScanComponent implements OnInit {
   }
 
   handleQrCodeResult(resultString: string) {
-    let snd = new Audio();
-    snd.src = '../../../../../assets/audio/beep.mp3'
+    const snd = new Audio();
+    snd.src = '../../../../../assets/audio/beep.mp3';
     snd.load();
     snd.play();
     this.qrResultString = resultString;
   }
 
-  onDeviceSelectChange(event: any) {    
-    //this.currentDevice = this.scanner.getDeviceById(event.value);
+  onDeviceSelectChange(event: any) {
+    // this.currentDevice = this.scanner.getDeviceById(event.value);
   }
 
 }

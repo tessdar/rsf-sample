@@ -19,8 +19,6 @@ export class AuthGuard implements CanActivate {
   /**
    * 페이지를 이동할 수 있는지를 체크
    * 로그인 변수가 True인 경우 다음 페이지로 이동
-   * @param next 
-   * @param state 
    */
   canActivate(
     next: ActivatedRouteSnapshot,

@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MainMenuService } from '../../../../shared/services/main-menu.service';
 import { SelectItem, MessageService } from 'primeng/api';
 // import { DomSanitizer } from '@angular/platform-browser';
-//import * as FileSaver from 'file-saver';
+// import * as FileSaver from 'file-saver';
 
 import { BasicFormService } from '../../services/basic-form/basic-form.service';
 
@@ -45,7 +45,7 @@ export class BasicFormComponent implements OnInit {
    * 화면 초기 설정
    * 드랍다운 리스트 값 불러오는 메서드 실행
    * 드랍다운 리스트 공란 설정하는 행 추가
-   * 폼 그룹에 입력체크하는 식별자 설정 
+   * 폼 그룹에 입력체크하는 식별자 설정
    */
   ngOnInit() {
     this.deptItems = this.getDepList();
@@ -69,12 +69,11 @@ export class BasicFormComponent implements OnInit {
    * 제출버튼 처리
    * 제출되었다는 변수 true 설정
    * 저장되었다는 메시지 창 출력
-   * @param value 
    */
   onSubmit(value: any) {
     this.submitted = true;
     this.translate.get('shared.message').subscribe(msg => {
-      this.messageService.add({ severity: 'success', summary: msg.success, detail: msg.okSave });      
+      this.messageService.add({ severity: 'success', summary: msg.success, detail: msg.okSave });
     });
   }
 
@@ -84,7 +83,7 @@ export class BasicFormComponent implements OnInit {
    * 불러온 데이터를 PrimeNG 드랍다운 변수 인터페이스에 맞도록 값 대입 후 리턴
    */
   public getDepList(): SelectItem[] {
-    let deptItems = [] as SelectItem[];
+    const deptItems = [] as SelectItem[];
 
     this.dataProvider.getDepList().then((res: any[]) => {
       if (res) {
@@ -102,7 +101,7 @@ export class BasicFormComponent implements OnInit {
    * 불러온 데이터를 PrimeNG 드랍다운 변수 언터페이스에 맞도록 값 대입 후 리턴
    */
   public getJobList(): SelectItem[] {
-    let jobItems = [] as SelectItem[];
+    const jobItems = [] as SelectItem[];
 
     this.dataProvider.getJobList().then((res: any[]) => {
       if (res) {
@@ -115,16 +114,15 @@ export class BasicFormComponent implements OnInit {
   }
 
   /**
-   * 파일 업로드 
-   * @param event 
+   * 파일 업로드
    */
   public onUpload(event) {
-    for (let file of event.files) {
+    for (const file of event.files) {
       this.uploadedFiles.push(file);
     }
 
     this.translate.get('shared.message').subscribe(msg => {
-      this.messageService.add({ severity: 'success', summary: msg.success, detail: msg.okSave });      
+      this.messageService.add({ severity: 'success', summary: msg.success, detail: msg.okSave });
     });
   }
 

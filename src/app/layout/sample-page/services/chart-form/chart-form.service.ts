@@ -15,45 +15,33 @@ export class ChartFormService {
   /**
    * 부서정보 조회하는 웹서비스 호출
    */
-  getDepChart(): any {
-    return new Promise(resolve => {
-      const httpOptions = {
-        headers: new HttpHeaders()
-          .set('Language', this.mainMenu.getLanguage())
-          .set('Authorization', localStorage.getItem('AuthToken'))
-      };
+  async getDepChart(): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders()
+        .set('Language', this.mainMenu.language)
+        .set('Authorization', localStorage.getItem('AuthToken'))
+    };
 
-      this.http.get(environment.restURL + '/api/emp/depChart', httpOptions)
-        .subscribe(data => {
-          resolve(data);
-        }, err => {
-          console.log(err);
-          resolve(err);
-        });
-    });
-
+    return await this.http.get(environment.restURL + '/api/emp/depChart', httpOptions)
+      .toPromise()
+      .then(data => data)
+      .catch(err => err);
   }
 
   /**
    * 업무정보 조회하는 웹서비스 호출
    */
-  getJobChart(): any {
-    return new Promise(resolve => {
-      const httpOptions = {
-        headers: new HttpHeaders()
-          .set('Language', this.mainMenu.getLanguage())
-          .set('Authorization', localStorage.getItem('AuthToken'))
-      };
+  async getJobChart(): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders()
+        .set('Language', this.mainMenu.language)
+        .set('Authorization', localStorage.getItem('AuthToken'))
+    };
 
-      this.http.get(environment.restURL + '/api/emp/jobChart', httpOptions)
-        .subscribe(data => {
-          resolve(data);
-        }, err => {
-          console.log(err);
-          resolve(err);
-        });
-    });
-
+    return await this.http.get(environment.restURL + '/api/emp/jobChart', httpOptions)
+      .toPromise()
+      .then(data => data)
+      .catch(err => err);
   }
 
 }

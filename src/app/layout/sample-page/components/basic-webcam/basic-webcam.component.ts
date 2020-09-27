@@ -36,7 +36,6 @@ export class BasicWebcamComponent implements OnInit {
 
   /**
    * 카메라 Auto Resize
-   * @param event 
    */
   @HostListener('window:resize', ['$event'])
   onResize(event?: Event) {
@@ -59,8 +58,8 @@ export class BasicWebcamComponent implements OnInit {
   }
 
   public triggerSnapshot(): void {
-    let shutter = new Audio();
-    shutter.src = '../../../../../assets/audio/shutter.mp3'
+    const shutter = new Audio();
+    shutter.src = '../../../../../assets/audio/shutter.mp3';
     shutter.load();
     shutter.play();
     // window.navigator.vibrate(500);
@@ -83,7 +82,7 @@ export class BasicWebcamComponent implements OnInit {
   // }
 
   public handleImage(webcamImage: WebcamImage): void {
-    console.info('received webcam image', webcamImage);
+    // console.info('received webcam image', webcamImage);
     this.webcamImage = webcamImage;
   }
 

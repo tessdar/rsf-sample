@@ -9,5 +9,5 @@ export const environment = {
     projectId: 'asftest-3d5e2',
     storageBucket: 'asftest-3d5e2.appspot.com',
     messagingSenderId: '578175626282'
-  }  
+  }
 };

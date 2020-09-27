@@ -35,7 +35,7 @@ export class InputLibComponent implements OnInit {
     this.chkbox2 = true;
     this.chkbox3 = true;
 
-    this.val1 = "Option 2";
+    this.val1 = 'Option 2';
 
     this.items = [
       { label: 'Lorem Ipsum 1', value: '1' },

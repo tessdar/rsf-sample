@@ -1,8 +1,8 @@
 <!-- 메뉴바 -->
-<p-breadcrumb [model]="mainMenu.getBreadItems()"></p-breadcrumb>
+<p-breadcrumb [model]="mainMenu.breadItems"></p-breadcrumb>
 
-<div class="ui-g">
-  <div class="ui-sm-12 ui-md-12 ui-lg-12 ui-g-nopad">
+<div class="p-grid">
+  <div class="p-col">
     <h3 style="font-weight: bolder;">
       <i class="pi pi-circle-off" aria-hidden="true"></i>&nbsp; {{ 'helpAdvice.archHelp.folderTitle' | translate }}
     </h3>
@@ -25,7 +25,4 @@
       <td>{{rowData.description}}</td>
     </tr>
   </ng-template>
-
-  <!-- <p-column field="name" header="Name" [style]="{'width':'20em'}"></p-column>
-  <p-column field="description" header="Description"></p-column> -->
 </p-treeTable>
