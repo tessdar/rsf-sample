@@ -20,21 +20,15 @@ export class LoginService {
   login(userId: string, password: string): any {
     const login = { 'userId': userId, 'password': password };
 
-    return new Promise(resolve => {
-      const httpOptions = {
-        headers: new HttpHeaders()
-          .set('Language', this.mainMenu.language)
-      };
+    const httpOptions = {
+      headers: new HttpHeaders()
+        .set('Language', this.mainMenu.language)
+    };
 
-      this.http.post(environment.restURL + '/api/auth/login', login, httpOptions)
-        .subscribe(data => {
-          resolve(data);
-        }, err => {
-          console.log(err);
-          resolve(err);
-        });
-    });
-
+    this.http.post(environment.restURL + '/api/auth/login', login, httpOptions)
+      .toPromise()
+      .then(data => data)
+      .catch(err => err);
   }
 
 }

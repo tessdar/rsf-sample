@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ChartFormService } from './chart-form.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ChartFormService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ChartFormService]
+      providers: [ChartFormService],
+      imports: [HttpClientModule]
     });
   });
 

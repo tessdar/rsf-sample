@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { BasicFormService } from './basic-form.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('BasicFormService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BasicFormService]
+      providers: [BasicFormService],
+      imports: [HttpClientModule]
     });
   });
 
