@@ -51,8 +51,8 @@ export class BasicCrudService {
         .set('departmentId', departmentId)
     };
 
-    return await this.http.get('assets/data/emp-list.json')
-      // return await this.http.get(environment.restURL + '/api/emp/list', httpOptions)
+    // return await this.http.get('assets/data/emp-list.json')
+    return await this.http.get(environment.restURL + '/api/emp/list', httpOptions)
       .toPromise()
       .then(data => data)
       .catch(err => err);

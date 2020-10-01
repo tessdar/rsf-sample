@@ -17,7 +17,7 @@ export class LoginService {
    * @param userId: 사용자 ID
    * @param password: 비밀번호
    */
-  login(userId: string, password: string): any {
+  async login(userId: string, password: string): Promise<any> {
     const login = { 'userId': userId, 'password': password };
 
     const httpOptions = {
@@ -25,7 +25,7 @@ export class LoginService {
         .set('Language', this.mainMenu.language)
     };
 
-    this.http.post(environment.restURL + '/api/auth/login', login, httpOptions)
+    return await this.http.post(environment.restURL + '/api/auth/login', login, httpOptions)
       .toPromise()
       .then(data => data)
       .catch(err => err);
