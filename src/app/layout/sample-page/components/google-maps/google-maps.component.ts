@@ -34,7 +34,7 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   public clickedMarker(label: string, index: number) {
-    console.log('clicked the marker: ${label || index}');
+    // console.log('clicked the marker: ${label || index}');
   }
 
   public mapClicked($event: MouseEvent) {
@@ -46,7 +46,7 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   public markerDragEnd(m: MapMarker, $event: MouseEvent) {
-    console.log('dragEnd', m, $event);
+    // console.log('dragEnd', m, $event);
   }
 
   public findMe() {
@@ -87,7 +87,7 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   public showTrackingPosition(position) {
-    console.log('tracking postion:  ${position.coords.latitude} - ${position.coords.longitude}');
+    // console.log('tracking postion:  ${position.coords.latitude} - ${position.coords.longitude}');
     this.currentLat = position.coords.latitude;
     this.currentLong = position.coords.longitude;
 

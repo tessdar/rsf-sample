@@ -25,7 +25,9 @@ export class BarcodeScanComponent implements OnInit {
 
   constructor(
     public mainMenu: MainMenuService
-  ) { }
+  ) {
+    this.currentDevice = null;
+  }
 
   ngOnInit() {
 
@@ -49,22 +51,11 @@ export class BarcodeScanComponent implements OnInit {
 
     this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => {
       this.hasDevices = true;
-
       this.currentDevice = devices[0];
 
       devices.forEach(element => {
         this.deviceLists.push({ 'label': element.label, 'value': element.deviceId });
       });
-      // this.deviceLists.unshift({ 'label': 'No Device Selected', 'value': null });
-
-      // selects the devices's back camera by default
-      // for (const device of devices) {
-      //     if (/back|rear|environment/gi.test(device.label)) {
-      //         this.scanner.changeDevice(device);
-      //         this.selectedDevice = device;
-      //         break;
-      //     }
-      // }
     });
 
     this.scanner.camerasNotFound.subscribe(() => this.hasDevices = false);

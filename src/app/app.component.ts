@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
 
       // 2. 업데이트 발생 시 사용자에게 알림
       this.swUpdate.available.subscribe(evt => {
-        console.log('[App] Update available: current version is', evt.current, 'available version is', evt.available);
+        // console.log('[App] Update available: current version is', evt.current, 'available version is', evt.available);
 
         this.translate.get('shared.message').subscribe(msg => {
           this.messageService.add({ key: 'upnoti', severity: 'info', summary: msg.info, detail: msg.newApp });

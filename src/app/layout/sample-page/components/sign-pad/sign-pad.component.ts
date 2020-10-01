@@ -43,18 +43,18 @@ export class SignPadComponent implements OnInit, AfterViewInit {
   public drawComplete() {
     // will be notified of szimek/signature_pad's onEnd event
     this.signImage = this.signaturePad.toDataURL();
-    console.log('end drawing');
+    // console.log('end drawing');
   }
 
   public drawStart() {
     // will be notified of szimek/signature_pad's onBegin event
-    console.log('begin drawing');
+    // console.log('begin drawing');
   }
 
   public drawClear() {
     this.signaturePad.clear();
     this.signImage = this.signaturePad.toDataURL();
-    console.log('clear drawing');
+    // console.log('clear drawing');
   }
 
   public drawSave() {
