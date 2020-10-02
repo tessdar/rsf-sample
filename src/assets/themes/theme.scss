@@ -99,7 +99,7 @@ a.p-links {
 .ui-cust-reset {
   display: inherit;
 }
-@media screen and (max-width: 40rem) {
+@media screen and (max-width: 40em) {
   .ui-cust-filter,
   .ui-cust-reset {
     display: none;
@@ -2215,7 +2215,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   width: 100%;
 }
 /* Table Reponse Column */
-@media screen and (max-width: 40rem) {
+@media screen and (max-width: 40em) {
   .p-datatable .p-datatable-tbody > tr {
     border-bottom: 1px solid $inputBdColor;
   }
@@ -4717,6 +4717,16 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-toast .p-toast-message.p-toast-message-error .p-toast-message-icon,
 .p-toast .p-toast-message.p-toast-message-error .p-toast-icon-close {
   color: #73000c;
+}
+@media screen and (max-width: 40em) {
+  .p-toast.p-component.p-toast-top-right {
+    top: 3%;
+    left: 50%;
+    margin-left: -150px;      
+  }
+  .p-toast .p-toast-message {
+    width: 75%
+  }
 }
 
 .p-galleria .p-galleria-close {
