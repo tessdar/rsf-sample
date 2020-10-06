@@ -365,12 +365,7 @@ export class BasicCrudComponent implements OnInit {
             resolve(true);
           },
           reject: () => {
-            this.translate.get('main.sideMenu').subscribe(res => {
-              this.mainMenu.setBreadKeys([
-                { 'key': 'samplePage' },
-                { 'key': 'basicCrud' }
-              ], res);
-            });
+            this.mainMenu.getPrevBreadItems();
             resolve(false);
           }
         });

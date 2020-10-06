@@ -29,9 +29,9 @@ export class BtnLibComponent implements OnInit {
    */
   ngOnInit() {
     this.types = [
-      { label: 'Lorem Ipsum 1', value: '1' },
-      { label: 'Lorem Ipsum 2', value: '2' },
-      { label: 'Lorem Ipsum 3', value: '3' }
+      { label: 'Lorem 1', value: '1' },
+      { label: 'Lorem 2', value: '2' },
+      { label: 'Lorem 3', value: '3' }
     ];
 
     this.items = [

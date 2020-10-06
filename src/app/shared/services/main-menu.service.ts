@@ -16,8 +16,8 @@ export class MainMenuService {
   public menuActive: boolean;
   public menuInactive: boolean;
 
-  public breadItems: MenuItem[];
-  public breadKeys: any[];
+  public breadItems = [] as MenuItem[];
+  public prevBreadItems = [] as MenuItem[];
 
   constructor(public http: HttpClient) { }
 
