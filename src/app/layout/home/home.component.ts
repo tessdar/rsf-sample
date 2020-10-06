@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
       },
       {
         'name': 'Git',
-        'version': '2.17.1'
+        'version': '2.24.3'
       },
       {
         'name': 'Angular CLI',
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
       },
       {
         'name': 'PrimeNG',
-        'version': '10.0.0',
+        'version': '10.0.2',
         'Description': 'Main UI Library'
       },
       {

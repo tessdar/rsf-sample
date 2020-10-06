@@ -26,7 +26,9 @@
               "ng-connection-service",
               "ngx-webcam",
               "@agm/core",
-              "@zxing/ngx-scanner"
+              "@zxing/ngx-scanner",
+              "@zxing/library",
+              "file-saver/FileSaver"
             ],
             "outputPath": "dist/rsf-sample",
             "index": "src/index.html",
